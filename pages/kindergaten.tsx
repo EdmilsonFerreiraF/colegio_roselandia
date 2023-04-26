@@ -1,15 +1,12 @@
 import { Inter } from "next/font/google";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
-  const handlePageClick = (url: string) => {
-    window.location.href = url;
-  };
-
+const Kindergaten = () => {
   return (
     <main
-      className={`flex min-h-screen flex-col items-center justify-between ${inter.className}`}
+      className={`ensino-infantil flex min-h-screen flex-col items-center justify-between ${inter.className}`}
     >
       <div className="index">
         <div className="topbar">
@@ -21,34 +18,14 @@ export default function Home() {
         <nav className="navbar">
           <div className="navbar-wrapper">
             <div className="logo">
-              <img src="logo.jpg" alt="" />
+              <img className="logo" src="logo.jpg" alt="" />
             </div>
             <div className="navbar-end">
               <ul className="navbar-menu">
-                <li
-                  onClick={() => handlePageClick("teaching")}
-                  className="navbar-item"
-                >
-                  Ensino*
-                </li>
-                <li
-                  onClick={() => handlePageClick("registration")}
-                  className="navbar-item"
-                >
-                  Matrículas*
-                </li>
-                <li
-                  onClick={() => handlePageClick("projects")}
-                  className="navbar-item"
-                >
-                  Projetos
-                </li>
-                <li
-                  onClick={() => handlePageClick("contact")}
-                  className="navbar-item"
-                >
-                  Contato*
-                </li>
+                <li className="navbar-item">Ensino*</li>
+                <li className="navbar-item">Matrículas*</li>
+                <li className="navbar-item">Projetos</li>
+                <li className="navbar-item">Contato*</li>
               </ul>
               <div className="schedule-button">
                 <div className="cutted-side"></div>
@@ -59,74 +36,115 @@ export default function Home() {
         </nav>
         <div className="main">
           <div className="hero">
-            <img src="hero.jpg" alt="" />
+            <img src="ensino-infantil-hero.jpg" alt="" />
           </div>
-          <div className="education-level-list">
-            <div
-              className="education-level-item"
-              onClick={() => handlePageClick("kindergaten")}
-            >
-              <div className="title-container">
-                <div className="title">Ensino Infantil</div>
-                <div className="subtitle-container">
-                  <div className="subtitle">
-                    Descobrindo o mundo, tão fantástico
-                    <span className="more-btn">Mais{">>"}</span>
-                  </div>
-                </div>
-              </div>
+          <div className="articles">
+            <div className="article article-1">
               <div className="image">
-                <img src="school-1.jpg" alt="" />
+                <Image
+                  src="/ensino-infantil-2.jpg"
+                  alt=""
+                  width="100"
+                  height="100"
+                />
+              </div>
+              <div className="text">
+                <h3 className="article-title">Sócio-interacionista</h3>
+                <p className="article-text mb-5">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                  augue dui, vestibulum ac semper eget, facilisis a neque.
+                  Integer sollicitudin nisi nibh, non facilisis metus sodales a.
+                  Aenean sed augue ultricies, maximus velit sodales, facilisis
+                  urna. Phasellus non lacinia nunc. Donec efficitur lorem nunc,
+                  vitae fringilla urna malesuada et. Maecenas id mattis est.
+                  Praesent auctor lacus in arcu suscipit, a gravida ex
+                  consectetur. Curabitur porttitor volutpat rutrum. Sed id
+                  ligula ut nisi imperdiet dignissim et eget sem.
+                </p>
+                <p className="article-text">
+                  Praesent a est a sapien dapibus iaculis id in ipsum. Ut
+                  facilisis id elit et venenatis. Etiam eget viverra sem. Nullam
+                  consectetur euismod leo eget gravida. Sed in imperdiet velit.
+                  Aenean dictum dapibus fringilla.
+                </p>
               </div>
             </div>
-            <div
-              className="education-level-item"
-              onClick={() => handlePageClick("elementary_school-1")}
-            >
-              <div className="title-container">
-                <div className="title">Ensino Fundamental 1</div>
-                <div className="subtitle">
-                  Desenvolvendo autonomia e afetividade
-                  <span className="more-btn">Mais{">>"}</span>
-                </div>
+            <div className="article article-2">
+              <div className="text">
+                <p className="article-text mb-5">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                  augue dui, vestibulum ac semper eget, facilisis a neque.
+                  Integer sollicitudin nisi nibh, non facilisis metus sodales a.
+                  Aenean sed augue ultricies, maximus velit sodales, facilisis
+                  urna. Phasellus non lacinia nunc. Donec efficitur lorem nunc,
+                  vitae fringilla urna malesuada et. Maecenas id mattis est.
+                  Praesent auctor lacus in arcu suscipit, a gravida ex
+                  consectetur. Curabitur porttitor volutpat rutrum. Sed id
+                  ligula ut nisi imperdiet dignissim et eget sem.
+                </p>
+                <p className="article-text">
+                  Praesent a est a sapien dapibus iaculis id in ipsum. Ut
+                  facilisis id elit et venenatis. Etiam eget viverra sem. Nullam
+                  consectetur euismod leo eget gravida. Sed in imperdiet velit.
+                  Aenean dictum dapibus fringilla.
+                </p>
               </div>
+
               <div className="image">
-                <img src="school-2.jpg" alt="" />
+                <Image
+                  src="/ensino-infantil-2.jpg"
+                  alt=""
+                  width="100"
+                  height="100"
+                />
               </div>
             </div>
-            <div
-              className="education-level-item"
-              onClick={() => handlePageClick("elementary_school-2")}
-            >
-              <div className="title-container">
-                <div className="title">Ensino Fundamental 2</div>
-                <div className="subtitle">
-                  Preparando para a vida
-                  <span className="more-btn">Mais{">>"}</span>
-                </div>
-              </div>
+            <div className="article article-3">
               <div className="image">
-                <img src="school-3.jpg" alt="" />
+                <Image
+                  src="/ensino-infantil-3.jpg"
+                  alt=""
+                  width="100"
+                  height="100"
+                />
+              </div>
+              <div className="text">
+                <p className="article-text mb-5">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor
+                </p>
+                <p className="article-text mb-5">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor
+                </p>
+                <p className="article-text mb-5">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor
+                </p>
+                <p className="article-text mb-5">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor
+                </p>
+                <ul className="pages-menu">
+                  <div className="pages-menu-item">VOLTAR</div>
+                  <div className="pages-menu-item">Fundamental 1</div>
+                  <div className="pages-menu-item">Fundamental 2</div>
+                  <div className="pages-menu-item">Médio</div>
+                </ul>
               </div>
             </div>
-            <div
-              className="education-level-item"
-              onClick={() => handlePageClick("high_school")}
-            >
-              <div className="title-container">
-                <div className="title">Ensino Médio</div>
-                <div className="subtitle">
-                  Competência, Disciplina e Desafio.
-                  <span className="more-btn">Mais{">>"}</span>
-                </div>
-              </div>
-              <div className="image">
-                <img src="school-4.jpg" alt="" />
-              </div>
-            </div>
-          </div>
-          <div className="interacionist-partner">
-            <img src="section-6.jpg" alt="" />
           </div>
           <div className="projects">
             <div className="title-subtitle">
@@ -264,12 +282,7 @@ export default function Home() {
                     <img src="facebook.png" alt="" />
                   </li>
                 </ul>
-                <div
-                  className="enroll"
-                  onClick={() => handlePageClick("registration")}
-                >
-                  Matricule-se
-                </div>
+                <div className="enroll">Matricule-se</div>
                 <div className="sectors">
                   <div className="whatsapp-btn">
                     <img src="whatsapp.png" alt="" />
@@ -289,4 +302,6 @@ export default function Home() {
       </div>
     </main>
   );
-}
+};
+
+export default Kindergaten;

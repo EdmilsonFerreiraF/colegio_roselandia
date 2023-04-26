@@ -1,0 +1,426 @@
+/*//////////////////////    RESET     ////////////////*/
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+body {
+  font-size: 100%;
+  list-style-type: none;
+  font-family: sans-serif;
+}
+
+.hero {
+  width: 100%;
+  margin-bottom: 60px;
+}
+/*/ ////*/
+
+/*/ /////////////////////   COMMON    ////////////////*/
+img {
+  width: 100%;
+}
+
+.title h3 {
+  color: black;
+  font-size: 45px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 23px;
+  line-height: 1.4;
+}
+/*/ ////*/
+
+
+/*/ /////////////  Education level LIST    //////////*/
+.education-level-list {
+  display: grid;
+  justify-content: center;
+  grid: auto/repeat(auto-fit, minmax(min-content, 595px));
+  gap: 5px;
+  max-width: 1200px;
+  margin: auto;
+  margin-bottom: 80px;
+}
+
+.education-level-item .image {}
+
+.education-level-item .title-container {
+  background: #1e4085;
+  padding: 15px 25px;
+}
+
+.education-level-item .title {
+  font-size: 35px;
+  text-transform: none;
+  color: #fdc723;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.education-level-item .subtitle {
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+
+.education-level-item .more-btn {
+  font-size: 15px;
+  text-transform: none;
+  color: #fdc723;
+  text-decoration: underline;
+}
+/*/ ////*/
+
+
+/*//////////////   NAV    //////////*/
+.topbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 10px;
+  background: #ffd24a;
+  height: 70px;
+}
+
+.topbar-nav {
+  display: flex;
+  gap: 20px;
+  max-width: 1200px;
+  width: 100%;
+  justify-content: flex-end;
+  padding-right: 70px;
+  color: #002f90;
+  margin: 0 auto 2px auto;
+}
+
+.student-guide {
+  border-right: 1px solid #002f90;
+  padding-right: 20px;
+}
+
+.navbar {
+  height: 110px;
+  display: flex;
+}
+
+.navbar-wrapper {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+.navbar-end {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  height: 100%;
+}
+
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  color: #002f90;
+  font-size: 17px;
+  gap: 35px;
+  font-weight: bold;
+}
+
+.schedule-button {
+  color: white;
+  background: #002f90;
+  padding: 10px;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  border-radius: 10px 0 10px;
+  clip-path: polygon(0 -30%, 100% 0%, 100% 100%, 17% 100%);
+  width: 210px;
+  align-items: center;
+}
+/*/ ////*/
+
+
+/*/ /////////////////////////     AGENDE SUA VISITA    ////////////////////////*/
+.agende-sua-visita .text-content {
+  text-align: left;
+  max-width: 344px;
+}
+
+.agende-sua-visita .title {
+  font-size: 35px;
+}
+
+.agende-sua-visita .form {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+}
+
+.agende-sua-visita .input {
+  background: #d7d785;
+  border-radius: 5px;
+  border: none;
+  height: 25px;
+  width: 100%;
+}
+
+.agende-sua-visita.submit-schedule-button {
+  background: yellow;
+  border-radius: 6px;
+  border: 0;
+}
+/*/////*/
+
+
+/*/ /////////////////////////           PROJETOS          ////////////////////////*/
+.projects {
+  max-width: 1200px;
+  margin: auto;
+  margin-bottom: 80px;
+}
+
+.projects .project-list {
+  display: grid;
+  justify-content: center;
+  grid: auto/repeat(auto-fit, minmax(min-content, 395px));
+  gap: 5px;
+}
+
+.projects .title-subtitle {
+  display: flex;
+  gap: 70px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.projects .project-item {
+  display: flex;
+  border: 2px solid black;
+}
+/*/////*/
+
+
+/*/ /////////////////////////     SÓCIO INTERACIONISTA    ////////////////////////*/
+.interacionist-partner {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  margin-bottom: 80px;
+}
+
+/*/ /////////////////////////     MATRÍCULAS ABERTAS    ////////////////////////*/
+.open-enrollment {
+  display: flex;
+  justify-content: center;
+  height: 408px;
+  margin-bottom: 140px;
+}
+
+.open-enrollment .title {
+  font-size: 45px;
+  color: black;
+  max-width: 90px;
+  font-weight: bold;
+}
+
+.open-enrollment .action {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #d6e0f4;
+  justify-content: flex-end;
+  padding: 40px;
+  height: 100%;
+}
+
+.open-enrollment .schedule-visit {
+  clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
+  width: 360px;
+  color: white;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  font-size: 16px;
+  background: #15387f;
+}
+/*/ ////*/
+
+
+/*/ /////////////////////////     PARCEIROS    ////////////////////////*/
+.partners {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.partners .partners-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+  margin-bottom: 80px;
+}
+/*/ ////*/
+
+
+/*/ /////////////////////////     FOOTER    ////////////////////////*/
+.footer {
+  font-size: 15px;
+  display: flex;
+  background: #464646;
+  color: white;
+  justify-content: space-between;
+  padding: 30px;
+  padding-bottom: 140px;
+}
+
+.footer .footer-wrapper {
+  max-width: 1200px;
+  margin: auto;
+  justify-content: space-between;
+  display: flex;
+}
+
+.footer .channel-menu {
+  display: flex;
+  flex-direction: column;
+  color: yellow;
+  list-style: none;
+  gap: 10px;
+}
+
+.footer .phones {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 10px;
+}
+
+.footer .phones .title {
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.footer .pages-menu {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 10px;
+}
+
+.footer .footer-start {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.footer .footer-center {
+  display: flex;
+  align-items: end;
+  margin-bottom: -40px;
+}
+
+.footer .footer-end {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.footer .enroll {
+  background: #ffc253;
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  border-radius: 10px;
+  width: 190px;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #424242;
+  padding: 0;
+  margin-bottom: 60px;
+}
+
+.footer .social-medias {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 5px;
+  list-style: none;
+}
+
+.footer .social-medias img {
+  max-width: 25px;
+  width: fit-content;
+}
+
+.footer .whatsapp-btn {
+  margin-top: 40px;
+}
+
+.footer .whatsapp-btn img {
+  width: 70px;
+}
+
+
+.footer .sectors {
+  display: flex;
+  gap: 20px;
+}
+
+.footer .sectors-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.footer .sectors-item {
+  text-align: right;
+}
+/*/ ////*/
+
+
+/*/ /////////////////////////     NOSSA HISTÓRIA    ////////////////////////*/
+.our-history {
+  display: flex;
+  height: 500px;
+  max-width: 1200px;
+  margin: auto;
+  margin-bottom: 80px;
+}
+
+.our-history .title-subtitle {
+  flex: 1;
+}
+
+.our-history .title {
+  margin-bottom: 30px;
+}
+/*/ ////*/

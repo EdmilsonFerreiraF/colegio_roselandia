@@ -2,16 +2,12 @@ import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
-  const handlePageClick = (url: string) => {
-    window.location.href = url;
-  };
-
+const Kindergaten = () => {
   return (
     <main
-      className={`flex min-h-screen flex-col items-center justify-between ${inter.className}`}
+      className={`ensino-infantil flex min-h-screen flex-col items-center justify-between ${inter.className}`}
     >
-      <div className="index">
+      <div className="container index">
         <div className="topbar">
           <div className="topbar-nav">
             <div className="student-guide">Guia do estudante</div>
@@ -21,34 +17,14 @@ export default function Home() {
         <nav className="navbar">
           <div className="navbar-wrapper">
             <div className="logo">
-              <img src="logo.jpg" alt="" />
+              <img className="logo" src="logo.jpg" alt="" />
             </div>
             <div className="navbar-end">
               <ul className="navbar-menu">
-                <li
-                  onClick={() => handlePageClick("teaching")}
-                  className="navbar-item"
-                >
-                  Ensino*
-                </li>
-                <li
-                  onClick={() => handlePageClick("registration")}
-                  className="navbar-item"
-                >
-                  Matrículas*
-                </li>
-                <li
-                  onClick={() => handlePageClick("projects")}
-                  className="navbar-item"
-                >
-                  Projetos
-                </li>
-                <li
-                  onClick={() => handlePageClick("contact")}
-                  className="navbar-item"
-                >
-                  Contato*
-                </li>
+                <li className="navbar-item">Ensino*</li>
+                <li className="navbar-item">Matrículas*</li>
+                <li className="navbar-item">Projetos</li>
+                <li className="navbar-item">Contato*</li>
               </ul>
               <div className="schedule-button">
                 <div className="cutted-side"></div>
@@ -59,75 +35,9 @@ export default function Home() {
         </nav>
         <div className="main">
           <div className="hero">
-            <img src="hero.jpg" alt="" />
+            <img src="ensino-infantil-hero.jpg" alt="" />
           </div>
-          <div className="education-level-list">
-            <div
-              className="education-level-item"
-              onClick={() => handlePageClick("kindergaten")}
-            >
-              <div className="title-container">
-                <div className="title">Ensino Infantil</div>
-                <div className="subtitle-container">
-                  <div className="subtitle">
-                    Descobrindo o mundo, tão fantástico
-                    <span className="more-btn">Mais{">>"}</span>
-                  </div>
-                </div>
-              </div>
-              <div className="image">
-                <img src="school-1.jpg" alt="" />
-              </div>
-            </div>
-            <div
-              className="education-level-item"
-              onClick={() => handlePageClick("elementary_school-1")}
-            >
-              <div className="title-container">
-                <div className="title">Ensino Fundamental 1</div>
-                <div className="subtitle">
-                  Desenvolvendo autonomia e afetividade
-                  <span className="more-btn">Mais{">>"}</span>
-                </div>
-              </div>
-              <div className="image">
-                <img src="school-2.jpg" alt="" />
-              </div>
-            </div>
-            <div
-              className="education-level-item"
-              onClick={() => handlePageClick("elementary_school-2")}
-            >
-              <div className="title-container">
-                <div className="title">Ensino Fundamental 2</div>
-                <div className="subtitle">
-                  Preparando para a vida
-                  <span className="more-btn">Mais{">>"}</span>
-                </div>
-              </div>
-              <div className="image">
-                <img src="school-3.jpg" alt="" />
-              </div>
-            </div>
-            <div
-              className="education-level-item"
-              onClick={() => handlePageClick("high_school")}
-            >
-              <div className="title-container">
-                <div className="title">Ensino Médio</div>
-                <div className="subtitle">
-                  Competência, Disciplina e Desafio.
-                  <span className="more-btn">Mais{">>"}</span>
-                </div>
-              </div>
-              <div className="image">
-                <img src="school-4.jpg" alt="" />
-              </div>
-            </div>
-          </div>
-          <div className="interacionist-partner">
-            <img src="section-6.jpg" alt="" />
-          </div>
+          <div className="reregistration"></div>
           <div className="projects">
             <div className="title-subtitle">
               <div className="title">
@@ -264,12 +174,7 @@ export default function Home() {
                     <img src="facebook.png" alt="" />
                   </li>
                 </ul>
-                <div
-                  className="enroll"
-                  onClick={() => handlePageClick("registration")}
-                >
-                  Matricule-se
-                </div>
+                <div className="enroll">Matricule-se</div>
                 <div className="sectors">
                   <div className="whatsapp-btn">
                     <img src="whatsapp.png" alt="" />
@@ -289,4 +194,6 @@ export default function Home() {
       </div>
     </main>
   );
-}
+};
+
+export default Kindergaten;
