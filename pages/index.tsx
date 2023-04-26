@@ -20,39 +20,47 @@ export default function Home() {
         </div>
         <nav className="navbar">
           <div className="navbar-wrapper">
-            <div className="logo">
-              <img src="logo.jpg" alt="" />
+            <div
+              className="logo hover:cursor-pointer"
+              onClick={() => handlePageClick("/")}
+            >
+              <img
+                className="hover:cursor-pointer"
+                src="logo.jpg"
+                alt=""
+                onClick={() => handlePageClick("/")}
+              />
             </div>
             <div className="navbar-end">
               <ul className="navbar-menu">
-                <li
-                  onClick={() => handlePageClick("teaching")}
-                  className="navbar-item"
-                >
-                  Ensino*
-                </li>
+                <li className="navbar-item hover:cursor-pointer">Ensino*</li>
                 <li
                   onClick={() => handlePageClick("registration")}
-                  className="navbar-item"
+                  className="navbar-item hover:cursor-pointer"
                 >
                   Matrículas*
                 </li>
                 <li
                   onClick={() => handlePageClick("projects")}
-                  className="navbar-item"
+                  className="navbar-item hover:cursor-pointer"
                 >
                   Projetos
                 </li>
                 <li
                   onClick={() => handlePageClick("contact")}
-                  className="navbar-item"
+                  className="navbar-item hover:cursor-pointer"
                 >
                   Contato*
                 </li>
               </ul>
               <div className="schedule-button">
                 <div className="cutted-side"></div>
-                <div className="btn">Agende sua Visita</div>
+                <div
+                  className="btn hover:cursor-pointer"
+                  onClick={() => handlePageClick("schedule_visit")}
+                >
+                  Agende sua Visita
+                </div>
               </div>
             </div>
           </div>
@@ -63,7 +71,7 @@ export default function Home() {
           </div>
           <div className="education-level-list">
             <div
-              className="education-level-item"
+              className="education-level-item hover:cursor-pointer"
               onClick={() => handlePageClick("kindergaten")}
             >
               <div className="title-container">
@@ -80,7 +88,7 @@ export default function Home() {
               </div>
             </div>
             <div
-              className="education-level-item"
+              className="education-level-item hover:cursor-pointer"
               onClick={() => handlePageClick("elementary_school-1")}
             >
               <div className="title-container">
@@ -95,7 +103,7 @@ export default function Home() {
               </div>
             </div>
             <div
-              className="education-level-item"
+              className="education-level-item hover:cursor-pointer"
               onClick={() => handlePageClick("elementary_school-2")}
             >
               <div className="title-container">
@@ -110,7 +118,7 @@ export default function Home() {
               </div>
             </div>
             <div
-              className="education-level-item"
+              className="education-level-item hover:cursor-pointer"
               onClick={() => handlePageClick("high_school")}
             >
               <div className="title-container">
@@ -200,7 +208,12 @@ export default function Home() {
             </div>
             <div className="action">
               <div className="title">Matrículas Abertas</div>
-              <div className="schedule-visit">Agende sua Visita</div>
+              <div
+                className="schedule-visit hover:cursor-pointer"
+                onClick={() => handlePageClick("schedule_visit")}
+              >
+                Agende sua Visita
+              </div>
             </div>
           </div>
           <div className="partners">

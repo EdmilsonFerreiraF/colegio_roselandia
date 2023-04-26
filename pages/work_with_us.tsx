@@ -3,6 +3,9 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const handlePageClick = (url: string) => {
+    window.location.href = url;
+  };
   return (
     <main
       className={`work-with-us flex min-h-screen flex-col items-center justify-between ${inter.className}`}
@@ -17,18 +20,43 @@ export default function Home() {
         <nav className="navbar">
           <div className="navbar-wrapper">
             <div className="logo">
-              <img src="logo.jpg" alt="" />
+              <img
+                className="hover:cursor-pointer"
+                src="logo.jpg"
+                alt=""
+                onClick={() => handlePageClick("/")}
+              />
             </div>
             <div className="navbar-end">
               <ul className="navbar-menu">
-                <li className="navbar-item">Ensino*</li>
-                <li className="navbar-item">Matrículas*</li>
-                <li className="navbar-item">Projetos</li>
-                <li className="navbar-item">Contato*</li>
+                <li className="navbar-item hover:cursor-pointer">Ensino*</li>
+                <li
+                  onClick={() => handlePageClick("registration")}
+                  className="navbar-item hover:cursor-pointer"
+                >
+                  Matrículas*
+                </li>
+                <li
+                  onClick={() => handlePageClick("projects")}
+                  className="navbar-item hover:cursor-pointer"
+                >
+                  Projetos
+                </li>
+                <li
+                  onClick={() => handlePageClick("contact")}
+                  className="navbar-item hover:cursor-pointer"
+                >
+                  Contato*
+                </li>
               </ul>
               <div className="schedule-button">
                 <div className="cutted-side"></div>
-                <div className="btn">Agende sua Visita</div>
+                <div
+                  className="btn hover:cursor-pointer"
+                  onClick={() => handlePageClick("schedule_visit")}
+                >
+                  Agende sua Visita
+                </div>
               </div>
             </div>
           </div>
@@ -51,13 +79,20 @@ export default function Home() {
                 </p>
               </div>
               <div className="form-control">
-                <input type="text" className="input" placeholder="Nome da Vaga" />
+                <input
+                  type="text"
+                  className="input"
+                  placeholder="Nome da Vaga"
+                />
               </div>
               <div className="form-actions">
                 <button className="attach-resume-button">
                   Anexar currículo
                 </button>
-                <button className="schedule-visit-button">
+                <button
+                  className="schedule-visit-button"
+                  onClick={() => handlePageClick("/schedule_visit")}
+                >
                   Agendar Visita
                 </button>
               </div>
