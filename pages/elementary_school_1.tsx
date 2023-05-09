@@ -18,15 +18,15 @@ const Kindergaten = () => {
         <Header />
         <div className="main">
           <div className="hero">
-            <img src="ensino-infantil-hero.jpg" alt="" />
+            <img src="hero.jpg" alt="" />
           </div>
           <Articles />
-          <Projects />
-          <OurHistory />
-          <OpenEnrollment />
-          <Partners />
-          <Footer />
         </div>
+        <Projects />
+        <OurHistory />
+        <OpenEnrollment />
+        <Partners />
+        <Footer />
       </div>
     </main>
   );

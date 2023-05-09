@@ -69,14 +69,24 @@ img {
   margin-bottom: 70px;
 }
 
-.article-1 .text {
+.article .text {
   justify-content: unset;
+  color: black;
 }
 
-.article-1 .article-title {
+.article .article-title {
   font-size: 31px;
   font-weight: 500;
 }
+
+.article--colorful-bg {
+  background: green;
+}
+
+.article--colorful-bg .text {
+  color: white;
+}
+
 /*/ ////*/
 
 /*/ /////////////  Education level LIST    //////////*/
@@ -532,20 +542,10 @@ img {
   margin-bottom: 60px;
 }
 
-.ensino-infantil .article-2 {
-  background: green;
-}
-
 .ensino-infantil .text {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  color: white;
-}
-
-.ensino-infantil .article-1 .text,
-.ensino-infantil .article-3 .text {
-  color: black;
 }
 
 .ensino-infantil .pages-menu {
@@ -655,8 +655,8 @@ img {
   display: grid;
   gap: 10px;
   grid: auto/repeat(auto-fit, minmax(400px, 500px));
-    justify-content: center;
-    margin-bottom: 60px;
+  justify-content: center;
+  margin-bottom: 60px;
 }
 
 .registration .agende-sua-visita .btn {
@@ -770,7 +770,7 @@ img {
   font-size: 40px;
   font-weight: bold;
   text-transform: uppercase;
-      text-align: left;
+  text-align: left;
 }
 
 .our-history .our-history .text {

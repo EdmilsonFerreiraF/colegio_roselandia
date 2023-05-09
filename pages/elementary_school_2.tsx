@@ -10,6 +10,10 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 const Kindergaten = () => {
+  const handlePageClick = (url: string) => {
+    window.location.href = url;
+  };
+
   return (
     <main
       className={`ensino-infantil flex min-h-screen flex-col items-center justify-between ${inter.className}`}
@@ -18,15 +22,15 @@ const Kindergaten = () => {
         <Header />
         <div className="main">
           <div className="hero">
-            <img src="ensino-infantil-hero.jpg" alt="" />
+            <img src="hero.jpg" alt="" />
           </div>
           <Articles />
-          <Projects />
-          <OurHistory />
-          <OpenEnrollment />
-          <Partners />
-          <Footer />
         </div>
+        <Projects />
+        <OurHistory />
+        <OpenEnrollment />
+        <Partners />
+        <Footer />
       </div>
     </main>
   );
