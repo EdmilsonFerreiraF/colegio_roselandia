@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const Header = () => {
   const handlePageClick = (url: string) => {
     window.location.href = url;
@@ -14,16 +16,24 @@ const Header = () => {
       <nav className="navbar">
         <div className="navbar-wrapper">
           <div className="logo">
-            <img
+            <Image
+              width="100"
+              height="100"
               className="hover:cursor-pointer"
               src="logo.jpg"
-              alt=""
+              alt="colegio roselandia logo"
               onClick={() => handlePageClick("/")}
             />
           </div>
           <div className="navbar-end">
             <ul className="navbar-menu">
-              <li className="navbar-item hover:cursor-pointer">Ensino*</li>
+              <li className="navbar-item navbar-item--dropdown hover:cursor-pointer">
+                Ensino*
+                <ul className="navbar-sub-menu">
+                  <li>Infantil</li>
+                  <li>Fundamental</li>
+                </ul>
+              </li>
               <li
                 onClick={() => handlePageClick("registration")}
                 className="navbar-item hover:cursor-pointer"

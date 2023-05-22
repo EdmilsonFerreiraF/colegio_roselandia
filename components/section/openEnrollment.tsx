@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const OpenEnrollment = () => {
   const handlePageClick = (url: string) => {
     window.location.href = url;
@@ -6,7 +8,7 @@ const OpenEnrollment = () => {
   return (
     <div className="open-enrollment">
       <div className="image">
-        <img src="enrollment.jpg" alt="" />
+        <Image width="100" height="100" src="enrollment.jpg" alt="matricula" />
       </div>
       <div className="action">
         <div className="title">Matrículas Abertas</div>

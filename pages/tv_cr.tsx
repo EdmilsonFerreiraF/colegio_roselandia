@@ -3,6 +3,7 @@ import Header from "@/components/layout/Header";
 import Movies from "@/components/section/movies";
 import OpenEnrollment from "@/components/section/openEnrollment";
 import { Inter } from "next/font/google";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,7 @@ const Projects = () => {
         <Header />
         <div className="main">
           <div className="hero">
-            <img src="hero.jpg" alt="" />
+            <Image width="100" height="100" src="hero.jpg" alt="" />
           </div>
           <div className="title-subtitle">
             <div className="title">

@@ -10,6 +10,7 @@ import RoselandiaFamily from "@/components/section/roselandiaFamily";
 import ScheduleVisit from "@/components/section/scheduleVisit";
 import Welcome from "@/components/section/welcome";
 import { Inter } from "next/font/google";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,11 +23,11 @@ const Kindergaten = () => {
         <Header />
         <div className="main">
           <div className="hero">
-            <img src="hero.jpg" alt="" />
+            <Image width="100" height="100" src="hero.jpg" alt="" />
           </div>
           <div className="image-title">
             <p>Matrícula alunos novos 2023</p>
-            <img src="matricula-novos.jpg" alt="" />
+            <Image width="100" height="100" src="matricula-novos.jpg" alt="" />
           </div>
           <div className="registration">
             <div className="topics">

@@ -2,6 +2,7 @@ import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import ScheduleButton from "@/components/scheduleButton";
 import { Inter } from "next/font/google";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,7 +15,7 @@ export default function Home() {
         <Header />
         <div className="main">
           <div className="hero">
-            <img src="trabalhe-conosco.jpg" alt="" />
+            <Image width="100" height="100" src="trabalhe-conosco.jpg" alt="" />
           </div>
           <div className="container">
             <div className="form">

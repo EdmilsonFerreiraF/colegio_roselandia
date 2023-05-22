@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const OurHistory = () => {
   return (
     <div className="our-history">
@@ -20,7 +22,7 @@ const OurHistory = () => {
         </div>
       </div>
       <div className="video">
-        <img src="our-history-youtube.jpg" alt="" />
+        <Image width="100" height="100" src="our-history-youtube.jpg" alt="" />
       </div>
     </div>
   );

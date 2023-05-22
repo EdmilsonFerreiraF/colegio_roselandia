@@ -14,7 +14,12 @@ const Article = ({ variation = "normal", title }: IProps) => {
       }`}
     >
       <div className="image">
-        <Image src="/ensino-infantil-2.jpg" alt="" width="100" height="100" />
+        <Image
+          width="100"
+          height="100"
+          src="/ensino-infantil-2.jpg"
+          alt="ensino infantil"
+        />
       </div>
       {variation === "educationNav" && (
         <button className="agende-sua-visita"></button>

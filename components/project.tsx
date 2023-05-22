@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type IProps = {
   project: any;
 };
@@ -5,7 +7,7 @@ type IProps = {
 const Project = ({ project }: IProps) => {
   return (
     <div className="project-item">
-      <img src={project.imageUrl} alt="" />
+      <Image width="100" height="100" src={project.imageUrl} alt="projeto" />
     </div>
   );
 };

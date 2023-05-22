@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const Movies = () => {
   return (
     <div className="movies">
@@ -8,34 +10,74 @@ const Movies = () => {
         </div>
         <div className="movie">
           <div className="image">
-            <img src="tv-cr-video-1.jpg" alt="" />
+            <Image
+              width="100"
+              height="100"
+              src="tv-cr-video-1.jpg"
+              alt="tv cr video"
+            />
           </div>
           <div className="image">
-            <img src="tv-cr-video-1.jpg" alt="" />
-          </div>
-        </div>
-        <div className="movie">
-          <div className="image">
-            <img src="tv-cr-video-2.png" alt="" />
-          </div>
-          <div className="image">
-            <img src="tv-cr-video-2.png" alt="" />
-          </div>
-        </div>
-        <div className="movie">
-          <div className="image">
-            <img src="tv-cr-video-3.png" alt="" />
-          </div>
-          <div className="image">
-            <img src="tv-cr-video-3.png" alt="" />
+            <Image
+              width="100"
+              height="100"
+              src="tv-cr-video-1.jpg"
+              alt="tv cr video"
+            />
           </div>
         </div>
         <div className="movie">
           <div className="image">
-            <img src="tv-cr-video-4.png" alt="" />
+            <Image
+              width="100"
+              height="100"
+              src="tv-cr-video-2.png"
+              alt="tv cr video"
+            />
           </div>
           <div className="image">
-            <img src="tv-cr-video-4.png" alt="" />
+            <Image
+              width="100"
+              height="100"
+              src="tv-cr-video-2.png"
+              alt="tv cr video"
+            />
+          </div>
+        </div>
+        <div className="movie">
+          <div className="image">
+            <Image
+              width="100"
+              height="100"
+              src="tv-cr-video-3.png"
+              alt="tv cr video"
+            />
+          </div>
+          <div className="image">
+            <Image
+              width="100"
+              height="100"
+              src="tv-cr-video-3.png"
+              alt="tv cr video"
+            />
+          </div>
+        </div>
+        <div className="movie">
+          <div className="image">
+            <Image
+              width="100"
+              height="100"
+              src="tv-cr-video-4.png"
+              alt="tv cr video"
+            />
+          </div>
+          <div className="image">
+            <Image
+              width="100"
+              height="100"
+              src="tv-cr-video-4.png"
+              alt="tv cr video"
+            />
           </div>
         </div>
       </div>

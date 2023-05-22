@@ -3,6 +3,7 @@ import Header from "@/components/layout/Header";
 import ContactForm from "@/components/section/contactForm";
 import OpenEnrollment from "@/components/section/openEnrollment";
 import { Inter } from "next/font/google";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,12 @@ export default function Home() {
         <Header />
         <div className="main">
           <div className="hero">
-            <img src="contato.jpg" alt="" />
+            <Image
+              width="100"
+              height="100"
+              src="contato.jpg"
+              alt="contact image"
+            />
           </div>
           <ContactForm />
           <OpenEnrollment />

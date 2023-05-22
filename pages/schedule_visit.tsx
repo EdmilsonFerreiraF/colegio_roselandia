@@ -3,6 +3,7 @@ import Header from "@/components/layout/Header";
 import ScheduleForm from "@/components/scheduleForm";
 import EducationLevel from "@/components/section/educationLevel";
 import { Inter } from "next/font/google";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +16,7 @@ export default function Home() {
         <Header />
         <div className="main">
           <div className="hero">
-            <img src="agende-visita.jpg" alt="" />
+            <Image width="100" height="100" src="agende-visita.jpg" alt="" />
           </div>
           <ScheduleForm />
           <EducationLevel />

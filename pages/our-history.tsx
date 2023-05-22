@@ -5,6 +5,7 @@ import OpenEnrollment from "@/components/section/openEnrollment";
 import OurHistory from "@/components/section/ourHistory";
 import Partners from "@/components/section/partners";
 import { Inter } from "next/font/google";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +22,7 @@ export default function Home() {
         <Header />
         <div className="main">
           <div className="hero">
-            <img src="hero.jpg" alt="" />
+            <Image width="100" height="100" src="hero.jpg" alt="" />
           </div>
           <OurHistory />
           <Documentary />

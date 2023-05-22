@@ -2,6 +2,7 @@ import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import OpenEnrollment from "@/components/section/openEnrollment";
 import { Inter } from "next/font/google";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,7 +15,7 @@ const Projects = () => {
         <Header />
         <div className="main">
           <div className="hero">
-            <img src="hero.jpg" alt="" />
+            <Image width="100" height="100" src="hero.jpg" alt="" />
           </div>
           <div className="title-subtitle">
             <div className="title">
@@ -32,7 +33,7 @@ const Projects = () => {
             <div className="project">
               <div className="content-1">
                 <div className="image-1">
-                  <img src="project-1.jpg" alt="" />
+                  <Image width="100" height="100" src="project-1.jpg" alt="" />
                 </div>
                 <div className="content-title">Feira de ciências</div>
                 <div className="text-1 text">
@@ -44,7 +45,7 @@ const Projects = () => {
               </div>
               <div className="content-2">
                 <div className="image-2">
-                  <img src="projects.jpg" alt="" />
+                  <Image width="100" height="100" src="projects.jpg" alt="" />
                 </div>
                 <div className="text-3 text">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed

@@ -22,7 +22,7 @@ const Kindergaten = () => {
         <Header />
         <div className="main">
           <div className="hero">
-            <img src="hero.jpg" alt="" />
+            <Image width="100" height="100" src="hero.jpg" alt="" />
           </div>
           <div className="article">
             <div className="title">
@@ -32,16 +32,16 @@ const Kindergaten = () => {
             <div className="content">
               <div className="image">
                 <Image
+                  width="100"
+                  height="100"
                   src="/socio-interaciosta-1.jpg"
                   alt=""
-                  width="100"
-                  height="100"
                 />
                 <Image
-                  src="/socio-interaciosta-2.jpg"
-                  alt=""
                   width="100"
                   height="100"
+                  src="/socio-interaciosta-2.jpg"
+                  alt=""
                 />
               </div>
               <div className="text">

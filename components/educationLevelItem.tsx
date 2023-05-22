@@ -1,4 +1,4 @@
-import React from "react";
+import Image from "next/image";
 
 type IProps = {
   educationLevelItem: any;
@@ -22,7 +22,12 @@ const EducationLevelItem = ({ educationLevelItem }: IProps) => {
         </div>
       </div>
       <div className="image">
-        <img src={educationLevelItem.imageUrl} alt="" />
+        <Image
+          width="100"
+          height="100"
+          src={educationLevelItem.imageUrl}
+          alt=""
+        />
       </div>
     </div>
   );

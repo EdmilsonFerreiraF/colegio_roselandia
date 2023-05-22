@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const Footer = () => {
   return (
     <footer className="footer">
@@ -30,19 +32,39 @@ const Footer = () => {
         <div className="footer-end">
           <ul className="social-medias">
             <li className="social-medias-item">
-              <img src="instagram.png" alt="" />
+              <Image
+                width="100"
+                height="100"
+                src="instagram.png"
+                alt="instagram logo"
+              />
             </li>
             <li className="social-medias-item">
-              <img src="youtube.png" alt="" />
+              <Image
+                width="100"
+                height="100"
+                src="youtube.png"
+                alt="youtube logo"
+              />
             </li>
             <li className="social-medias-item">
-              <img src="facebook.png" alt="" />
+              <Image
+                width="100"
+                height="100"
+                src="facebook.png"
+                alt="facebook logo"
+              />
             </li>
           </ul>
           <div className="enroll">Matricule-se</div>
           <div className="sectors">
             <div className="whatsapp-btn">
-              <img src="whatsapp.png" alt="" />
+              <Image
+                width="100"
+                height="100"
+                src="whatsapp.png"
+                alt="whatsapp logo"
+              />
             </div>
             <ul className="sectors-list">
               <li className="sectors-item">Coord. Ed. Infantil</li>
