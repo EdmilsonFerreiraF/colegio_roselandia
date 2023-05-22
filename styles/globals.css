@@ -87,6 +87,29 @@ img {
 .article--colorful-bg .text {
   color: white;
 }
+/*/ ////*/
+
+/*/ /////////////  Education level LIST    //////////*/
+
+.novicesModal .closeButton {
+  position: absolute;
+  right: 0;
+}
+
+.novicesModal .form {
+  gap: 0.3rem;
+  margin: 0.5rem 0;
+}
+
+.novicesModal .description {
+  list-style: 1.25;
+}
+
+.novicesModal .submit {
+  width: 100%;
+  background: orange;
+  font-size: 23px;
+}
 
 /*/ ////*/
 
@@ -196,7 +219,7 @@ img {
   z-index: 2;
   background: white;
   padding: 10px 10px;
-      left: -33px;
+  left: -33px;
 }
 
 .navbar-wrapper {

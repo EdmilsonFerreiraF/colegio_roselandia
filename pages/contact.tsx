@@ -8,10 +8,6 @@ import Image from "next/image";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const handlePageClick = (url: string) => {
-    window.location.href = url;
-  };
-
   return (
     <main
       className={`schedule-visit flex min-h-screen flex-col items-center justify-between ${inter.className}`}
