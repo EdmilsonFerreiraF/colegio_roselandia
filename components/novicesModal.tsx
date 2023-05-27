@@ -41,7 +41,12 @@ export default function NovicesModal() {
             x
           </Button>
           <div className="image">
-            <Image src="agende-visita.jpg" alt="" height="300" width="300" />
+            <Image
+              src="open_enrollment_asset.jpg"
+              alt=""
+              height="300"
+              width="300"
+            />
           </div>
           <Box
             component="form"
