@@ -106,6 +106,9 @@ export default function NovicesModal() {
           ".MuiDialogContent-root": {
             padding: 0,
           },
+          ".MuiBackdrop-root": {
+            backgroundColor: "rgba(0, 0, 0, 0.6)"
+          }
         }}
       >
         <DialogContent className="novicesModal">
