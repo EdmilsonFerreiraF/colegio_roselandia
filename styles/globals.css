@@ -43,8 +43,8 @@ body {
 }
 
 .hero {
-  /* width: 100%; */
-  width: 100vw;
+  width: 100%;
+  /* width: 100vw;; */
   margin-bottom: 60px;
 }
 /*/ ////*/
@@ -61,6 +61,10 @@ img {
   font-weight: bold;
 }
 
+.index {
+  width: 100%;
+}
+
 .subtitle {
   font-size: 23px;
   line-height: 1.4;
@@ -68,6 +72,10 @@ img {
 
 .hero {
   margin-bottom: 70px;
+}
+
+.mySwiper {
+  min-height: 31vw;
 }
 
 .article .text {
@@ -81,7 +89,8 @@ img {
 }
 
 .article--colorful-bg {
-  background: green;
+  background: #06706c;
+  padding: 2rem;
 }
 
 .article--colorful-bg .text {
@@ -93,7 +102,13 @@ img {
 
 .novicesModal .closeButton {
   position: absolute;
-  right: 0;
+  margin: 0;
+  padding: 0;
+  min-width: auto;
+  color: black;
+  font-size: 19px;
+  top: 17px;
+  right: 11px;
 }
 
 .novicesModal .form {
@@ -102,13 +117,19 @@ img {
 }
 
 .novicesModal .description {
-  list-style: 1.25;
+  line-height: 1.25;
+  padding: 0.6rem 0;
 }
 
 .novicesModal .submit {
   width: 100%;
-  background: orange;
+  background: #f2bb00;
   font-size: 23px;
+  color: #004389;
+}
+
+.novicesModal .image {
+  margin-bottom: 0.5rem;
 }
 
 /*/ ////*/
@@ -294,11 +315,10 @@ img {
 }
 /*/////*/
 
-/*/ /////////////////////////           PROJETOS          ////////////////////////*/
+/*/////*/
+/*/ /////////////////////////       PROJETOS          ////////////////////////*/
 .projects {
-  max-width: 1200px;
-  margin: auto;
-  margin-bottom: 80px;
+  margin-bottom: 70px;
 }
 
 .projects .project-list {
@@ -306,6 +326,8 @@ img {
   justify-content: center;
   grid: auto/repeat(auto-fit, minmax(min-content, 395px));
   gap: 5px;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .projects .title-subtitle {
@@ -323,6 +345,64 @@ img {
   border: 2px solid black;
 }
 /*/////*/
+
+/*/ /////////////////////////       REMATRÍCULA          ////////////////////////*/
+.reregistration {
+  max-width: 1200px;
+  margin: auto;
+  margin-bottom: 70px;
+}
+
+.reregistration .title {
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 2.5rem;
+}
+
+.reregistration .title--upper {
+  text-transform: uppercase;
+}
+
+.reregistration .text {
+  margin-bottom: 2rem;
+}
+
+.reregistration .edital-button {
+  background: #ffc253;
+  width: fit-content;
+  padding: 16px 34px;
+  font-weight: 500;
+  border-radius: 12px;
+}
+
+.reregistration .action {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  justify-content: space-between;
+}
+
+.reregistration .action .text {
+  margin: 0;
+}
+
+.reregistration .texts {
+  display: flex;
+  flex-direction: column;
+}
+/*/////*/
+
+/*/ /////////////////////////       PROJETOS          ////////////////////////*/
+.project-school-level {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.projects-page .project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7vh;
+}
 
 /*/ /////////////////////////     SÓCIO INTERACIONISTA    ////////////////////////*/
 .interacionist-partner {
@@ -379,7 +459,7 @@ img {
   margin-bottom: 140px;
   display: grid;
   justify-content: center;
-  grid: auto/repeat(auto-fit, minmax(min-content, 625px));
+  grid: auto/repeat(auto-fit, minmax(min-content, 595px));
   gap: 5px;
 }
 
@@ -567,6 +647,57 @@ img {
 
 .our-history .title {
   margin-bottom: 30px;
+}
+/*/ ////*/
+
+/*/ /////////////////////////     NOSSA HISTÓRIA    ////////////////////////*/
+.our-history-page .article {
+  gap: 50px;
+  display: grid;
+  grid: auto/repeat(auto-fit, minmax(min-content, 570px));
+  justify-content: center;
+  background: unset;
+}
+
+.our-history-page .article:nth-child(2) {
+  grid: auto/repeat(auto-fit, minmax(min-content, 540px));
+}
+
+.our-history-page .image,
+.our-history-page .text {
+  flex: 1;
+}
+
+.our-history-page .article-title {
+  font-size: 26px;
+  margin-bottom: 30px;
+}
+
+.our-history-page .articles {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1200px;
+  margin: auto;
+  margin-bottom: 70px;
+}
+
+.our-history-page .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: black;
+}
+
+.our-history-page .documentary {
+  max-width: 1200px;
+  margin: auto;
+  margin-bottom: 70px;
+}
+
+.our-history-page .documentary .title {
+  font-size: 42px;
+  font-weight: bold;
 }
 /*/ ////*/
 
@@ -842,8 +973,33 @@ img {
   font-weight: bold;
 }
 
+.tv-cr-container {
+  max-width: 1050px;
+  margin: auto;
+}
+
 .tv-cr .movie {
   margin-bottom: 100px;
+}
+
+.tv-cr .video {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tv-cr .title {
+  margin-bottom: 2rem;
+}
+
+.tv-cr .videoTitle {
+  font-weight: bold;
+  color: #5a5a5a;
+}
+
+.tv-cr .description {
+  font-size: 15px;
+  color: #5a5a5a;
 }
 
 .tv-cr .movie .category {
@@ -859,11 +1015,18 @@ img {
   justify-content: space-between;
 }
 
-.tv-cr .movie .title {
-  font-size: 23px;
+.tv-cr .videos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.tv-cr .projectTitle {
   text-transform: uppercase;
-  color: #676767;
   font-family: cursive;
+  margin-bottom: 1rem;
+  font-size: 19px;
+  color: #5a5a5a;
 }
 
 .schedule-visit .form {
