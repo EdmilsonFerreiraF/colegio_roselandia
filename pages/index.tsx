@@ -11,19 +11,17 @@ import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-// import required modules
 const inter = Inter({ subsets: ["latin"] });
 
 import { baseURL } from "@/constants/baseURL";
 import { AppContext } from "@/contexts/appProvider";
 import { Autoplay, Navigation, Pagination } from "swiper";
+import NovicesModal from "@/components/novicesModal";
 
-// import required modules
 
 export default function Home() {
   const { isLoadingPages, pagesData } = useContext(AppContext) as any;
@@ -55,7 +53,7 @@ export default function Home() {
     console.log("pages.data - index", pagesData.data);
     if (pagesData?.length) {
       setHeroImages(
-        homePage.blocos[0].item.carrossel.map((item: any) => item.item)
+        homePage.blocos[0].item.carrossel.map((item: any) => item.item.imagem)
       );
       setEducationLevel(
         homePage.blocos[1].item.ensinos.map((item: any) => item.item)
@@ -72,7 +70,6 @@ export default function Home() {
     }
   }, [pagesData, isLoadingPages]);
 
-  console.log("heroImages", heroImages);
   return (
     <main
       className={`flex min-h-screen flex-col items-center justify-between ${inter.className}`}
@@ -81,11 +78,6 @@ export default function Home() {
         <Header />
         <div className="main">
           <div className="hero">
-            {/* <Image width="100" height="100"
-              src={`http://localhost:8055/assets/${data.data[0].blocks[0].item.image}`}
-              src="hero.png"
-              alt=""
-            /> */}
             <Swiper
               autoplay={{
                 delay: 3500,
@@ -108,10 +100,9 @@ export default function Home() {
                   <Image
                     width="100"
                     height="100"
-                    src={`${baseURL}/assets/${heroImage.imagem}`}
+                    src={`${baseURL}/assets/${heroImage}`}
                     alt=""
                   />
-                  {heroImage}
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -135,6 +126,7 @@ export default function Home() {
           <Footer />
         </div>
       </div>
+      <NovicesModal />
     </main>
   );
 }
