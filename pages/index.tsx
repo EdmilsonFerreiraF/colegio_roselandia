@@ -8,7 +8,7 @@ import Partners from "@/components/section/partners";
 import Projects from "@/components/section/projects";
 import { Inter } from "next/font/google";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -19,65 +19,60 @@ import "swiper/css/pagination";
 // import required modules
 const inter = Inter({ subsets: ["latin"] });
 
-import axios from "axios";
-import { Navigation, Pagination } from "swiper";
+import { baseURL } from "@/constants/baseURL";
+import { AppContext } from "@/contexts/appProvider";
+import { Autoplay, Navigation, Pagination } from "swiper";
 
 // import required modules
 
 export default function Home() {
-  const fetcher = (res: any) => fetch(res).then((res) => res.json());
-  const [hero, setHero] = useState("");
-  const [token, setToken] = useState("");
+  const { isLoadingPages, pagesData } = useContext(AppContext) as any;
+  const handlePageClick = (url: string) => {
+    window.location.href = url;
+  };
+  const [heroImages, setHeroImages] = useState<any>([]);
+  const [educationLevel, setEducationLevel] = useState<any>([]);
+  const [projects, setProjects] = useState<any>([]);
+  const [ourHistory, setOurHistory] = useState<any>([]);
+  const [openEnrollment, setOpenEnrollment] = useState<any>([]);
+  const [partners, setPartners] = useState<any>([]);
+  const [interacionistPartner, setInteracionistPartner] = useState<any>({});
+
+  console.log("pagesData", pagesData);
+  useEffect(() => {
+    console.log("pagesData", pagesData);
+  }, [pagesData]);
+
+  const findHome = () => {
+    const page = pagesData.find((pageItem: any) => pageItem.titulo === "Home");
+    return page;
+  };
+
+  const homePage = findHome();
 
   useEffect(() => {
-    const getDatabaseToken = async () => {
-      const res = await axios
-        .post("http://localhost:8055/auth/login", {
-          email: "edmilsonf.o3@gmail.com",
-          password: "5Z`,F\\2Q[K,q$^UK",
-        })
-        .then((res: any) => {
-          console.log("res", res);
-
-          setToken(res.data.data.access_token);
-        });
-      return res;
-    };
-
-    const token = getDatabaseToken();
-  }, []);
-
-  useEffect(() => {
-    console.log("token", token);
-    if (token) localStorage.setItem("token", token as any);
-
-    if (localStorage.getItem("token")) {
-      const token = localStorage.getItem("token");
-
-      const getImages = async () => {
-        const res = await axios
-          .get(
-            "http://localhost:8055/items/paginas?fields=hero.carrossel.item:carrossel_imagem.imagem",
-            {
-              headers: {
-                Authorization: token,
-              },
-            }
-          )
-          .then((res: any) => {
-            console.log("res", res);
-
-            return res.data;
-          });
-        console.log("res", res);
-
-        return res;
-      };
-
-      console.log("getImages()", getImages());
+    console.log("isLoadingPages - index", isLoadingPages);
+    console.log("pages.data - index", pagesData.data);
+    if (pagesData?.length) {
+      setHeroImages(
+        homePage.blocos[0].item.carrossel.map((item: any) => item.item)
+      );
+      setEducationLevel(
+        homePage.blocos[1].item.ensinos.map((item: any) => item.item)
+      );
+      setInteracionistPartner(pagesData[0].blocos[6].item);
+      setProjects(
+        homePage.blocos[2].item.projetos.map((item: any) => item.item)
+      );
+      setOurHistory(pagesData[0].blocos[5].item);
+      setOpenEnrollment(pagesData[0].blocos[3].item);
+      setPartners(
+        homePage.blocos[4].item.parceiros.map((item: any) => item.item)
+      );
     }
-  }, [token]);
+  }, [pagesData, isLoadingPages]);
 
+  console.log("heroImages", heroImages);
   return (
     <main
       className={`flex min-h-screen flex-col items-center justify-between ${inter.className}`}
@@ -92,33 +87,51 @@ export default function Home() {
               alt=""
             /> */}
             <Swiper
-              autoplay
+              autoplay={{
+                delay: 3500,
+                disableOnInteraction: true,
+                pauseOnMouseEnter: true,
+              }}
+              effect="fade"
+              fadeEffect={{
+                crossFade: true,
+              }}
               pagination={{
                 type: "progressbar",
               }}
               navigation={true}
-              modules={[Pagination, Navigation]}
+              modules={[Autoplay, Pagination, Navigation]}
               className="mySwiper"
             >
-              <SwiperSlide>
-                <img width="100" height="100" src="hero.jpg" alt="" />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img width="100" height="100" src="hero.jpg" alt="" />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img width="100" height="100" src="hero.jpg" alt="" />
-              </SwiperSlide>
+              {heroImages.map((heroImage: any) => (
+                <SwiperSlide key={heroImage}>
+                  <Image
+                    width="100"
+                    height="100"
+                    src={`${baseURL}/assets/${heroImage.imagem}`}
+                    alt=""
+                  />
+                  {heroImage}
+                </SwiperSlide>
+              ))}
             </Swiper>
           </div>
-          <EducationLevel />
-          <div className="interacionist-partner">
-            <Image width="100" height="100" src="section-6.jpg" alt="" />
+          <EducationLevel data={educationLevel} indexPage />
+          <div
+            className="interacionist-partner"
+            onClick={() => handlePageClick("interacionist_partner")}
+          >
+            <Image
+              width="100"
+              height="100"
+              src={`${baseURL}/assets/${interacionistPartner.imagem}`}
+              alt=""
+            />
           </div>
-          <Projects />
-          <OurHistory />
-          <OpenEnrollment />
-          <Partners />
+          <Projects data={projects} />
+          <OurHistory data={ourHistory} />
+          <OpenEnrollment data={openEnrollment} />
+          <Partners data={partners} />
           <Footer />
         </div>
       </div>
