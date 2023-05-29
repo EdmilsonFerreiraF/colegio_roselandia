@@ -36,16 +36,16 @@ const Header = () => {
                 Ensino*
                 <ul className="navbar-sub-menu">
                   <li>
-                    <Link href="/kindergaten">Infantil</Link>
+                    <Link href="/ensino-infantil">Infantil</Link>
                   </li>
                   <li>
-                    <Link href="/elementary-school-1">Fundamental 1</Link>
+                    <Link href="/ensino-fundamental-1">Fundamental 1</Link>
                   </li>
                   <li>
-                    <Link href="/elementary-school-2">Fundamental 2</Link>
+                    <Link href="/ensino-fundamental-2">Fundamental 2</Link>
                   </li>
                   <li>
-                    <Link href="/high-school">Médio</Link>
+                    <Link href="/ensino-medio">Médio</Link>
                   </li>
                 </ul>
               </li>
@@ -58,24 +58,24 @@ const Header = () => {
                   className="navbar-sub-menu"
                 >
                   <li>
-                    <Link href="/registration">Nova</Link>
+                    <Link href="/matricula">Nova</Link>
                   </li>
                   <li>
-                    <Link href="/reregistration">Rematrícula</Link>
+                    <Link href="/rematricula">Rematrícula</Link>
                   </li>
                 </ul>
               </li>
               <li className="navbar-item hover:cursor-pointer">
-                <Link href="/projects">Projetos</Link>
+                <Link href="/projetos">Projetos</Link>
               </li>
               <li className="navbar-item navbar-item--dropdown hover:cursor-pointer">
                 Contato
                 <ul className="navbar-sub-menu">
                   <li>
-                    <a href="/contact">Contato</a>
+                    <a href="/contato">Contato</a>
                   </li>
                   <li>
-                    <Link href="/work-with-us">Trabalhe Conosco</Link>
+                    <Link href="/trabalhe-conosco">Trabalhe Conosco</Link>
                   </li>
                 </ul>
               </li>
@@ -83,7 +83,7 @@ const Header = () => {
             <div className="schedule-button">
               <div className="cutted-side"></div>
               <div className="btn hover:cursor-pointer">
-                <a href="/schedule-visit">Agende sua Visita</a>
+                <a href="/agende-sua-visita">Agende sua Visita</a>
               </div>
             </div>
           </div>

@@ -9,7 +9,7 @@ import { useContext, useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+const Contact = () => {
   const { isLoadingPages, pagesData } = useContext(AppContext) as any;
   const [openEnrollment, setOpenEnrollment] = useState([]);
 
@@ -26,8 +26,6 @@ export default function Home() {
   const homePage = findHome();
 
   useEffect(() => {
-    console.log("isLoadingPages - index", isLoadingPages);
-    console.log("pages.data - index", pagesData.data);
     if (pagesData?.length) {
       setOpenEnrollment(pagesData[0].blocos[3].item);
     }
@@ -55,4 +53,6 @@ export default function Home() {
       </div>
     </main>
   );
-}
+};
+
+export default Contact;

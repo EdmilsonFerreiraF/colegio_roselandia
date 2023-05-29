@@ -12,7 +12,7 @@ import { useContext, useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const Kindergaten = () => {
+const SocioInteracionista = () => {
   const { isLoadingPages, pagesData } = useContext(AppContext) as any;
 
   const [projects, setProjects] = useState<any>([]);
@@ -97,4 +97,4 @@ const Kindergaten = () => {
   );
 };
 
-export default Kindergaten;
+export default SocioInteracionista;

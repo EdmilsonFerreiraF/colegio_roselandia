@@ -1,10 +1,6 @@
 import Link from "next/link";
 
 const OurHistory = ({ data }: any) => {
-  const handlePageClick = (url: string) => {
-    window.location.href = url;
-  };
-
   return (
     <div className="our-history">
       <div className="title-subtitle">
@@ -14,7 +10,11 @@ const OurHistory = ({ data }: any) => {
               cursor: "pointer",
             }}
           >
-            <Link href="/projects">Nossa história<br/>30 anos</Link>
+            <Link href="/nossa-historia">
+              Nossa história
+              <br />
+              30 anos
+            </Link>
           </h3>
         </div>
         <div className="subtitle">

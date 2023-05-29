@@ -3,7 +3,7 @@ const ScheduleVisit = () => {
     <div className="agende-sua-visita">
       <div className="content">
         <div className="btn hover:cursor-pointer">
-          <a href="/schedule-visit">Agende sua Visita</a>
+          <a href="/agende-sua-visita">Agende sua Visita</a>
         </div>
         <div className="text">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

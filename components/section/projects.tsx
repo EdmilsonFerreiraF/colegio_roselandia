@@ -4,7 +4,7 @@ import Project from "../project";
 const Projects = ({ data }: any) => {
   return (
     <div className="projects">
-      <Link href="/projects">
+      <Link href="/projetos">
         <div className="title-subtitle">
           <div className="title">
             <h3>Projetos</h3>

@@ -24,11 +24,8 @@ import { AppContext } from "@/contexts/appProvider";
 import Link from "next/link";
 import { Autoplay, Navigation, Pagination } from "swiper";
 
-export default function Home() {
+const Home = () => {
   const { isLoadingPages, pagesData } = useContext(AppContext) as any;
-  const handlePageClick = (url: string) => {
-    window.location.href = url;
-  };
   const [heroImages, setHeroImages] = useState<any>([]);
   const [educationLevel, setEducationLevel] = useState<any>([]);
   const [projects, setProjects] = useState<any>([]);
@@ -53,6 +50,7 @@ export default function Home() {
     console.log("isLoadingPages - index", isLoadingPages);
     console.log("pages.data - index", pagesData.data);
     console.log("heroImages", heroImages);
+
     if (pagesData?.length) {
       setHeroImages(
         homePage.blocos[0].item.carrossel.map((item: any) => item.item)
@@ -83,16 +81,12 @@ export default function Home() {
             <Swiper
               autoplay={{
                 delay: 3500,
-                // disableOnInteraction: true,
                 pauseOnMouseEnter: true,
               }}
               effect="fade"
               fadeEffect={{
                 crossFade: true,
               }}
-              // pagination={{
-              //   type: "progressbar",
-              // }}
               navigation={true}
               modules={[Autoplay, Pagination, Navigation]}
               className="mySwiper"
@@ -116,7 +110,7 @@ export default function Home() {
           </div>
           <EducationLevel data={educationLevel} indexPage />
           <div className="interacionist-partner">
-            <Link href="/interacionist-partner">
+            <Link href="/socio-interacionista">
               <Image
                 width="100"
                 height="100"
@@ -135,4 +129,6 @@ export default function Home() {
       <NovicesModal />
     </main>
   );
-}
+};
+
+export default Home;

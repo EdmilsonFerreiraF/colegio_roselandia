@@ -11,13 +11,12 @@ import { useContext, useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const Kindergaten = () => {
+const EnsinoFundamental1 = () => {
   const { isLoadingPages, pagesData } = useContext(AppContext) as any;
 
   const [heroImages, setHeroImages] = useState([]);
   const [educationLevel, setEducationLevel] = useState([]);
   const [projects, setProjects] = useState([]);
-  const [interacionistPartner, setInteracionistPartner] = useState([]);
   const [ourHistory, setOurHistory] = useState([]);
   const [openEnrollment, setOpenEnrollment] = useState([]);
 
@@ -26,7 +25,7 @@ const Kindergaten = () => {
     console.log("pagesData", pagesData);
   }, [pagesData]);
 
-  const findHome = (page: "Home" | "Ensino Fundamental 2") => {
+  const findHome = (page: "Home" | "Ensino Fundamental 1") => {
     const pageData = pagesData.find(
       (pageItem: any) => pageItem.titulo === page
     );
@@ -34,16 +33,13 @@ const Kindergaten = () => {
   };
 
   const homePage = findHome("Home");
-  const elementary1Page = findHome("Ensino Fundamental 2");
+  const elementary1Page = findHome("Ensino Fundamental 1");
 
   useEffect(() => {
     console.log("isLoadingPages - index", isLoadingPages);
     console.log("pages.data - index", pagesData.data);
     if (pagesData?.length) {
       setEducationLevel(
-        homePage.blocos[1].item.ensinos.map((item: any) => item.item)
-      );
-      setInteracionistPartner(
         homePage.blocos[1].item.ensinos.map((item: any) => item.item)
       );
       setHeroImages(
@@ -58,10 +54,9 @@ const Kindergaten = () => {
     }
   }, [pagesData, isLoadingPages]);
 
-  const ensinoFundamental2 = educationLevel.find(
-    (item: any) => item.titulo === "Ensino Fundamental 2"
+  const ensinoFundamental1 = educationLevel.find(
+    (item: any) => item.titulo === "Ensino Fundamental 1"
   );
-  console.log("ensinoFundamental2", ensinoFundamental2);
 
   return (
     <main
@@ -78,7 +73,7 @@ const Kindergaten = () => {
               alt=""
             />
           </div>
-          <Articles data={ensinoFundamental2} secondTextBgColor="#0b3503" />
+          <Articles data={ensinoFundamental1} secondTextBgColor="#5867cc" />
         </div>
         <Projects data={projects} />
         <OpenEnrollment data={openEnrollment} />
@@ -88,4 +83,4 @@ const Kindergaten = () => {
   );
 };
 
-export default Kindergaten;
+export default EnsinoFundamental1;

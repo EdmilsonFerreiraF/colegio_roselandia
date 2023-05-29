@@ -10,7 +10,7 @@ import { useContext, useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const Kindergaten = () => {
+const EnsinoMedio = () => {
   const { isLoadingPages, pagesData } = useContext(AppContext) as any;
 
   const [heroImages, setHeroImages] = useState([]);
@@ -34,6 +34,7 @@ const Kindergaten = () => {
   useEffect(() => {
     console.log("isLoadingPages - index", isLoadingPages);
     console.log("pages.data - index", pagesData.data);
+
     if (pagesData?.length) {
       setEducationLevel(
         homePage.blocos[1].item.ensinos.map((item: any) => item.item)
@@ -76,4 +77,4 @@ const Kindergaten = () => {
   );
 };
 
-export default Kindergaten;
+export default EnsinoMedio;

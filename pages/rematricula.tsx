@@ -8,7 +8,7 @@ import { useContext, useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const Kindergaten = () => {
+const Rematricula = () => {
   const { isLoadingPages, pagesData } = useContext(AppContext) as any;
   const handlePageClick = (url: string) => {
     window.location.href = url;
@@ -102,7 +102,7 @@ const Kindergaten = () => {
               </div>
               <button
                 className="edital-button"
-                onClick={() => handlePageClick("/schedule-visit")}
+                onClick={() => handlePageClick("/agende-sua-visita")}
               >
                 Edital de Rematrícula
               </button>
@@ -115,4 +115,4 @@ const Kindergaten = () => {
   );
 };
 
-export default Kindergaten;
+export default Rematricula;

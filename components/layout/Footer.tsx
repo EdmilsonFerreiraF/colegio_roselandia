@@ -1,4 +1,3 @@
-
 // @ts-nocheck
 import Image from "next/image";
 import Link from "next/link";
@@ -25,15 +24,13 @@ const Footer = () => {
               <a href="#education-level">Ensino</a>
             </li>
             <li>
-              <Link href="/registration">Matrícula</Link>
+              <Link href="/matricula">Matrícula</Link>
             </li>
             <li>
-              <Link href="/projects">Projetos</Link>
+              <Link href="/projetos">Projetos</Link>
             </li>
             <li>
-              <a href="/contact">
-                Contato
-              </a>
+              <a href="/contato">Contato</a>
             </li>
           </ul>
           <ul className="phones">
@@ -86,7 +83,7 @@ const Footer = () => {
             </li>
           </ul>
           <div className="enroll">
-            <Link href="/registration">Matricule-se</Link>
+            <Link href="/matricula">Matricule-se</Link>
           </div>
           <div className="sectors">
             <div className="whatsapp-btn">
