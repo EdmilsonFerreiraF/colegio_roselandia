@@ -1,3 +1,4 @@
+import ReCAPTCHA from "react-google-recaptcha";
 import FormControl from "./formControl";
 
 const ScheduleForm = () => {
@@ -11,7 +12,7 @@ const ScheduleForm = () => {
         label="Tel / Whatsapp do Responsável"
       />
       <div className="form-actions">
-        <div className="captcha"></div>
+        <ReCAPTCHA sitekey="6LffL0kmAAAAAMnz1qUKGG0Mn8dJfino8D27yFT0" />
         <button className="schedule-visit-button">Agendar Visita</button>
       </div>
     </div>
