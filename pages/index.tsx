@@ -6,7 +6,7 @@ import OpenEnrollment from "@/components/section/openEnrollment";
 import OurHistory from "@/components/section/ourHistory";
 import Partners from "@/components/section/partners";
 import Projects from "@/components/section/projects";
-import { Inter } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -16,12 +16,13 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({ weight: ["300"], subsets: ["devanagari"] });
 
+import NovicesModal from "@/components/novicesModal";
 import { baseURL } from "@/constants/baseURL";
 import { AppContext } from "@/contexts/appProvider";
+import Link from "next/link";
 import { Autoplay, Navigation, Pagination } from "swiper";
-import NovicesModal from "@/components/novicesModal";
-
 
 export default function Home() {
   const { isLoadingPages, pagesData } = useContext(AppContext) as any;
@@ -51,9 +52,10 @@ export default function Home() {
   useEffect(() => {
     console.log("isLoadingPages - index", isLoadingPages);
     console.log("pages.data - index", pagesData.data);
+    console.log("heroImages", heroImages);
     if (pagesData?.length) {
       setHeroImages(
-        homePage.blocos[0].item.carrossel.map((item: any) => item.item.imagem)
+        homePage.blocos[0].item.carrossel.map((item: any) => item.item)
       );
       setEducationLevel(
         homePage.blocos[1].item.ensinos.map((item: any) => item.item)
@@ -72,25 +74,25 @@ export default function Home() {
 
   return (
     <main
-      className={`flex min-h-screen flex-col items-center justify-between ${inter.className}`}
+      className={`index flex min-h-screen flex-col items-center justify-between ${inter.className}`}
     >
-      <div className="index">
+      <div className="main-container">
         <Header />
         <div className="main">
           <div className="hero">
             <Swiper
               autoplay={{
                 delay: 3500,
-                disableOnInteraction: true,
+                // disableOnInteraction: true,
                 pauseOnMouseEnter: true,
               }}
               effect="fade"
               fadeEffect={{
                 crossFade: true,
               }}
-              pagination={{
-                type: "progressbar",
-              }}
+              // pagination={{
+              //   type: "progressbar",
+              // }}
               navigation={true}
               modules={[Autoplay, Pagination, Navigation]}
               className="mySwiper"
@@ -100,24 +102,28 @@ export default function Home() {
                   <Image
                     width="100"
                     height="100"
-                    src={`${baseURL}/assets/${heroImage}`}
+                    src={`${baseURL}/assets/${heroImage.imagem}`}
                     alt=""
                   />
+                  {heroImage.hero_legenda && (
+                    <div className={`legend ${poppins.className}`}>
+                      {heroImage.hero_legenda?.texto}
+                    </div>
+                  )}
                 </SwiperSlide>
               ))}
             </Swiper>
           </div>
           <EducationLevel data={educationLevel} indexPage />
-          <div
-            className="interacionist-partner"
-            onClick={() => handlePageClick("interacionist_partner")}
-          >
-            <Image
-              width="100"
-              height="100"
-              src={`${baseURL}/assets/${interacionistPartner.imagem}`}
-              alt=""
-            />
+          <div className="interacionist-partner">
+            <Link href="/interacionist-partner">
+              <Image
+                width="100"
+                height="100"
+                src={`${baseURL}/assets/${interacionistPartner.imagem}`}
+                alt=""
+              />
+            </Link>
           </div>
           <Projects data={projects} />
           <OurHistory data={ourHistory} />
