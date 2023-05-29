@@ -48,8 +48,8 @@ const Kindergaten = () => {
     }
   }, [pagesData, isLoadingPages]);
 
-  const ensinoInfantil = educationLevel.find(
-    (item: any) => item.titulo === "Ensino Fundamental 1"
+  const ensinoMedio = educationLevel.find(
+    (item: any) => item.titulo === "Ensino médio"
   );
 
   return (
@@ -60,18 +60,17 @@ const Kindergaten = () => {
         <Header />
         <div className="main">
           <div className="hero">
-            <Image
-              width="100"
-              height="100"
-              src="ensino-infantil-hero.jpg"
-              alt=""
-            />
+            <Image width="100" height="100" src="ensino-medio.jpg" alt="" />
           </div>
-          <Articles data={ensinoInfantil} secondTextBgColor="#06706c" />
-          <Projects data={projects} />
-          <OpenEnrollment data={openEnrollment} />
-          <Footer />
+          <Articles
+            data={ensinoMedio}
+            secondTextBgColor="#5867cc"
+            variation="high"
+          />
         </div>
+        <Projects data={projects} />
+        <OpenEnrollment data={openEnrollment} />
+        <Footer />
       </div>
     </main>
   );

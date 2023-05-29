@@ -1,28 +1,37 @@
-import Image from "next/image";
+import Link from "next/link";
 
-const OurHistory = () => {
+const OurHistory = ({ data }: any) => {
+  const handlePageClick = (url: string) => {
+    window.location.href = url;
+  };
+
   return (
     <div className="our-history">
       <div className="title-subtitle">
         <div className="title">
-          <h3>Nossa história - 30 anos</h3>
+          <h3
+            style={{
+              cursor: "pointer",
+            }}
+          >
+            <Link href="/projects">Nossa história<br/>30 anos</Link>
+          </h3>
         </div>
         <div className="subtitle">
-          <p>
-            Originou-se em 1993 com o nome Banca da Tia Rosinha, tinha o
-            objetivo de auxiliar as crianças com as tarefas escolares e melhorar
-            o aprendizado das mesmas, oferecendo apenas as séries iniciais e
-            Pré-Escola. O Colégio nasceu de um sonho de uma jovem, iniciado na
-            cozinha da mãe o desejo e a necessidade de trabalhar para ajudar a
-            família. A professora fudnadora Rosângela Santos (Pró Rosa), que
-            vislumbrava um ideal de educação onde a integração entre a Escola e
-            A família constitui o pilar básico na formação do indivíduo social.
-          </p>
+          <p>{data.texto}</p>
           <div className="down-arrow-icon"></div>
         </div>
       </div>
       <div className="video">
-        <Image width="100" height="100" src="our-history-youtube.jpg" alt="" />
+        <iframe
+          width="560"
+          height="315"
+          src={data.video_url}
+          title="YouTube video player"
+          // frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        ></iframe>{" "}
       </div>
     </div>
   );

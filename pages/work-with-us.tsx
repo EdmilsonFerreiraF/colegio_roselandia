@@ -11,7 +11,7 @@ export default function Home() {
     <main
       className={`work-with-us flex min-h-screen flex-col items-center justify-between ${inter.className}`}
     >
-      <div className="container index">
+      <div className="main-container">
         <Header />
         <div className="main">
           <div className="hero">

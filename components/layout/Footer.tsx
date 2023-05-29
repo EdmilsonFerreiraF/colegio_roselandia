@@ -1,4 +1,7 @@
+
+// @ts-nocheck
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -7,14 +10,31 @@ const Footer = () => {
         <div className="footer-start">
           <ul className="channel-menu">
             <li>Guia do Estudante</li>
-            <li>Portal do Aluno</li>
-            <li>TV CR</li>
+            <a
+              href="https://grafiteweb.infocraft.com.br/roselandia"
+              target="_blank"
+            >
+              Portal do Aluno
+            </a>
+            <li>
+              <Link href="/tv-cr">TV CR</Link>
+            </li>
           </ul>
           <ul className="pages-nav">
-            <li>Ensino</li>
-            <li>Matrícula</li>
-            <li>Projetos</li>
-            <li>Contato</li>
+            <li>
+              <a href="#education-level">Ensino</a>
+            </li>
+            <li>
+              <Link href="/registration">Matrícula</Link>
+            </li>
+            <li>
+              <Link href="/projects">Projetos</Link>
+            </li>
+            <li>
+              <a href="/contact">
+                Contato
+              </a>
+            </li>
           </ul>
           <ul className="phones">
             <div className="tile">Telefones</div>
@@ -32,31 +52,42 @@ const Footer = () => {
         <div className="footer-end">
           <ul className="social-medias">
             <li className="social-medias-item">
-              <Image
-                width="100"
-                height="100"
-                src="instagram.png"
-                alt="instagram logo"
-              />
+              <a href="https://www.instagram.com/colegio.roselandia">
+                <Image
+                  width="1"
+                  height="2"
+                  className="instagram-logo"
+                  src="instagram.png"
+                  alt="instagram logo"
+                />
+              </a>
             </li>
             <li className="social-medias-item">
-              <Image
-                width="100"
-                height="100"
-                src="youtube.png"
-                alt="youtube logo"
-              />
+              <a href="https://www.youtube.com/@redecrdecomunicacao1900">
+                <Image
+                  width="50"
+                  height="50"
+                  className="youtube-logo"
+                  src="youtube.png"
+                  alt="youtube logo"
+                />
+              </a>
             </li>
             <li className="social-medias-item">
-              <Image
-                width="100"
-                height="100"
-                src="facebook.png"
-                alt="facebook logo"
-              />
+              <a href="https://www.facebook.com/c.roselandia">
+                <Image
+                  width="100"
+                  height="100"
+                  className="facebook-logo"
+                  src="facebook.png"
+                  alt="facebook logo"
+                />
+              </a>
             </li>
           </ul>
-          <div className="enroll">Matricule-se</div>
+          <div className="enroll">
+            <Link href="/registration">Matricule-se</Link>
+          </div>
           <div className="sectors">
             <div className="whatsapp-btn">
               <Image

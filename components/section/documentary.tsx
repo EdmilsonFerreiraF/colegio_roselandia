@@ -1,16 +1,17 @@
-import Image from "next/image";
-
-const Documentary = () => {
+const Documentary = ({ data }: any) => {
   return (
     <div className="documentary">
       <div className="title">Documentário</div>
       <div className="video">
-        <Image
-          width="100"
-          height="100"
-          src="our-history-youtube.jpg"
-          alt="youtube video"
-        />
+        <iframe
+          width="100%"
+          height="500"
+          src={data.video}
+          title="YouTube video player"
+          // frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        ></iframe>{" "}
       </div>
     </div>
   );

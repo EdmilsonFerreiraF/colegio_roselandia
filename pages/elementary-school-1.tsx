@@ -3,6 +3,7 @@ import Header from "@/components/layout/Header";
 import Articles from "@/components/section/articles";
 import OpenEnrollment from "@/components/section/openEnrollment";
 import Projects from "@/components/section/projects";
+import { baseURL } from "@/constants/baseURL";
 import { AppContext } from "@/contexts/appProvider";
 import { Inter } from "next/font/google";
 import Image from "next/image";
@@ -24,12 +25,15 @@ const Kindergaten = () => {
     console.log("pagesData", pagesData);
   }, [pagesData]);
 
-  const findHome = () => {
-    const page = pagesData.find((pageItem: any) => pageItem.titulo === "Home");
-    return page;
+  const findHome = (page: "Home" | "Ensino Fundamental 1") => {
+    const pageData = pagesData.find(
+      (pageItem: any) => pageItem.titulo === page
+    );
+    return pageData;
   };
 
-  const homePage = findHome();
+  const homePage = findHome("Home");
+  const elementary1Page = findHome("Ensino Fundamental 1");
 
   useEffect(() => {
     console.log("isLoadingPages - index", isLoadingPages);
@@ -39,7 +43,9 @@ const Kindergaten = () => {
         homePage.blocos[1].item.ensinos.map((item: any) => item.item)
       );
       setHeroImages(
-        homePage.blocos[0].item.carrossel.map((item: any) => item.item.imagem)
+        elementary1Page.blocos[0].item.carrossel.map(
+          (item: any) => item.item.imagem
+        )
       );
       setProjects(
         homePage.blocos[2].item.projetos.map((item: any) => item.item)
@@ -48,7 +54,7 @@ const Kindergaten = () => {
     }
   }, [pagesData, isLoadingPages]);
 
-  const ensinoInfantil = educationLevel.find(
+  const ensinoFundamental1 = educationLevel.find(
     (item: any) => item.titulo === "Ensino Fundamental 1"
   );
 
@@ -63,15 +69,15 @@ const Kindergaten = () => {
             <Image
               width="100"
               height="100"
-              src="ensino-infantil-hero.jpg"
+              src={`${baseURL}/assets/${heroImages}`}
               alt=""
             />
           </div>
-          <Articles data={ensinoInfantil} secondTextBgColor="#06706c" />
-          <Projects data={projects} />
-          <OpenEnrollment data={openEnrollment} />
-          <Footer />
+          <Articles data={ensinoFundamental1} secondTextBgColor="#5867cc" />
         </div>
+        <Projects data={projects} />
+        <OpenEnrollment data={openEnrollment} />
+        <Footer />
       </div>
     </main>
   );

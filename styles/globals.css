@@ -45,7 +45,16 @@ body {
 .hero {
   width: 100%;
   /* width: 100vw;; */
+  height: auto;
   margin-bottom: 60px;
+}
+
+.main-container {
+  width: 100%;
+}
+
+.index .hero {
+  height: 31.3vw;
 }
 /*/ ////*/
 
@@ -59,10 +68,6 @@ img {
   font-size: 45px;
   text-transform: uppercase;
   font-weight: bold;
-}
-
-.index {
-  width: 100%;
 }
 
 .subtitle {
@@ -217,22 +222,13 @@ img {
 .navbar-item--dropdown:hover {
 }
 
-/* .navbar-item--dropdown ul {
-  position: absolute;
-  padding: 0;
-  left: 0;
-  display: none;
-}
-
-.navbar-item--dropdown:hover ul {
-  display: block;
-} */
-
 .navbar-item--dropdown .navbar-sub-menu {
   display: none;
   padding: 0;
   position: absolute;
   left: -1px;
+  font-size: 16px;
+  font-weight: normal;
 }
 
 .navbar-item--dropdown:hover .navbar-sub-menu {
@@ -274,11 +270,16 @@ img {
 
 .schedule-button {
   color: white;
-  background: #002f90;
-  padding: 6px 25px;
+  background: #003a7a;
+  clip-path: polygon(13% 100%, 0 0, 100% 0, 100% 100%, 60% 100%);
+  border-radius: 0 0 0.6rem 2.5rem;
+  padding: 0.6rem 2.8rem 0.6rem 3.8rem;
+  font-size: 14px;
+  height: 44px;
   display: flex;
   justify-content: center;
   align-items: center;
+  align-self: flex-start;
 }
 /*/ ////*/
 
@@ -353,6 +354,10 @@ img {
   margin-bottom: 70px;
 }
 
+.registration .image-title {
+  margin-bottom: 40px;
+}
+
 .reregistration .title {
   font-weight: bold;
   font-size: 20px;
@@ -409,8 +414,6 @@ img {
   display: flex;
   justify-content: center;
   width: 100%;
-  max-width: 1200px;
-  margin: auto;
   margin-bottom: 80px;
 }
 
@@ -418,6 +421,8 @@ img {
   display: flex;
   gap: 20px;
   flex-direction: column;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .interacionist-partner .title {
@@ -429,8 +434,9 @@ img {
 .interacionist-partner .content {
   gap: 40px;
   display: grid;
-  grid: auto/repeat(auto-fit, minmax(min-content, 500px));
+  grid: auto/repeat(auto-fit, minmax(min-content, 580px));
   justify-content: center;
+  margin-bottom: 80px;
 }
 
 .interacionist-partner .image {
@@ -600,7 +606,7 @@ img {
 }
 
 .footer .social-medias img {
-  max-width: 25px;
+  max-width: 35px;
   width: fit-content;
 }
 
@@ -610,6 +616,21 @@ img {
 
 .footer .whatsapp-btn img {
   width: 70px;
+}
+
+.footer .facebook-logo {
+  height: 2rem;
+  width: 1.8rem;
+}
+
+.footer .instagram-logo {
+  width: 1.8rem;
+  height: 1.7rem;
+}
+
+.footer .youtube-logo {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .footer .sectors {
@@ -761,79 +782,100 @@ img {
 
 .registration .topics {
   display: grid;
-  gap: 10px;
+  gap: 2rem 0.5rem;
   max-width: 1200px;
   margin: auto;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 500px));
+  grid-template-columns: repeat(auto-fit, minmax(500px, 595px));
   justify-content: center;
+  margin-bottom: 1.5rem;
 }
 
 .registration .welcome .title {
-  background: darkred;
+  background: #ab0505;
   padding: 20px 40px;
-  font-size: 28px;
+  font-weight: 500;
+  height: 62px;
+  font-size: 26px;
   color: white;
-  font-weight: bold;
   text-align: center;
+  align-items: center;
+  display: flex;
+  padding-left: 2rem;
 }
 
-.registration .text-1 {
+.registration .welcome .text-1 {
   padding: 25px 30px;
-  color: darkblue;
+  font-weight: 500;
+  color: #023878;
 }
 
-.registration .text-2 {
-  background: purple;
+.registration .welcome .text-2 {
+  background: #85329a;
+  font-weight: 500;
   color: white;
   padding: 25px 30px;
 }
 
 .registration .roseland-family .title {
-  color: wheat;
-  font-size: 29px;
+  color: #f9eeb8;
+  font-size: 26px;
   background: #42428d;
   padding: 20px;
-  height: 82px;
+  height: 62px;
   font-weight: 500;
+  align-items: center;
+  display: flex;
+  padding-left: 2rem;
 }
 
 .registration .roseland-family .content {
-  background: #4a68bd;
+  background: #5867cc;
   padding: 25px 30px;
+  font-weight: 500;
+  height: 80%;
 }
 
 .registration .innovative-teaching .title {
   color: white;
-  font-size: 29px;
-  padding: 20px;
-  height: 82px;
+  font-size: 26px;
   font-weight: 500;
-  background: #66bb22;
+  padding: 20px;
+  height: 62px;
+  background: #78a612;
+  align-items: center;
+  display: flex;
+  padding-left: 2rem;
 }
 
 .registration .innovative-teaching .content {
   padding: 25px 30px;
-
-  background: #205020;
+  font-weight: 500;
+  color: white;
+  background: #354a09;
 }
 
 .registration .acolhimento .title {
-  color: darkblue;
-  font-size: 29px;
+  color: #003b77;
+  font-size: 26px;
   padding: 20px;
-  height: 82px;
+  height: 62px;
   font-weight: 500;
-  background: #ffa334;
+  background: #f7b006;
+  align-items: center;
+  display: flex;
+  padding-left: 2rem;
 }
 
 .registration .acolhimento .content {
   padding: 25px 30px;
-
-  background: #dac30e;
+  height: 76%;
+  background: #f5cf0a;
+  font-weight: 500;
 }
 
 .registration .acolhimento .text {
   color: #4a68bd;
+  font-weight: 500;
 }
 
 .registration .agende-sua-visita {
@@ -846,33 +888,61 @@ img {
 
 .registration .agende-sua-visita .btn {
   position: absolute;
-  left: 50%;
+  min-width: 190px;
+  left: 85%;
+  top: -10px;
   transform: translate(-50%, 0);
+  background-color: #162d3b;
+  padding: 0.75rem 2.6rem 0.75rem 1rem;
+  color: white;
+  font-size: 15px;
+  display: flex;
+  border-radius: 0.5rem 1rem 0 0;
+}
+
+.registration .agende-sua-visita .btn::after {
+  content: "";
+  width: 3rem;
+  height: 40px;
+  background-color: inherit;
+  display: block;
+  position: absolute;
+  right: -21px;
+  top: 6px;
+  z-index: -1;
+  -webkit-clip-path: polygon(0 100%, 0 0, 27% 0, 50% 0, 100% 100%);
+  clip-path: polygon(0 100%, 0 0, 27% 0, 50% 0, 90% 100%);
 }
 
 .registration .agende-sua-visita .content {
-  background: #416fa4;
+  background: #25678a;
+  position: relative;
   color: white;
   padding: 40px;
   height: 300px;
+  font-weight: 500;
 }
 
 .registration .agende-sua-visita .form {
   padding: 30px;
-  background: #416fa4;
+  background: #25678a;
   height: 400px;
 }
 
 .registration .agende-sua-visita .input {
-  padding: 10px;
+  padding: 1rem 0.6rem;
+  background-color: white;
+  border-radius: 0;
 }
 
 .registration .agende-sua-visita .submit-button {
-  background: #ffd756;
+  background: #f7be0f;
   color: white;
   font-size: 22px;
   text-align: center;
-  padding: 10px;
+  padding: 8px;
+  width: 85%;
+  margin: 0 auto;
 }
 
 .projects .projects .project-title {
@@ -1082,7 +1152,6 @@ img {
 .schedule-visit .education-level-item {
   display: grid;
   justify-content: center;
-  grid: minmax(100px, 130px) 1.6fr / auto;
 }
 
 .schedule-visit .education-level .title {
@@ -1191,4 +1260,20 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.legend {
+  top: 70%;
+  position: absolute;
+  background: #000000d1;
+  height: 9rem;
+  color: white;
+  font-size: calc(1vh + 0.6rem);
+  padding: 1%;
+  max-width: 50%;
+  min-width: 320px;
+  left: 5%;
+  text-transform: uppercase;
+  text-align: left;
+  border-bottom: #f03c02 5px solid;
 }

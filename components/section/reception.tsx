@@ -1,16 +1,10 @@
-const Reception = () => {
+const Reception = ({ data }: any) => {
   return (
     <div className="acolhimento">
-      <div className="title">Acolhimento</div>
+      <div className="title">{data?.titulo}</div>
       <div className="content">
-        <div className="text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </div>
-        <div className="text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </div>
+        <div className="text">{data?.texto_1}</div>
+        <div className="text">{data?.texto_2}</div>
       </div>
     </div>
   );
