@@ -33,6 +33,7 @@ export default function NovicesModal() {
           height="300"
           width="300"
         />
+        <span className="image-legend">Se inscreva e receba todas as informações de nossas atividades</span>
       </div>
       <Box display="flex" flexDirection="column">
         <Box display="flex" gap=".5rem">
