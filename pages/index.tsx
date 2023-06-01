@@ -1,28 +1,20 @@
-import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/footer/footer";
+import Header from "@/components/layout/header/header";
 
 import EducationLevel from "@/components/section/educationLevel";
 import OpenEnrollment from "@/components/section/openEnrollment";
 import OurHistory from "@/components/section/ourHistory";
 import Partners from "@/components/section/partners";
 import Projects from "@/components/section/projects";
-import { Inter, Poppins } from "next/font/google";
-import Image from "next/image";
+import { Inter } from "next/font/google";
 import { useContext, useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 
 const inter = Inter({ subsets: ["latin"] });
-const poppins = Poppins({ weight: ["300"], subsets: ["devanagari"] });
 
+import Carousel from "@/components/carousel";
 import NovicesModal from "@/components/novicesModal";
-import { baseURL } from "@/constants/baseURL";
+import InteracionistPartner from "@/components/section/interacionistPartner";
 import { AppContext } from "@/contexts/appProvider";
-import Link from "next/link";
-import { Autoplay, Navigation, Pagination } from "swiper";
 
 const Home = () => {
   const { isLoadingPages, pagesData } = useContext(AppContext) as any;
@@ -78,47 +70,10 @@ const Home = () => {
         <Header />
         <div className="main">
           <div className="hero">
-            <Swiper
-              autoplay={{
-                delay: 3500,
-                pauseOnMouseEnter: true,
-              }}
-              effect="fade"
-              fadeEffect={{
-                crossFade: true,
-              }}
-              navigation={true}
-              modules={[Autoplay, Pagination, Navigation]}
-              className="mySwiper"
-            >
-              {heroImages.map((heroImage: any) => (
-                <SwiperSlide key={heroImage}>
-                  <Image
-                    width="100"
-                    height="100"
-                    src={`${baseURL}/assets/${heroImage.imagem}`}
-                    alt=""
-                  />
-                  {heroImage.hero_legenda && (
-                    <div className={`legend ${poppins.className}`}>
-                      {heroImage.hero_legenda?.texto}
-                    </div>
-                  )}
-                </SwiperSlide>
-              ))}
-            </Swiper>
+            <Carousel images={heroImages} />
           </div>
           <EducationLevel data={educationLevel} indexPage />
-          <div className="interacionist-partner">
-            <Link href="/socio-interacionista">
-              <Image
-                width="100"
-                height="100"
-                src={`${baseURL}/assets/${interacionistPartner.imagem}`}
-                alt=""
-              />
-            </Link>
-          </div>
+          <InteracionistPartner imagem={interacionistPartner.imagem} />
           <Projects data={projects} />
           <OurHistory data={ourHistory} />
           <OpenEnrollment data={openEnrollment} />

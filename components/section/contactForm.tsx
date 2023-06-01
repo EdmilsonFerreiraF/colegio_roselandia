@@ -1,17 +1,10 @@
 import ScheduleButton from "@/components/scheduleButton";
-import FormControl from "../formControl";
-import { useEffect, useRef, useState } from "react";
-import Reaptcha from "reaptcha";
+import { useEffect, useRef } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
+import FormControl from "../formControl";
 
 const ContactForm = () => {
-  const [verified, setVerified] = useState(false);
   let captchaRef = useRef(null);
-  const [ready, setReady] = useState(false)
-
-  const onVerify = (recaptchaResponse: any) => {
-    setVerified(true);
-  };
 
   useEffect(() => {
     try {
@@ -38,10 +31,6 @@ const ContactForm = () => {
     if (captchaRef.current.rendered) captchaRef.current.reset();
   }, []);
 
-  const resetCaptcha = (e: any) => {
-    e.reset();
-  };
-
   const onReCAPTCHAChange = (captchaCode: any) => {
     // If the reCAPTCHA code is null or undefined indicating that
     // the reCAPTCHA was expired then return early
@@ -56,7 +45,6 @@ const ContactForm = () => {
     captchaRef.current.reset();
   };
 
-
   return (
     <div className="form">
       <FormControl name="name" label="Nome" />
@@ -67,14 +55,14 @@ const ContactForm = () => {
       />
       <FormControl name="message" label="Mensagem" />
       <div className="form-actions">
-          <ReCAPTCHA
-            ref={captchaRef}
-            // @ts-ignore
-            // ref={(e) => resetCaptcha(e)}
-            // explicit
-            onChange={onReCAPTCHAChange}
-            sitekey="6LffL0kmAAAAAMnz1qUKGG0Mn8dJfino8D27yFT0"
-          />
+        <ReCAPTCHA
+          ref={captchaRef}
+          // @ts-ignore
+          // ref={(e) => resetCaptcha(e)}
+          // explicit
+          onChange={onReCAPTCHAChange}
+          sitekey="6LffL0kmAAAAAMnz1qUKGG0Mn8dJfino8D27yFT0"
+        />
         <ScheduleButton />
       </div>
     </div>

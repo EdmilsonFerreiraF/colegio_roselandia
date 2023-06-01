@@ -10,22 +10,16 @@ const OurHistory = ({ data }: any) => {
               cursor: "pointer",
             }}
           >
-            <Link href="/nossa-historia">
-              Nossa história
-              <br />
-              30 anos
-            </Link>
+            <Link href="/nossa-historia">Nossa história 30 anos</Link>
           </h3>
         </div>
         <div className="subtitle">
-          <p>{data.texto}</p>
+          <p className="texto">{data.texto}</p>
           <div className="down-arrow-icon"></div>
         </div>
       </div>
       <div className="video">
         <iframe
-          width="560"
-          height="315"
           src={data.video_url}
           title="YouTube video player"
           // frameborder="0"

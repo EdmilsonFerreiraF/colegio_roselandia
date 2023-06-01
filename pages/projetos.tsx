@@ -1,7 +1,7 @@
-import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/footer/footer";
+import Header from "@/components/layout/header/header";
+import ProjectsInside from "@/components/section/inside/projectInside/projects";
 import OpenEnrollment from "@/components/section/openEnrollment";
-import { baseURL } from "@/constants/baseURL";
 import { AppContext } from "@/contexts/appProvider";
 import { Inter } from "next/font/google";
 import Image from "next/image";
@@ -72,52 +72,7 @@ const Projects = () => {
               </p>
             </div>
           </div>
-          <div className="projects">
-            {projectsInside?.map((item: any) => (
-              <div key={item.titulo} className="project-school-level">
-                <div className="project-title">{item.titulo}</div>
-                <div key={item?.titulo} className="project-list">
-                  {item?.projetos?.map((projeto: any) => (
-                    <div key={item.titulo} className="project">
-                      <div className="content-1">
-                        <div className="image-1">
-                          <Image
-                            width="100"
-                            height="100"
-                            src={`${baseURL}/assets/${projeto.item?.imagem_1}`}
-                            alt=""
-                          />
-                        </div>
-                        <div className="content-title">
-                          {" "}
-                          {projeto.item?.titulo}
-                        </div>
-                        <div className="text-1 text">
-                          {projeto.item?.texto?.slice(0, 356)}
-                        </div>
-                      </div>
-                      <div className="content-2">
-                        <div className="image-2">
-                          <Image
-                            width="100"
-                            height="100"
-                            src={`${baseURL}/assets/${projeto.item?.imagem_2}`}
-                            alt=""
-                          />
-                        </div>
-                        <div className="text-3 text">
-                          {projeto.item?.texto?.slice(
-                            356,
-                            projeto.item?.texto?.length - 1
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+          <ProjectsInside projects={projectsInside} />
           <OpenEnrollment data={openEnrollment} />
           <Footer />
         </div>

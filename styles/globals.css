@@ -46,7 +46,7 @@ body {
   width: 100%;
   /* width: 100vw;; */
   height: auto;
-  margin-bottom: 60px;
+  margin-bottom: calc(3.5vw + 1rem);
 }
 
 .main-container {
@@ -54,7 +54,8 @@ body {
 }
 
 .index .hero {
-  height: 31.3vw;
+  /* height: 31.3vw; */
+  height: calc(27vw + 7rem);
 }
 /*/ ////*/
 
@@ -65,7 +66,8 @@ img {
 
 .title h3 {
   color: black;
-  font-size: 45px;
+  /* font-size: 45px; */
+  font-size: calc(0.5vw + 2.2rem);
   text-transform: uppercase;
   font-weight: bold;
 }
@@ -76,7 +78,7 @@ img {
 }
 
 .hero {
-  margin-bottom: 70px;
+  margin-bottom: calc(3.5vw + 1rem);
 }
 
 .mySwiper {
@@ -131,10 +133,26 @@ img {
   background: #f2bb00;
   font-size: 23px;
   color: #004389;
+  font-weight: bold;
 }
 
 .novicesModal .image {
+  background: #f2bb00;
+  padding: 0.6rem;
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 0.5rem;
+}
+
+.novicesModal .image-legend {
+  margin-top: 2rem;
+  text-transform: uppercase;
+  color: #004389;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 1rem;
 }
 
 /*/ ////*/
@@ -147,7 +165,7 @@ img {
   gap: 5px;
   max-width: 1200px;
   margin: auto;
-  margin-bottom: 80px;
+  margin-bottom: calc(3.5vw + 1rem);
 }
 
 .education-level-item .image {
@@ -159,7 +177,7 @@ img {
 }
 
 .education-level-item .title {
-  font-size: 35px;
+  font-size: calc(0.5vw + 1.5rem);
   text-transform: none;
   color: #fdc723;
   font-weight: bold;
@@ -214,12 +232,13 @@ img {
   flex-wrap: wrap;
 }
 
+.navbar .logo {
+  min-width: 140px;
+}
+
 .navbar-item {
   position: relative;
   text-align: center;
-}
-
-.navbar-item--dropdown:hover {
 }
 
 .navbar-item--dropdown .navbar-sub-menu {
@@ -236,7 +255,15 @@ img {
   z-index: 2;
   background: white;
   padding: 10px 10px;
-  left: -33px;
+  left: -11px;
+}
+
+.navbar-item--dropdown:first-child:hover .navbar-sub-menu {
+  left: -29px;
+}
+
+.navbar-item--dropdown .navbar-sub-menu li:hover {
+  text-decoration: underline;
 }
 
 .navbar-wrapper {
@@ -268,6 +295,10 @@ img {
   font-weight: bold;
 }
 
+.navbar-schedule-button {
+  align-self: flex-start;
+}
+
 .schedule-button {
   color: white;
   background: #003a7a;
@@ -280,6 +311,61 @@ img {
   justify-content: center;
   align-items: center;
   align-self: flex-start;
+}
+
+.navbar-mobile {
+  display: none;
+}
+
+.footer-address-mobile {
+  display: none;
+}
+
+@media (max-width: 670px) {
+  .navbar .logo {
+  }
+
+  .navbar-wrapper {
+    flex-direction: column;
+    height: 90px;
+  }
+
+  .navbar-wrapper .logo {
+    display: none;
+  }
+
+  .navbar-mobile .logo {
+    display: block;
+  }
+
+  .navbar-schedule-button {
+  }
+
+  .navbar-menu {
+    gap: 2%;
+  }
+
+  .navbar-end .navbar-schedule-button {
+    display: none;
+    justify-content: center;
+  }
+
+  .navbar-mobile {
+    display: flex;
+  }
+
+  .footer {
+    flex-direction: column;
+  }
+
+  .footer-address {
+    display: none;
+  }
+
+  .footer-address-mobile {
+    display: block;
+    margin-top: 2rem;
+  }
 }
 /*/ ////*/
 
@@ -319,7 +405,7 @@ img {
 /*/////*/
 /*/ /////////////////////////       PROJETOS          ////////////////////////*/
 .projects {
-  margin-bottom: 70px;
+  margin-bottom: calc(3.5vw + 1rem);
 }
 
 .projects .project-list {
@@ -351,7 +437,7 @@ img {
 .reregistration {
   max-width: 1200px;
   margin: auto;
-  margin-bottom: 70px;
+  margin-bottom: calc(3.5vw + 1rem);
 }
 
 .registration .image-title {
@@ -414,7 +500,7 @@ img {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-bottom: 80px;
+  margin-bottom: calc(3.5vw + 1rem);
 }
 
 .interacionist-partner .article {
@@ -436,7 +522,7 @@ img {
   display: grid;
   grid: auto/repeat(auto-fit, minmax(min-content, 580px));
   justify-content: center;
-  margin-bottom: 80px;
+  margin-bottom: calc(3.5vw + 1rem);
 }
 
 .interacionist-partner .image {
@@ -462,7 +548,7 @@ img {
 .open-enrollment {
   display: flex;
   justify-content: center;
-  margin-bottom: 140px;
+  margin-bottom: calc(5.5vw + 2rem);
   display: grid;
   justify-content: center;
   grid: auto/repeat(auto-fit, minmax(min-content, 595px));
@@ -470,7 +556,7 @@ img {
 }
 
 .open-enrollment .title {
-  font-size: 45px;
+  font-size: calc(0.5vw + 2.2rem);
   color: black;
   max-width: 90px;
   font-weight: bold;
@@ -496,6 +582,12 @@ img {
   font-size: 16px;
   background: #15387f;
 }
+
+@media (max-width: 770px) {
+  .open-enrollment .schedule-visit {
+    width: auto;
+  }
+}
 /*/ ////*/
 
 /*/ /////////////////////////     PARCEIROS    ////////////////////////*/
@@ -512,9 +604,15 @@ img {
   justify-content: center;
   align-items: center;
   gap: 80px;
-  margin-bottom: 80px;
+  margin-bottom: calc(3.5vw + 1rem);
   display: grid;
   grid: auto/repeat(auto-fit, minmax(auto, 135px));
+}
+
+@media (max-width: 770px) {
+  .partners h3 {
+    text-align: center;
+  }
 }
 /*/ ////*/
 
@@ -594,7 +692,7 @@ img {
   font-size: 14px;
   color: #424242;
   padding: 0;
-  margin-bottom: 60px;
+  margin-bottom: calc(3.5vw + 1rem);
 }
 
 .footer .social-medias {
@@ -655,19 +753,30 @@ img {
   display: flex;
   max-width: 1200px;
   margin: auto;
-  margin-bottom: 80px;
+  margin-bottom: calc(3.5vw + 1rem);
   flex-wrap: wrap;
   text-align: center;
   justify-content: center;
   gap: 40px;
 }
 
+.our-history .video iframe {
+  width: 560px;
+  height: 315px;
+}
+
 .our-history .title-subtitle {
   flex: 1;
 }
 
+.our-history .texto {
+  text-align: left;
+  font-size: 21px;
+}
+
 .our-history .title {
   margin-bottom: 30px;
+  font-size: calc(2vw + 1.1rem);
 }
 /*/ ////*/
 
@@ -700,7 +809,7 @@ img {
   gap: 20px;
   max-width: 1200px;
   margin: auto;
-  margin-bottom: 70px;
+  margin-bottom: calc(3.5vw + 1rem);
 }
 
 .our-history-page .text {
@@ -713,12 +822,19 @@ img {
 .our-history-page .documentary {
   max-width: 1200px;
   margin: auto;
-  margin-bottom: 70px;
+  margin-bottom: calc(3.5vw + 1rem);
 }
 
 .our-history-page .documentary .title {
   font-size: 42px;
   font-weight: bold;
+}
+
+@media (max-width: 770px) {
+  .our-history .video iframe {
+    width: 320px;
+    height: 215px;
+  }
 }
 /*/ ////*/
 
@@ -745,7 +861,7 @@ img {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin-bottom: 60px;
+  margin-bottom: calc(3.5vw + 1rem);
 }
 
 .ensino-infantil .text {
@@ -883,10 +999,10 @@ img {
   gap: 10px;
   grid: auto/repeat(auto-fit, minmax(400px, 500px));
   justify-content: center;
-  margin-bottom: 60px;
+  margin-bottom: calc(3.5vw + 1rem);
 }
 
-.registration .agende-sua-visita .btn {
+/* .registration .agende-sua-visita .btn {
   position: absolute;
   min-width: 190px;
   left: 85%;
@@ -898,8 +1014,8 @@ img {
   font-size: 15px;
   display: flex;
   border-radius: 0.5rem 1rem 0 0;
-}
-
+} */
+/* 
 .registration .agende-sua-visita .btn::after {
   content: "";
   width: 3rem;
@@ -912,7 +1028,7 @@ img {
   z-index: -1;
   -webkit-clip-path: polygon(0 100%, 0 0, 27% 0, 50% 0, 100% 100%);
   clip-path: polygon(0 100%, 0 0, 27% 0, 50% 0, 90% 100%);
-}
+} */
 
 .registration .agende-sua-visita .content {
   background: #25678a;
@@ -1104,7 +1220,7 @@ img {
   flex-direction: column;
   max-width: 1200px;
   margin: auto;
-  margin-bottom: 80px;
+  margin-bottom: calc(3.5vw + 1rem);
 }
 
 .schedule-visit .label {
@@ -1219,7 +1335,7 @@ img {
 }
 
 .work-with-us .form-control {
-  margin-bottom: 60px;
+  margin-bottom: calc(3.5vw + 1rem);
 }
 
 .work-with-us .form-actions {
@@ -1268,7 +1384,8 @@ body {
   background: #000000d1;
   height: 9rem;
   color: white;
-  font-size: calc(1vh + 0.6rem);
+  /* font-size: calc(1vh + 0.6rem); */
+  font-size: calc(0.7vw + 0.7rem);
   padding: 1%;
   max-width: 50%;
   min-width: 320px;
@@ -1276,4 +1393,10 @@ body {
   text-transform: uppercase;
   text-align: left;
   border-bottom: #f03c02 5px solid;
+}
+
+@media (max-width: 770px) {
+  .legend {
+    top: 40%;
+  }
 }

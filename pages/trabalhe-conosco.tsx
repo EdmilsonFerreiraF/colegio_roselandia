@@ -1,5 +1,5 @@
-import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/footer/footer";
+import Header from "@/components/layout/header/header";
 import ScheduleButton from "@/components/scheduleButton";
 import { Inter } from "next/font/google";
 import Image from "next/image";
@@ -34,7 +34,7 @@ export default function Home() {
                 <input
                   type="text"
                   className="input"
-                  placeholder="Nome da Vaga"
+                  placeholder="Vagas Disponíveis"
                 />
               </div>
               <div className="form-actions">

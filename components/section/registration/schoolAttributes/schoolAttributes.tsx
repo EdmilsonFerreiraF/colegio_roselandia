@@ -1,7 +1,7 @@
-import InnovativeTeaching from "./section/innovativeTeaching";
-import Reception from "./section/reception";
-import RoselandiaFamily from "./section/roselandiaFamily";
-import Welcome from "./section/welcome";
+import InnovativeTeaching from "./innovativeTeaching";
+import Reception from "./reception";
+import RoselandiaFamily from "./roselandiaFamily";
+import Welcome from "./welcome";
 
 const SchoolAttributes = ({ data }: any) => {
   return (

@@ -1,10 +1,10 @@
-import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/Header";
-import SchoolAttributes from "@/components/schoolAttributes";
+import Footer from "@/components/layout/footer/footer";
+import Header from "@/components/layout/header/header";
 import OpenEnrollment from "@/components/section/openEnrollment";
 import OurHistory from "@/components/section/ourHistory";
 import Partners from "@/components/section/partners";
 import Projects from "@/components/section/projects";
+import SchoolAttributes from "@/components/section/registration/schoolAttributes/schoolAttributes";
 import ScheduleVisit from "@/components/section/scheduleVisit";
 import { AppContext } from "@/contexts/appProvider";
 import { Inter } from "next/font/google";

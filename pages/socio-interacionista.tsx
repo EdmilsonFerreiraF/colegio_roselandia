@@ -1,5 +1,5 @@
-import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/footer/footer";
+import Header from "@/components/layout/header/header";
 import OpenEnrollment from "@/components/section/openEnrollment";
 import OurHistory from "@/components/section/ourHistory";
 import Partners from "@/components/section/partners";

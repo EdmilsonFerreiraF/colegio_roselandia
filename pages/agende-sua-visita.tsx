@@ -1,5 +1,5 @@
-import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/footer/footer";
+import Header from "@/components/layout/header/header";
 import ScheduleForm from "@/components/scheduleForm";
 import EducationLevel from "@/components/section/educationLevel";
 import { AppContext } from "@/contexts/appProvider";
