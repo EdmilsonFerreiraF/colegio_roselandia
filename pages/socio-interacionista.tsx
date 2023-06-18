@@ -20,6 +20,7 @@ const SocioInteracionista = () => {
   const [openEnrollment, setOpenEnrollment] = useState<any>([]);
   const [partners, setPartners] = useState<any>([]);
   const [interacionistPartner, setInteracionistPartner] = useState<any>({});
+  const [heroImages, setHeroImages] = useState([]);
 
   const findHome = (page: "Home" | "Sócio Interacionista") => {
     const pageData = pagesData.find(
@@ -32,23 +33,21 @@ const SocioInteracionista = () => {
   const homePage = findHome("Home");
   const interacionistPartnerPage = findHome("Sócio Interacionista");
 
-  console.log("pagesData", pagesData);
   useEffect(() => {
-    console.log("pagesData", pagesData);
-  }, [pagesData]);
-
-  useEffect(() => {
-    console.log("isLoadingPages - index", isLoadingPages);
-    console.log("pages.data - index", pagesData);
     if (pagesData?.length) {
-      setInteracionistPartner(interacionistPartnerPage.blocos[0].item);
+      setInteracionistPartner(interacionistPartnerPage.blocos[1].item);
       setProjects(
-        homePage.blocos[2].item.projetos.map((item: any) => item.item)
+        homePage.blocos[6].item.projetos.map((item: any) => item.item)
       );
-      setOurHistory(homePage.blocos[5].item);
-      setOpenEnrollment(homePage.blocos[3].item);
+      setHeroImages(
+        interacionistPartnerPage.blocos[0].item.carrossel.map(
+          (item: any) => item.item.imagem
+        )
+      );
+      setOurHistory(homePage.blocos[4].item);
+      setOpenEnrollment(homePage.blocos[2].item);
       setPartners(
-        homePage.blocos[4].item.parceiros.map((item: any) => item.item)
+        homePage.blocos[3].item.parceiros.map((item: any) => item.item)
       );
     }
   }, [pagesData, isLoadingPages]);
@@ -61,7 +60,12 @@ const SocioInteracionista = () => {
         <Header />
         <div className="main">
           <div className="hero">
-            <Image width="100" height="100" src="hero.jpg" alt="" />
+            <Image
+              width="100"
+              height="100"
+              src={`${baseURL}/assets/${heroImages}`}
+              alt=""
+            />
           </div>
           <div className="article">
             <div className="title">
@@ -73,17 +77,23 @@ const SocioInteracionista = () => {
                 <Image
                   width="100"
                   height="100"
-                  src={`${baseURL}/assets/${interacionistPartner.imagem_dentro_1}`}
+                  src={`${baseURL}/assets/${interacionistPartner.imagem_1}`}
                   alt=""
                 />
                 <Image
                   width="100"
                   height="100"
-                  src={`${baseURL}/assets/${interacionistPartner.imagem_dentro_2}`}
+                  src={`${baseURL}/assets/${interacionistPartner.imagem_2}`}
                   alt=""
                 />
               </div>
-              <div className="text">{interacionistPartner.texto_dentro}</div>
+              <div className="text">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: interacionistPartner.texto,
+                  }}
+                ></div>
+              </div>
             </div>
           </div>
         </div>
