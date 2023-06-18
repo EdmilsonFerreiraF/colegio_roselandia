@@ -23,21 +23,17 @@ const TVCR = () => {
     return pageData;
   };
 
-  const homePage = findPage("Home");
   const TVCRPage = findPage("TV CR");
 
-  console.log("projects", projects);
   useEffect(() => {
-    console.log("isLoadingPages - index", isLoadingPages);
-    console.log("pages.data - index", pagesData.data);
     if (pagesData?.length) {
       setHeroImages(
-        homePage.blocos[0].item.carrossel.map((item: any) => item.item.imagem)
+        TVCRPage.blocos[1].item.carrossel.map((item: any) => item.item.imagem)
       );
       setProjects(
         TVCRPage.blocos[0].item.projetos_tvcr.map((item: any) => item.item)
       );
-      setOpenEnrollment(pagesData[0].blocos[3].item);
+      setOpenEnrollment(pagesData[0].blocos[2].item);
     }
   }, [pagesData, isLoadingPages]);
 
