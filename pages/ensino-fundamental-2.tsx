@@ -17,51 +17,31 @@ const EnsinoFundamental2 = () => {
   const [heroImages, setHeroImages] = useState([]);
   const [educationLevel, setEducationLevel] = useState([]);
   const [projects, setProjects] = useState([]);
-  const [interacionistPartner, setInteracionistPartner] = useState([]);
-  const [ourHistory, setOurHistory] = useState([]);
   const [openEnrollment, setOpenEnrollment] = useState([]);
 
-  console.log("pagesData", pagesData);
-  useEffect(() => {
-    console.log("pagesData", pagesData);
-  }, [pagesData]);
-
-  const findHome = (page: "Home" | "Ensino Fundamental 2") => {
+  const findPage = (page: "Home" | "Ensino Fundamental 2") => {
     const pageData = pagesData.find(
       (pageItem: any) => pageItem.titulo === page
     );
     return pageData;
   };
 
-  const homePage = findHome("Home");
-  const elementary1Page = findHome("Ensino Fundamental 2");
+  const elementary2Page = findPage("Ensino Fundamental 2");
 
   useEffect(() => {
-    console.log("isLoadingPages - index", isLoadingPages);
-    console.log("pages.data - index", pagesData.data);
     if (pagesData?.length) {
-      setEducationLevel(
-        homePage.blocos[1].item.ensinos.map((item: any) => item.item)
-      );
-      setInteracionistPartner(
-        homePage.blocos[1].item.ensinos.map((item: any) => item.item)
-      );
+      setEducationLevel(elementary2Page.blocos[1].item);
       setHeroImages(
-        elementary1Page.blocos[0].item.carrossel.map(
+        elementary2Page.blocos[0].item.carrossel.map(
           (item: any) => item.item.imagem
         )
       );
       setProjects(
-        homePage.blocos[2].item.projetos.map((item: any) => item.item)
+        elementary2Page.blocos[2].item.projetos.map((item: any) => item.item)
       );
-      setOpenEnrollment(pagesData[0].blocos[3].item);
+      setOpenEnrollment(pagesData[0].blocos[2].item);
     }
   }, [pagesData, isLoadingPages]);
-
-  const ensinoFundamental2 = educationLevel.find(
-    (item: any) => item.titulo === "Ensino Fundamental 2"
-  );
-  console.log("ensinoFundamental2", ensinoFundamental2);
 
   return (
     <main
@@ -78,7 +58,7 @@ const EnsinoFundamental2 = () => {
               alt=""
             />
           </div>
-          <Articles data={ensinoFundamental2} secondTextBgColor="#0b3503" />
+          <Articles data={educationLevel} secondTextBgColor="#0b3503" />
         </div>
         <Projects data={projects} />
         <OpenEnrollment data={openEnrollment} />

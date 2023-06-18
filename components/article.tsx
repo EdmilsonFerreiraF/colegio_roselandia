@@ -1,5 +1,6 @@
 import { baseURL } from "@/constants/baseURL";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 type IProps = {
   data: any;
@@ -14,7 +15,11 @@ const Article = ({
   title,
   secondTextBgColor,
 }: IProps) => {
-  console.log("data", data);
+  const [textoDentro, setTextoDentro] = useState("");
+
+  useEffect(() => {
+    setTextoDentro(data.textoDentro);
+  }, [data]);
 
   return (
     <div
@@ -43,7 +48,14 @@ const Article = ({
       )}
       <div className="text">
         {title && <h3 className="article-title">{data?.tituloDentro}</h3>}
-        <p className="article-text mb-5">{data?.textoDentro}</p>
+        <div className="article-text mb-5">
+          {" "}
+          <div
+            dangerouslySetInnerHTML={{
+              __html: textoDentro,
+            }}
+          ></div>
+        </div>
       </div>
     </div>
   );

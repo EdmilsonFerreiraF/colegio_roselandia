@@ -17,46 +17,31 @@ const EnsinoFundamental1 = () => {
   const [heroImages, setHeroImages] = useState([]);
   const [educationLevel, setEducationLevel] = useState([]);
   const [projects, setProjects] = useState([]);
-  const [ourHistory, setOurHistory] = useState([]);
   const [openEnrollment, setOpenEnrollment] = useState([]);
 
-  console.log("pagesData", pagesData);
-  useEffect(() => {
-    console.log("pagesData", pagesData);
-  }, [pagesData]);
-
-  const findHome = (page: "Home" | "Ensino Fundamental 1") => {
+  const findPage = (page: "Home" | "Ensino Fundamental 1") => {
     const pageData = pagesData.find(
       (pageItem: any) => pageItem.titulo === page
     );
     return pageData;
   };
 
-  const homePage = findHome("Home");
-  const elementary1Page = findHome("Ensino Fundamental 1");
+  const elementary1Page = findPage("Ensino Fundamental 1");
 
   useEffect(() => {
-    console.log("isLoadingPages - index", isLoadingPages);
-    console.log("pages.data - index", pagesData.data);
     if (pagesData?.length) {
-      setEducationLevel(
-        homePage.blocos[1].item.ensinos.map((item: any) => item.item)
-      );
+      setEducationLevel(elementary1Page.blocos[1].item);
       setHeroImages(
         elementary1Page.blocos[0].item.carrossel.map(
           (item: any) => item.item.imagem
         )
       );
       setProjects(
-        homePage.blocos[2].item.projetos.map((item: any) => item.item)
+        elementary1Page.blocos[2].item.projetos.map((item: any) => item.item)
       );
-      setOpenEnrollment(pagesData[0].blocos[3].item);
+      setOpenEnrollment(pagesData[0].blocos[2].item);
     }
   }, [pagesData, isLoadingPages]);
-
-  const ensinoFundamental1 = educationLevel.find(
-    (item: any) => item.titulo === "Ensino Fundamental 1"
-  );
 
   return (
     <main
@@ -73,7 +58,7 @@ const EnsinoFundamental1 = () => {
               alt=""
             />
           </div>
-          <Articles data={ensinoFundamental1} secondTextBgColor="#5867cc" />
+          <Articles data={educationLevel} secondTextBgColor="#5867cc" />
         </div>
         <Projects data={projects} />
         <OpenEnrollment data={openEnrollment} />

@@ -3,6 +3,7 @@ import Header from "@/components/layout/header/header";
 import Articles from "@/components/section/articles";
 import OpenEnrollment from "@/components/section/openEnrollment";
 import Projects from "@/components/section/projects";
+import { baseURL } from "@/constants/baseURL";
 import { AppContext } from "@/contexts/appProvider";
 import { Inter } from "next/font/google";
 import Image from "next/image";
@@ -16,42 +17,34 @@ const EnsinoMedio = () => {
   const [heroImages, setHeroImages] = useState([]);
   const [educationLevel, setEducationLevel] = useState([]);
   const [projects, setProjects] = useState([]);
-  const [ourHistory, setOurHistory] = useState([]);
   const [openEnrollment, setOpenEnrollment] = useState([]);
 
-  console.log("pagesData", pagesData);
-  useEffect(() => {
-    console.log("pagesData", pagesData);
-  }, [pagesData]);
-
-  const findHome = () => {
-    const page = pagesData.find((pageItem: any) => pageItem.titulo === "Home");
-    return page;
+  const findPage = (page: "Home" | "Ensino Médio") => {
+    const pageData = pagesData.find(
+      (pageItem: any) => pageItem.titulo === page
+    );
+    return pageData;
   };
 
-  const homePage = findHome();
+  const homePage = findPage("Home");
+  const highSchoolPage = findPage("Ensino Médio");
 
   useEffect(() => {
     console.log("isLoadingPages - index", isLoadingPages);
     console.log("pages.data - index", pagesData.data);
-
     if (pagesData?.length) {
-      setEducationLevel(
-        homePage.blocos[1].item.ensinos.map((item: any) => item.item)
-      );
+      setEducationLevel(highSchoolPage.blocos[1].item);
       setHeroImages(
-        homePage.blocos[0].item.carrossel.map((item: any) => item.item.imagem)
+        highSchoolPage.blocos[0].item.carrossel.map(
+          (item: any) => item.item.imagem
+        )
       );
       setProjects(
-        homePage.blocos[2].item.projetos.map((item: any) => item.item)
+        highSchoolPage.blocos[2].item.projetos.map((item: any) => item.item)
       );
-      setOpenEnrollment(pagesData[0].blocos[3].item);
+      setOpenEnrollment(homePage.blocos[2].item);
     }
   }, [pagesData, isLoadingPages]);
-
-  const ensinoMedio = educationLevel.find(
-    (item: any) => item.titulo === "Ensino médio"
-  );
 
   return (
     <main
@@ -61,10 +54,15 @@ const EnsinoMedio = () => {
         <Header />
         <div className="main">
           <div className="hero">
-            <Image width="100" height="100" src="ensino-medio.jpg" alt="" />
+            <Image
+              width="100"
+              height="100"
+              src={`${baseURL}/assets/${heroImages}`}
+              alt=""
+            />
           </div>
           <Articles
-            data={ensinoMedio}
+            data={educationLevel}
             secondTextBgColor="#5867cc"
             variation="high"
           />
