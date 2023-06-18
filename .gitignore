@@ -19,6 +19,7 @@
 .DS_Store
 *.pem
 .env
+uploads
 
 # debug
 npm-debug.log*
