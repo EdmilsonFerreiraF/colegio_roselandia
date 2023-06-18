@@ -47,6 +47,20 @@ body {
   /* width: 100vw;; */
   height: auto;
   margin-bottom: calc(3.5vw + 1rem);
+  height: calc(27vw + 7rem);
+}
+
+.hero.height-auto {
+  height: auto;
+}
+
+.reregistration .hero {
+  height: auto;
+}
+
+.hero img {
+  height: 100%;
+  object-fit: cover;
 }
 
 .main-container {
@@ -168,7 +182,18 @@ img {
   margin-bottom: calc(3.5vw + 1rem);
 }
 
+.education-level-item {
+  display: flex;
+}
+
+.education-level-item a {
+  display: flex;
+  flex-direction: column;
+}
+
 .education-level-item .image {
+  height: 100%;
+  display: flex;
 }
 
 .education-level-item .title-container {
@@ -259,7 +284,10 @@ img {
 }
 
 .navbar-item--dropdown:first-child:hover .navbar-sub-menu {
-  left: -29px;
+  /* left: -29px; */
+  left: -15px;
+  padding: 1rem;
+  width: 90px;
 }
 
 .navbar-item--dropdown .navbar-sub-menu li:hover {
@@ -343,6 +371,10 @@ img {
 
   .navbar-menu {
     gap: 2%;
+  }
+
+  .navbar-end {
+    order: 1;
   }
 
   .navbar-end .navbar-schedule-button {
@@ -434,9 +466,13 @@ img {
 /*/////*/
 
 /*/ /////////////////////////       REMATRÍCULA          ////////////////////////*/
-.reregistration {
+.reregistration .reregistration {
   max-width: 1200px;
   margin: auto;
+  margin-bottom: 1rem;
+}
+
+.reregistration {
   margin-bottom: calc(3.5vw + 1rem);
 }
 
@@ -487,6 +523,7 @@ img {
 .project-school-level {
   max-width: 1200px;
   margin: auto;
+  margin-bottom: 3rem;
 }
 
 .projects-page .project-list {
@@ -717,7 +754,7 @@ img {
 }
 
 .footer .facebook-logo {
-  height: 2rem;
+  height: 1.6rem;
   width: 1.8rem;
 }
 
@@ -758,6 +795,8 @@ img {
   text-align: center;
   justify-content: center;
   gap: 40px;
+  flex-wrap: wrap;
+  padding: 0 1rem;
 }
 
 .our-history .video iframe {
@@ -767,6 +806,17 @@ img {
 
 .our-history .title-subtitle {
   flex: 1;
+  min-width: 345px;
+}
+
+.our-history .subtitle {
+  max-width: 700px;
+  margin: auto;
+}
+
+.our-history-span {
+  margin-left: 1rem;
+  display: block;
 }
 
 .our-history .texto {
@@ -777,6 +827,12 @@ img {
 .our-history .title {
   margin-bottom: 30px;
   font-size: calc(2vw + 1.1rem);
+}
+
+.our-history a {
+  max-width: 372px;
+  display: block;
+  margin: auto;
 }
 /*/ ////*/
 
@@ -895,20 +951,31 @@ img {
 /*/ ////*/
 
 /*//////////// REGISTRATION ////////////*/
+.registration {
+  margin-bottom: 4rem;
+}
+
+.registration.hero {
+  min-height: 116px;
+  max-height: 170px;
+  background-size: cover;
+  height: calc(6vw + 9rem);
+}
 
 .registration .topics {
   display: grid;
   gap: 2rem 0.5rem;
   max-width: 1200px;
   margin: auto;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 595px));
+  /* grid-template-columns: repeat(auto-fit, minmax(500px, 595px)); */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 595px));
   justify-content: center;
   margin-bottom: 1.5rem;
 }
 
 .registration .welcome .title {
   background: #ab0505;
-  padding: 20px 40px;
+  padding: 2% 6%;
   font-weight: 500;
   height: 62px;
   font-size: 26px;
@@ -1002,33 +1069,12 @@ img {
   margin-bottom: calc(3.5vw + 1rem);
 }
 
-/* .registration .agende-sua-visita .btn {
+.registration .registration-schedule-visit {
   position: absolute;
-  min-width: 190px;
-  left: 85%;
-  top: -10px;
-  transform: translate(-50%, 0);
-  background-color: #162d3b;
-  padding: 0.75rem 2.6rem 0.75rem 1rem;
-  color: white;
-  font-size: 15px;
-  display: flex;
-  border-radius: 0.5rem 1rem 0 0;
-} */
-/* 
-.registration .agende-sua-visita .btn::after {
-  content: "";
-  width: 3rem;
-  height: 40px;
-  background-color: inherit;
-  display: block;
-  position: absolute;
-  right: -21px;
-  top: 6px;
-  z-index: -1;
-  -webkit-clip-path: polygon(0 100%, 0 0, 27% 0, 50% 0, 100% 100%);
-  clip-path: polygon(0 100%, 0 0, 27% 0, 50% 0, 90% 100%);
-} */
+  left: 34%;
+  transform: translate(50%, 0);
+  top: -7%;
+}
 
 .registration .agende-sua-visita .content {
   background: #25678a;
@@ -1061,6 +1107,27 @@ img {
   margin: 0 auto;
 }
 
+@media (max-width: 1009px) {
+  .registration .registration-schedule-visit {
+    position: absolute;
+    left: 0;
+    transform: translate(50%, 0);
+    top: 93%;
+  }
+}
+
+@media (max-width: 1197px) {
+  .registration .welcome .title {
+    height: 82px;
+  }
+}
+
+/*////////////*/
+
+.projects .projects {
+  padding: 1.5rem;
+}
+
 .projects .projects .project-title {
   font-size: 32px;
   color: darkblue;
@@ -1075,9 +1142,18 @@ img {
   gap: 25px;
 }
 
+.projects .projects .project.two-columns {
+  grid: auto/100%;
+}
+
 .projects .project .content-1 {
   display: flex;
   flex-direction: column;
+}
+
+.projects .project .content-1.solo {
+  max-width: 470px;
+  width: 43%;
 }
 
 .projects .project .content-2 {
@@ -1205,6 +1281,7 @@ img {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  justify-content: center;
 }
 
 .tv-cr .projectTitle {
@@ -1288,6 +1365,14 @@ img {
   height: 260px;
 }
 
+.contact .hero {
+  height: auto;
+}
+
+.work-with-us .hero {
+  height: auto;
+}
+
 .work-with-us .form .description {
   margin-bottom: 40px;
   margin-left: 30px;
@@ -1309,11 +1394,18 @@ img {
   font-weight: 500;
   border-radius: 12px;
   align-self: flex-end;
+  cursor: pointer;
+}
+
+.work-with-us .fileInput {
+  display: none;
 }
 
 .work-with-us .container {
   max-width: 1200px;
   margin: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .work-with-us .form {
@@ -1325,7 +1417,7 @@ img {
   background: #fde089;
   border-radius: 9px;
   height: 55px;
-  padding: 20px;
+  padding: 0 20px;
   margin-left: -10px;
   width: 100%;
 }
@@ -1341,6 +1433,7 @@ img {
 .work-with-us .form-actions {
   display: flex;
   justify-content: space-between;
+  margin-top: 1rem;
 }
 
 /*/////// Carousel ///////*/
