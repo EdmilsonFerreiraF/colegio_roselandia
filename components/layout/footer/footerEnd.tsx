@@ -33,19 +33,42 @@ const FooterEnd = () => {
         </div>
         <ul className="sectors-list">
           <li className="sectors-item">
-            <a href="tel:+5571986104151">Coord. Ed. Infantil</a>
+            <a href="tel:+557132528954">Fixo : (71) 3252-8954</a>
           </li>
           <li className="sectors-item">
-            <a href="tel:+5571983396464">Coord. Fundamental 1</a>
+            <a href="https://api.whatsapp.com/send?phone=5571992142717">
+              Direção: (71) 99214-2717
+            </a>
           </li>
           <li className="sectors-item">
-            <a href="tel:+5571985251921">Coord. Fundamental 2</a>
+            <a href="https://api.whatsapp.com/send?phone=5571982558908">
+              Financeiro:(71) 98255-8908
+            </a>
           </li>
           <li className="sectors-item">
-            <a href="tel:+5571987389534">Coord. Ensino Médio</a>
+            <a href="https://api.whatsapp.com/send?phone=5571992453492">
+              Secretaria: (71) 99245-3492
+            </a>
           </li>
           <li className="sectors-item">
-            <a href="tel:+5571982558908">Financeiro</a>
+            <a href="https://api.whatsapp.com/send?phone=5571986104151">
+              Infantil: (71) 98610-4151
+            </a>
+          </li>
+          <li className="sectors-item">
+            <a href="https://api.whatsapp.com/send?phone=5571983396464">
+              Fundamental 1: (71) 98339-6464
+            </a>
+          </li>
+          <li className="sectors-item">
+            <a href="https://api.whatsapp.com/send?phone=5571985251921">
+              Fundamental 2 :(71) 98525-1921
+            </a>
+          </li>
+          <li className="sectors-item">
+            <a href="https://api.whatsapp.com/send?phone=5571987389534">
+              Ensino Médio: (71) 98738-9534
+            </a>
           </li>
         </ul>
       </div>
