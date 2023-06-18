@@ -5,7 +5,7 @@ const Movies = ({ data }: any) => {
         <>
           <div className="projectTitle">{item.titulo}</div>
           <div className="videos">
-            {item?.videos?.map((video: any) => (
+            {item?.videos?.sort((a: any, b: any) => a.item.posicao - b.item.posicao).map((video: any) => (
               <>
                 <div className="movie">
                   <div className="video">

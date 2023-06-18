@@ -7,8 +7,6 @@ type IProps = {
 };
 
 const Articles = ({ data, secondTextBgColor }: IProps) => {
-  console.log("data", data);
-
   return (
     <>
       <div className="articles">

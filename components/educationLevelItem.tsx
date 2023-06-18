@@ -19,8 +19,8 @@ const EducationLevelItem = ({ educationLevelItem }: IProps) => {
         </div>
         <div className="image">
           <Image
-            width="100"
-            height="100"
+            width="642"
+            height="323"
             src={`${baseURL}/assets/${educationLevelItem.imagem}`}
             alt=""
           />

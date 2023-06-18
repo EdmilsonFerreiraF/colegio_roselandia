@@ -10,7 +10,7 @@ const OurHistory = ({ data }: any) => {
               cursor: "pointer",
             }}
           >
-            <Link href="/nossa-historia">Nossa história 30 anos</Link>
+            <Link href="/nossa-historia">{data.titulo}</Link>
           </h3>
         </div>
         <div className="subtitle">
@@ -22,7 +22,6 @@ const OurHistory = ({ data }: any) => {
         <iframe
           src={data.video_url}
           title="YouTube video player"
-          // frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
         ></iframe>{" "}
