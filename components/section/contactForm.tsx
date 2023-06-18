@@ -1,9 +1,8 @@
-import ScheduleButton from "@/components/scheduleButton";
 import { useEffect, useRef } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import FormControl from "../formControl";
 
-const ContactForm = () => {
+const ContactForm = ({ fields, handleInput, sendMail }: any) => {
   let captchaRef = useRef(null);
 
   useEffect(() => {
@@ -47,13 +46,30 @@ const ContactForm = () => {
 
   return (
     <div className="form">
-      <FormControl name="name" label="Nome" />
-      <FormControl name="responsible_email" label="E-mail do Responsável" />
       <FormControl
-        name="responsible_phone"
-        label="Tel / Whatsapp do Responsável"
+        name="name"
+        value={fields["name"]}
+        label="Nome"
+        handleChange={handleInput}
       />
-      <FormControl name="message" label="Mensagem" />
+      <FormControl
+        name="responsibleEmail"
+        value={fields["responsibleEmail"]}
+        label="E-mail do Responsável"
+        handleChange={handleInput}
+      />
+      <FormControl
+        name="responsiblePhone"
+        value={fields["responsiblePhone"]}
+        label="Tel / Whatsapp do Responsável"
+        handleChange={handleInput}
+      />
+      <FormControl
+        name="message"
+        value={fields["message"]}
+        label="Mensagem"
+        handleChange={handleInput}
+      />
       <div className="form-actions">
         <ReCAPTCHA
           ref={captchaRef}
@@ -63,7 +79,12 @@ const ContactForm = () => {
           onChange={onReCAPTCHAChange}
           sitekey="6LffL0kmAAAAAMnz1qUKGG0Mn8dJfino8D27yFT0"
         />
-        <ScheduleButton />
+        <button
+          className="schedule-visit-button"
+          onClick={sendMail}
+        >
+          Agendar Visita
+        </button>
       </div>
     </div>
   );

@@ -17,7 +17,6 @@ const OpenEnrollment = ({ data }: any) => {
       </div>
       <div className="action">
         <div className="title">{data.titulo}</div>
-        {/* <Reaptcha sitekey="6LffL0kmAAAAAMnz1qUKGG0Mn8dJfino8D27yFT0" /> */}
         <ReCaptcha onValidate={setToken} action="page_view" />
         <div className="schedule-visit hover:cursor-pointer">
           <a href="/agende-sua-visita">Agende sua Visita</a>
