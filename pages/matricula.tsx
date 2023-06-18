@@ -6,9 +6,9 @@ import Partners from "@/components/section/partners";
 import Projects from "@/components/section/projects";
 import SchoolAttributes from "@/components/section/registration/schoolAttributes/schoolAttributes";
 import ScheduleVisit from "@/components/section/scheduleVisit";
+import { baseURL } from "@/constants/baseURL";
 import { AppContext } from "@/contexts/appProvider";
 import { Inter } from "next/font/google";
-import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -18,18 +18,28 @@ const Matricula = () => {
 
   const [schoolAttributes, setSchoolAttributes] = useState([]);
   const [heroImages, setHeroImages] = useState([]);
-  const [educationLevel, setEducationLevel] = useState([]);
   const [projects, setProjects] = useState([]);
   const [ourHistory, setOurHistory] = useState([]);
   const [openEnrollment, setOpenEnrollment] = useState([]);
   const [partners, setPartners] = useState([]);
+  const [scheduleForm, setScheduleForm] = useState<any>({});
+  const [formDescription, setFormDescription] = useState<any>("");
 
-  console.log("pagesData", pagesData);
-  useEffect(() => {
-    console.log("pagesData", pagesData);
-  }, [pagesData]);
+  const [fields, setFields] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    studentName: "",
+    studentGrade: "",
+  });
 
-  const findPage = (page: "Home" | "Matrícula alunos novos") => {
+  const handleInputChange = (e: any) => {
+    setFields((prevState: any) => {
+      return { ...prevState, [e.target.name]: e.target.value };
+    });
+  };
+
+  const findPage = (page: "Home" | "Matrícula") => {
     const pageData = pagesData.find(
       (pageItem: any) => pageItem.titulo === page
     );
@@ -37,34 +47,54 @@ const Matricula = () => {
   };
 
   const homePage = findPage("Home");
-  const matriculaPage = findPage("Matrícula alunos novos");
+  const matriculaPage = findPage("Matrícula");
 
-  console.log("schoolAttributes", schoolAttributes);
   useEffect(() => {
-    console.log("isLoadingPages - index", isLoadingPages);
-    console.log("pages.data - index", pagesData.data);
     if (pagesData?.length) {
-      setEducationLevel(
-        homePage.blocos[1].item.ensinos.map((item: any) => item.item)
-      );
       setSchoolAttributes(
         matriculaPage.blocos[0].item.atributos_escola.map(
           (item: any) => item.item
         )
       );
-      setHeroImages(
-        homePage.blocos[0].item.carrossel.map((item: any) => item.item.imagem)
-      );
+      setFormDescription(matriculaPage.blocos[0].item.descricao_formulario);
+      setScheduleForm(matriculaPage.blocos[0].item.formulario[0].item);
+      setHeroImages(matriculaPage.blocos[0].item.banner);
       setPartners(
-        homePage.blocos[4].item.parceiros.map((item: any) => item.item)
+        homePage.blocos[3].item.parceiros.map((item: any) => item.item)
       );
-      setOurHistory(pagesData[0].blocos[5].item);
+      setOurHistory(pagesData[0].blocos[4].item);
       setProjects(
-        homePage.blocos[2].item.projetos.map((item: any) => item.item)
+        homePage.blocos[6].item.projetos.map((item: any) => item.item)
       );
-      setOpenEnrollment(pagesData[0].blocos[3].item);
+      setOpenEnrollment(pagesData[0].blocos[2].item);
     }
   }, [pagesData, isLoadingPages]);
+
+  const sendMail = async () => {
+    // try {
+    const res = await fetch("/api/sendmail", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        name: fields.name,
+        subject: scheduleForm.assunto,
+        from: fields.email,
+        to: scheduleForm.email_destinatario,
+        text: `
+        Nome: ${fields.name}\n
+        Email: ${fields.email}\n
+        Tel / Whatsapp do Responsável: ${fields.phone}
+        Nome do Aluno: ${fields.studentName}\n
+        Série do Aluno: ${fields.studentGrade}\n`,
+      }),
+    }).then((res: any) => {
+      console.log("res", res);
+
+      return res;
+    });
+
+    console.log("res", res);
+  };
 
   return (
     <main
@@ -74,20 +104,21 @@ const Matricula = () => {
         <Header />
         <div className="main">
           <div
-            className="hero"
+            className="registration hero"
             style={{
-              marginBottom: 0,
+              background: `url(${baseURL}/assets/${heroImages}) no-repeat 27% 0`,
             }}
-          >
-            <Image width="100" height="100" src="hero.jpg" alt="" />
-          </div>
-          <div className="image-title">
-            <Image width="100" height="100" src="matricula-novos.jpg" alt="" />
-          </div>
+          ></div>
           <div className="registration">
             <SchoolAttributes data={schoolAttributes} />
           </div>
-          <ScheduleVisit />
+          <ScheduleVisit
+            formDescription={formDescription}
+            scheduleForm={scheduleForm}
+            sendMail={sendMail}
+            fields={fields}
+            handleInput={handleInputChange}
+          />
           <Projects data={projects} />
           <OurHistory data={ourHistory} />
           <OpenEnrollment data={openEnrollment} />
