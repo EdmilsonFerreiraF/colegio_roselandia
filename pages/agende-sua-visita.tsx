@@ -2,6 +2,7 @@ import Footer from "@/components/layout/footer/footer";
 import Header from "@/components/layout/header/header";
 import ScheduleForm from "@/components/scheduleForm";
 import EducationLevel from "@/components/section/educationLevel";
+import { baseURL } from "@/constants/baseURL";
 import { AppContext } from "@/contexts/appProvider";
 import { Inter } from "next/font/google";
 import Image from "next/image";
@@ -11,50 +12,70 @@ const inter = Inter({ subsets: ["latin"] });
 
 const AgendarVisita = () => {
   const { isLoadingPages, pagesData } = useContext(AppContext) as any;
-  const handlePageClick = (url: string) => {
-    window.location.href = url;
-  };
+
   const [heroImages, setHeroImages] = useState([]);
   const [educationLevel, setEducationLevel] = useState([]);
-  const [projects, setProjects] = useState([]);
-  const [ourHistory, setOurHistory] = useState([]);
-  const [openEnrollment, setOpenEnrollment] = useState([]);
-  const [partners, setPartners] = useState([]);
-  const [interacionistPartner, setInteracionistPartner] = useState({});
+  const [scheduleForm, setScheduleForm] = useState<any>({});
 
-  console.log("pagesData", pagesData);
-  useEffect(() => {
-    console.log("pagesData", pagesData);
-  }, [pagesData]);
+  const [fields, setFields] = useState({
+    studentName: "",
+    responsibleName: "",
+    responsibleEmail: "",
+    responsiblePhone: "",
+  });
 
-  const findHome = () => {
-    const page = pagesData.find((pageItem: any) => pageItem.titulo === "Home");
-    return page;
+  const handleInputChange = (e: any) => {
+    setFields((prevState: any) => {
+      return { ...prevState, [e.target.name]: e.target.value };
+    });
   };
 
-  const homePage = findHome();
+  const findHome = (page: "Home" | "Agende sua visita") => {
+    const pageData = pagesData.find(
+      (pageItem: any) => pageItem.titulo === page
+    );
+
+    return pageData;
+  };
+
+  const scheduleVisit = findHome("Agende sua visita");
 
   useEffect(() => {
-    console.log("isLoadingPages - index", isLoadingPages);
-    console.log("pages.data - index", pagesData.data);
     if (pagesData?.length) {
       setHeroImages(
-        homePage.blocos[0].item.carrossel.map((item: any) => item.item.imagem)
+        scheduleVisit.blocos[1].item.carrossel.map(
+          (item: any) => item.item.imagem
+        )
       );
       setEducationLevel(
-        homePage.blocos[1].item.ensinos.map((item: any) => item.item)
+        scheduleVisit.blocos[2].item.ensinos.map((item: any) => item.item)
       );
-      setInteracionistPartner(pagesData[0].blocos[6].item);
-      setProjects(
-        homePage.blocos[2].item.projetos.map((item: any) => item.item)
-      );
-      setOurHistory(pagesData[0].blocos[5].item);
-      setOpenEnrollment(pagesData[0].blocos[3].item);
-      setPartners(
-        homePage.blocos[4].item.parceiros.map((item: any) => item.item)
-      );
+      setScheduleForm(scheduleVisit.blocos[3].item);
     }
   }, [pagesData, isLoadingPages]);
+
+  const sendMail = async () => {
+    const res = await fetch("/api/sendmail", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        name: fields.responsibleName,
+        subject: scheduleForm.assunto,
+        from: fields.responsibleEmail,
+        to: scheduleForm.email_destinatario,
+        text: `Nome do Aluno: ${fields.studentName}\n
+        Nome do Responsável: ${fields.responsibleName}\n
+        Email do Responsável: ${fields.responsibleEmail}\n
+        Tel / Whatsapp do Responsável: ${fields.responsiblePhone}`,
+      }),
+    }).then((res: any) => {
+      console.log("res", res);
+
+      return res;
+    });
+
+    console.log("res", res);
+  };
 
   return (
     <main
@@ -63,10 +84,20 @@ const AgendarVisita = () => {
       <div className="main-container">
         <Header />
         <div className="main">
-          <div className="hero">
-            <Image width="100" height="100" src="agende-visita.jpg" alt="" />
+          <div className="hero height-auto">
+            <Image
+              width="100"
+              height="100"
+              src={`${baseURL}/assets/${heroImages}`}
+              alt=""
+            />
           </div>
-          <ScheduleForm />
+          <ScheduleForm
+            fields={fields}
+            setFields={setFields}
+            sendMail={sendMail}
+            handleChange={handleInputChange}
+          />
           <EducationLevel data={educationLevel} />
           <Footer />
         </div>
