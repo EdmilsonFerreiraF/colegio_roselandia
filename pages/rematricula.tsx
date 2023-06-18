@@ -14,17 +14,6 @@ const Rematricula = () => {
     window.location.href = url;
   };
   const [heroImages, setHeroImages] = useState([]);
-  const [educationLevel, setEducationLevel] = useState([]);
-  const [projects, setProjects] = useState([]);
-  const [ourHistory, setOurHistory] = useState([]);
-  const [openEnrollment, setOpenEnrollment] = useState([]);
-  const [partners, setPartners] = useState([]);
-  const [interacionistPartner, setInteracionistPartner] = useState({});
-
-  console.log("pagesData", pagesData);
-  useEffect(() => {
-    console.log("pagesData", pagesData);
-  }, [pagesData]);
 
   const findPage = () => {
     const pageData = pagesData.find(
@@ -36,8 +25,6 @@ const Rematricula = () => {
   const reregistrationPage = findPage();
 
   useEffect(() => {
-    console.log("isLoadingPages - index", isLoadingPages);
-    console.log("pages.data - index", pagesData.data);
     if (pagesData?.length) {
       setHeroImages(
         reregistrationPage.blocos[0].item.carrossel.map(
@@ -46,11 +33,10 @@ const Rematricula = () => {
       );
     }
   }, [pagesData, isLoadingPages]);
-  console.log("reregistrationPage", reregistrationPage);
 
   return (
     <main
-      className={`ensino-infantil flex min-h-screen flex-col items-center justify-between ${inter.className}`}
+      className={`reregistration ensino-infantil flex min-h-screen flex-col items-center justify-between ${inter.className}`}
     >
       <div className="main-container">
         <Header />
