@@ -26,11 +26,6 @@ const Home = () => {
   const [partners, setPartners] = useState<any>([]);
   const [interacionistPartner, setInteracionistPartner] = useState<any>({});
 
-  console.log("pagesData", pagesData);
-  useEffect(() => {
-    console.log("pagesData", pagesData);
-  }, [pagesData]);
-
   const findHome = () => {
     const page = pagesData.find((pageItem: any) => pageItem.titulo === "Home");
     return page;
@@ -39,10 +34,6 @@ const Home = () => {
   const homePage = findHome();
 
   useEffect(() => {
-    console.log("isLoadingPages - index", isLoadingPages);
-    console.log("pages.data - index", pagesData.data);
-    console.log("heroImages", heroImages);
-
     if (pagesData?.length) {
       setHeroImages(
         homePage.blocos[0].item.carrossel.map((item: any) => item.item)
@@ -50,14 +41,14 @@ const Home = () => {
       setEducationLevel(
         homePage.blocos[1].item.ensinos.map((item: any) => item.item)
       );
-      setInteracionistPartner(pagesData[0].blocos[6].item);
+      setInteracionistPartner(pagesData[0].blocos[5].item);
       setProjects(
-        homePage.blocos[2].item.projetos.map((item: any) => item.item)
+        homePage.blocos[6].item.projetos.map((item: any) => item.item)
       );
-      setOurHistory(pagesData[0].blocos[5].item);
-      setOpenEnrollment(pagesData[0].blocos[3].item);
+      setOurHistory(pagesData[0].blocos[4].item);
+      setOpenEnrollment(pagesData[0].blocos[2].item);
       setPartners(
-        homePage.blocos[4].item.parceiros.map((item: any) => item.item)
+        homePage.blocos[3].item.parceiros.map((item: any) => item.item)
       );
     }
   }, [pagesData, isLoadingPages]);
@@ -78,7 +69,7 @@ const Home = () => {
           <OurHistory data={ourHistory} />
           <OpenEnrollment data={openEnrollment} />
           <Partners data={partners} />
-          <Footer />
+          <Footer hasEnsino />
         </div>
       </div>
       <NovicesModal />
