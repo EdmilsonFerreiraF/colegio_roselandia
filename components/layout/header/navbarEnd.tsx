@@ -6,7 +6,7 @@ const NavbarEnd = () => {
     <div className="navbar-end">
       <ul className="navbar-menu">
         <li className="navbar-item navbar-item--dropdown hover:cursor-pointer">
-          Ensino*
+          Ensino
           <ul className="navbar-sub-menu">
             <li>
               <Link href="/ensino-infantil">Infantil</Link>
@@ -23,7 +23,7 @@ const NavbarEnd = () => {
           </ul>
         </li>
         <li className="navbar-item navbar-item--dropdown hover:cursor-pointer">
-          Matrículas*
+          Matrículas
           <ul
             style={{
               left: "-13px",
@@ -54,7 +54,6 @@ const NavbarEnd = () => {
         </li>
       </ul>
       <div className="navbar-schedule-button">
-        {/* <div className="cutted-side"></div> */}
         <div className="btn hover:cursor-pointer">
           <a href="/agende-sua-visita">
             <Image

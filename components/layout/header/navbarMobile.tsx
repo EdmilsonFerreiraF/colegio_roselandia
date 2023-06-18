@@ -16,7 +16,6 @@ const NavbarMobile = () => {
         </Link>
       </div>
       <div className="navbar-schedule-button">
-        {/* <div className="cutted-side"></div> */}
         <div className="btn hover:cursor-pointer">
           <a href="/agende-sua-visita">
             <Image
