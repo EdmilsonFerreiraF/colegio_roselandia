@@ -35,7 +35,7 @@ const TVCR = () => {
       );
       setOpenEnrollment(pagesData[0].blocos[2].item);
     }
-  }, [pagesData, isLoadingPages]);
+  }, [pagesData, isLoadingPages, TVCRPage?.blocos]);
 
   return (
     <main

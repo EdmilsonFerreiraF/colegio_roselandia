@@ -41,7 +41,7 @@ const EnsinoInfantil = () => {
       );
       setOpenEnrollment(pagesData[0].blocos[2].item);
     }
-  }, [pagesData, isLoadingPages]);
+  }, [pagesData, isLoadingPages, kindergatenPage?.blocos]);
 
   return (
     <main

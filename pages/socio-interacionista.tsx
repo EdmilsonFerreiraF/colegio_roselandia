@@ -50,7 +50,12 @@ const SocioInteracionista = () => {
         homePage.blocos[3].item.parceiros.map((item: any) => item.item)
       );
     }
-  }, [pagesData, isLoadingPages]);
+  }, [
+    pagesData,
+    isLoadingPages,
+    interacionistPartnerPage?.blocos,
+    homePage?.blocos,
+  ]);
 
   return (
     <main

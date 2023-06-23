@@ -43,7 +43,7 @@ export default function Home() {
         )
       );
     }
-  }, [pagesData, isLoadingPages]);
+  }, [pagesData, isLoadingPages, workWithUsPage?.blocos]);
 
   const emailProps = {
     name: "Candidato",

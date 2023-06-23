@@ -43,16 +43,16 @@ const AgendarVisita = () => {
   useEffect(() => {
     if (pagesData?.length) {
       setHeroImages(
-        scheduleVisit.blocos[1].item.carrossel.map(
+        scheduleVisit.blocos[3].item.carrossel.map(
           (item: any) => item.item.imagem
         )
       );
       setEducationLevel(
-        scheduleVisit.blocos[2].item.ensinos.map((item: any) => item.item)
+        scheduleVisit.blocos[1].item.ensinos.map((item: any) => item.item)
       );
-      setScheduleForm(scheduleVisit.blocos[3].item);
+      setScheduleForm(scheduleVisit.blocos[2].item);
     }
-  }, [pagesData, isLoadingPages]);
+  }, [pagesData, isLoadingPages, scheduleVisit?.blocos]);
 
   const sendMail = async () => {
     const res = await fetch("/api/sendmail", {

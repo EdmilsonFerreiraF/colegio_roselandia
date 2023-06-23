@@ -73,7 +73,7 @@ const Contact = () => {
       setScheduleForm(contactPage.blocos[1].item);
       setOpenEnrollment(pagesData[0].blocos[2].item);
     }
-  }, [pagesData, isLoadingPages]);
+  }, [pagesData, isLoadingPages, contactPage?.blocos]);
 
   return (
     <main

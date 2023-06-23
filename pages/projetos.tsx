@@ -38,7 +38,7 @@ const Projects = () => {
       );
       setOpenEnrollment(pagesData[0].blocos[2].item);
     }
-  }, [pagesData, isLoadingPages]);
+  }, [pagesData, isLoadingPages, projectsPage?.blocos]);
 
   return (
     <main

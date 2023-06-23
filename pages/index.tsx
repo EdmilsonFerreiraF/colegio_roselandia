@@ -51,7 +51,7 @@ const Home = () => {
         homePage.blocos[3].item.parceiros.map((item: any) => item.item)
       );
     }
-  }, [pagesData, isLoadingPages]);
+  }, [pagesData, isLoadingPages, homePage?.blocos]);
 
   return (
     <main

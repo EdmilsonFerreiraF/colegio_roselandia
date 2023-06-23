@@ -32,7 +32,7 @@ const Rematricula = () => {
         )
       );
     }
-  }, [pagesData, isLoadingPages]);
+  }, [pagesData, isLoadingPages, reregistrationPage?.blocos]);
 
   return (
     <main

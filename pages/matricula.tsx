@@ -68,7 +68,7 @@ const Matricula = () => {
       );
       setOpenEnrollment(pagesData[0].blocos[2].item);
     }
-  }, [pagesData, isLoadingPages]);
+  }, [pagesData, isLoadingPages, homePage?.blocos, matriculaPage?.blocos]);
 
   const sendMail = async () => {
     // try {

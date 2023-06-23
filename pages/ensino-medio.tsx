@@ -44,7 +44,7 @@ const EnsinoMedio = () => {
       );
       setOpenEnrollment(homePage.blocos[2].item);
     }
-  }, [pagesData, isLoadingPages]);
+  }, [pagesData, isLoadingPages, homePage?.blocos, highSchoolPage?.blocos]);
 
   return (
     <main

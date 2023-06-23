@@ -41,7 +41,7 @@ const EnsinoFundamental2 = () => {
       );
       setOpenEnrollment(pagesData[0].blocos[2].item);
     }
-  }, [pagesData, isLoadingPages]);
+  }, [pagesData, isLoadingPages, elementary2Page?.blocos]);
 
   return (
     <main

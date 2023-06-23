@@ -38,7 +38,7 @@ const NossaHistoria = () => {
       setDocumentary(ourHistoryPage.blocos[1].item);
       setOpenEnrollment(homePage.blocos[2].item);
     }
-  }, [pagesData, isLoadingPages]);
+  }, [pagesData, isLoadingPages, ourHistoryPage?.blocos, homePage?.blocos]);
 
   return (
     <main
