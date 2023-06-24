@@ -19,6 +19,7 @@ const EnsinoInfantil = () => {
   const [projects, setProjects] = useState([]);
   const [openEnrollment, setOpenEnrollment] = useState([]);
   const [footer, setFooter] = useState<any>({});
+  const [header, setHeader] = useState<any>({});
 
   const findPage = (page: "Home" | "Ensino Infantil" | "Geral") => {
     const pageData = pagesData.find(
@@ -29,6 +30,7 @@ const EnsinoInfantil = () => {
 
   const kindergatenPage = findPage("Ensino Infantil");
   const generalPage = findPage("Geral");
+
   useEffect(() => {
     if (pagesData?.length) {
       setEducationLevel(kindergatenPage.blocos[1].item);
@@ -41,6 +43,7 @@ const EnsinoInfantil = () => {
         kindergatenPage.blocos[2].item.projetos.map((item: any) => item.item)
       );
       setOpenEnrollment(pagesData[0].blocos[2].item);
+      setHeader(generalPage.blocos[1].item);
       setFooter(generalPage.blocos[0].item);
     }
   }, [pagesData, isLoadingPages, kindergatenPage?.blocos, generalPage?.blocos]);
@@ -50,7 +53,7 @@ const EnsinoInfantil = () => {
       className={`ensino-infantil flex min-h-screen flex-col items-center justify-between ${inter.className}`}
     >
       <div className="main-container">
-        <Header />
+        <Header studentGuide={header.guia_do_estudante} />;
         <div className="main">
           <div className="hero">
             <Image

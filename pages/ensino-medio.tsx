@@ -19,6 +19,7 @@ const EnsinoMedio = () => {
   const [projects, setProjects] = useState([]);
   const [openEnrollment, setOpenEnrollment] = useState([]);
   const [footer, setFooter] = useState<any>({});
+  const [header, setHeader] = useState<any>({});
 
   const findPage = (page: "Home" | "Ensino Médio" | "Geral") => {
     const pageData = pagesData.find(
@@ -47,6 +48,7 @@ const EnsinoMedio = () => {
       );
       setOpenEnrollment(homePage.blocos[2].item);
       setFooter(generalPage.blocos[0].item);
+      setHeader(generalPage.blocos[1].item);
     }
   }, [
     pagesData,
@@ -61,7 +63,7 @@ const EnsinoMedio = () => {
       className={`ensino-infantil flex min-h-screen flex-col items-center justify-between ${inter.className}`}
     >
       <div className="main-container">
-        <Header />
+        <Header studentGuide={header.guia_do_estudante} />;{" "}
         <div className="main">
           <div className="hero">
             <Image

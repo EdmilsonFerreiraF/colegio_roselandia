@@ -33,6 +33,7 @@ const Matricula = () => {
     studentName: "",
     studentGrade: "",
   });
+  const [header, setHeader] = useState<any>({});
 
   const handleInputChange = (e: any) => {
     setFields((prevState: any) => {
@@ -73,6 +74,7 @@ const Matricula = () => {
       );
       setOpenEnrollment(pagesData[0].blocos[2].item);
       setFooter(generalPage.blocos[0].item);
+      setHeader(generalPage.blocos[1].item);
     }
   }, [
     pagesData,
@@ -113,7 +115,7 @@ const Matricula = () => {
       className={`registration flex min-h-screen flex-col items-center justify-between ${inter.className}`}
     >
       <div className="main-container">
-        <Header />
+        <Header studentGuide={header.guia_do_estudante} />;{" "}
         <div className="main">
           <div
             className="registration hero"

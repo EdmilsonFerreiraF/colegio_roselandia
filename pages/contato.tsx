@@ -16,6 +16,7 @@ const Contact = () => {
   const [heroImages, setHeroImages] = useState([]);
   const [scheduleForm, setScheduleForm] = useState<any>({});
   const [footer, setFooter] = useState<any>({});
+  const [header, setHeader] = useState<any>({});
   const [fields, setFields] = useState({
     name: "",
     responsibleEmail: "",
@@ -74,6 +75,7 @@ const Contact = () => {
       setScheduleForm(contactPage.blocos[1].item);
       setOpenEnrollment(pagesData[0].blocos[2].item);
       setFooter(generalPage.blocos[0].item);
+      setHeader(generalPage.blocos[1].item);
     }
   }, [pagesData, isLoadingPages, contactPage?.blocos, generalPage?.blocos]);
 
@@ -82,7 +84,7 @@ const Contact = () => {
       className={`contact schedule-visit flex min-h-screen flex-col items-center justify-between ${inter.className}`}
     >
       <div className="main-container">
-        <Header />
+        <Header studentGuide={header.guia_do_estudante} />{" "}
         <div className="main">
           <div className="hero">
             <Image

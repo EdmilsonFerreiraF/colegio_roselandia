@@ -16,6 +16,8 @@ export default function Home() {
   const [heroImages, setHeroImages] = useState([]);
   const [scheduleForm, setScheduleForm] = useState<any>({});
   const [footer, setFooter] = useState<any>({});
+  const [header, setHeader] = useState<any>({});
+
   const findPage = (page: "Home" | "Trabalhe conosco" | "Geral") => {
     const pageData = pagesData.find(
       (pageItem: any) => pageItem.titulo === page
@@ -25,6 +27,7 @@ export default function Home() {
 
   const workWithUsPage = findPage("Trabalhe conosco");
   const generalPage = findPage("Geral");
+
   const handleSelectJob = (e: any) => {
     setSelectedJob(e.target.value);
   };
@@ -43,6 +46,7 @@ export default function Home() {
         )
       );
       setFooter(generalPage.blocos[0].item);
+      setHeader(generalPage.blocos[1].item);
     }
   }, [pagesData, isLoadingPages, workWithUsPage?.blocos, generalPage?.blocos]);
 
@@ -59,7 +63,7 @@ export default function Home() {
       className={`work-with-us flex min-h-screen flex-col items-center justify-between ${inter.className}`}
     >
       <div className="main-container">
-        <Header />
+        <Header studentGuide={header.guia_do_estudante} />;{" "}
         <div className="main">
           <div className="hero">
             <Image

@@ -17,6 +17,8 @@ const Projects = () => {
   const [projectsInside, setProjectsInside] = useState([]);
   const [openEnrollment, setOpenEnrollment] = useState([]);
   const [footer, setFooter] = useState<any>({});
+  const [header, setHeader] = useState<any>({});
+
   const findPage = (page: "Home" | "Projetos" | "Geral") => {
     const pageData = pagesData.find(
       (pageItem: any) => pageItem.titulo === page
@@ -38,15 +40,16 @@ const Projects = () => {
       );
       setOpenEnrollment(pagesData[0].blocos[2].item);
       setFooter(generalPage.blocos[0].item);
+      setHeader(generalPage.blocos[1].item);
     }
   }, [pagesData, isLoadingPages, projectsPage?.blocos, generalPage?.blocos]);
 
   return (
     <main
-      className={`projects-page projects flex min-h-screen flex-col items-center justify-between ${inter.className}`}
+      className={`projects-page flex min-h-screen flex-col items-center justify-between ${inter.className}`}
     >
       <div className="main-container">
-        <Header />
+        <Header studentGuide={header.guia_do_estudante} />;{" "}
         <div className="main">
           <div className="hero">
             <Image

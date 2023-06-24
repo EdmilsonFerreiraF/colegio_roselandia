@@ -22,6 +22,7 @@ const SocioInteracionista = () => {
   const [interacionistPartner, setInteracionistPartner] = useState<any>({});
   const [heroImages, setHeroImages] = useState([]);
   const [footer, setFooter] = useState<any>({});
+  const [header, setHeader] = useState<any>({});
 
   const findPage = (page: "Home" | "Sócio Interacionista" | "Geral") => {
     const pageData = pagesData.find(
@@ -52,6 +53,7 @@ const SocioInteracionista = () => {
         homePage.blocos[3].item.parceiros.map((item: any) => item.item)
       );
       setFooter(generalPage.blocos[0].item);
+      setHeader(generalPage.blocos[1].item);
     }
   }, [
     pagesData,
@@ -66,7 +68,7 @@ const SocioInteracionista = () => {
       className={`interacionist-partner flex min-h-screen flex-col items-center justify-between ${inter.className}`}
     >
       <div className="main-container">
-        <Header />
+        <Header studentGuide={header.guia_do_estudante} />;{" "}
         <div className="main">
           <div className="hero">
             <Image

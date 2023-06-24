@@ -26,6 +26,7 @@ const Home = () => {
   const [partners, setPartners] = useState<any>([]);
   const [interacionistPartner, setInteracionistPartner] = useState<any>({});
   const [footer, setFooter] = useState<any>({});
+  const [header, setHeader] = useState<any>({});
 
   const findPage = (page: "Home" | "Geral") => {
     const pageData = pagesData.find(
@@ -55,6 +56,7 @@ const Home = () => {
         homePage.blocos[3].item.parceiros.map((item: any) => item.item)
       );
       setFooter(generalPage.blocos[0].item);
+      setHeader(generalPage.blocos[1].item);
     }
   }, [pagesData, isLoadingPages, homePage?.blocos, generalPage?.blocos]);
 
@@ -63,7 +65,7 @@ const Home = () => {
       className={`index flex min-h-screen flex-col items-center justify-between ${inter.className}`}
     >
       <div className="main-container">
-        <Header />
+        <Header studentGuide={header.guia_do_estudante} />;{" "}
         <div className="main">
           <div className="hero">
             <Carousel images={heroImages} />

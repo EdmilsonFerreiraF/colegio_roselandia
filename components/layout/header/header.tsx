@@ -3,11 +3,11 @@ import NavbarLogo from "./navbarLogo";
 import NavbarMobile from "./navbarMobile";
 import NavbarTop from "./navbarTop";
 
-const Header = () => {
+const Header = ({ studentGuide }: any) => {
   return (
     <>
       <div className="topbar">
-        <NavbarTop />
+        <NavbarTop studentGuide={studentGuide} />
       </div>
       <nav className="navbar">
         <div className="navbar-wrapper">

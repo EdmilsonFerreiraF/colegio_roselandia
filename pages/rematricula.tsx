@@ -3,7 +3,6 @@ import Header from "@/components/layout/header/header";
 import { baseURL } from "@/constants/baseURL";
 import { AppContext } from "@/contexts/appProvider";
 import { Inter } from "next/font/google";
-import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -16,6 +15,7 @@ const Rematricula = () => {
   const [heroImages, setHeroImages] = useState([]);
   const [reregistration, setReregistration] = useState<any>({});
   const [footer, setFooter] = useState<any>({});
+  const [header, setHeader] = useState<any>({});
 
   const findPage = (title: "Rematrícula" | "Geral") => {
     const pageData = pagesData.find(
@@ -38,6 +38,7 @@ const Rematricula = () => {
       );
       setReregistration(reregistrationPage.blocos[1].item);
       setFooter(generalPage.blocos[0].item);
+      setHeader(generalPage.blocos[1].item);
     }
   }, [
     pagesData,
@@ -53,7 +54,7 @@ const Rematricula = () => {
       className={`reregistration ensino-infantil flex min-h-screen flex-col items-center justify-between ${inter.className}`}
     >
       <div className="main-container">
-        <Header />
+        <Header studentGuide={header.guia_do_estudante} />;{" "}
         <div className="main">
           <div
             className="reregistration hero"

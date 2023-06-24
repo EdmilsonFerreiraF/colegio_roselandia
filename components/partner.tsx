@@ -8,7 +8,7 @@ type IProps = {
 const Partner = ({ partner }: IProps) => {
   return (
     <div className="partner-item">
-      <a href={`${baseURL}/assets/${partner.link}`} target="_blank">
+      <a href={partner.link} target="_blank">
         <Image
           src={`${baseURL}/assets/${partner.logo}`}
           alt="parceiro"

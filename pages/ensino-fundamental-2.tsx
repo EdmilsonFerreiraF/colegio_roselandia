@@ -19,6 +19,8 @@ const EnsinoFundamental2 = () => {
   const [projects, setProjects] = useState([]);
   const [openEnrollment, setOpenEnrollment] = useState([]);
   const [footer, setFooter] = useState<any>({});
+  const [header, setHeader] = useState<any>({});
+
   const findPage = (page: "Home" | "Ensino Fundamental 2" | "Geral") => {
     const pageData = pagesData.find(
       (pageItem: any) => pageItem.titulo === page
@@ -41,6 +43,7 @@ const EnsinoFundamental2 = () => {
       );
       setOpenEnrollment(pagesData[0].blocos[2].item);
       setFooter(generalPage.blocos[0].item);
+      setHeader(generalPage.blocos[1].item);
     }
   }, [pagesData, isLoadingPages, elementary2Page?.blocos, generalPage?.blocos]);
 
@@ -49,7 +52,7 @@ const EnsinoFundamental2 = () => {
       className={`ensino-infantil flex min-h-screen flex-col items-center justify-between ${inter.className}`}
     >
       <div className="main-container">
-        <Header />
+        <Header studentGuide={header.guia_do_estudante} />{" "}
         <div className="main">
           <div className="hero">
             <Image

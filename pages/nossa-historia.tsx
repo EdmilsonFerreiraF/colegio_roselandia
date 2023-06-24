@@ -19,6 +19,8 @@ const NossaHistoria = () => {
   const [ourHistory, setOurHistory] = useState([]);
   const [openEnrollment, setOpenEnrollment] = useState([]);
   const [footer, setFooter] = useState<any>({});
+  const [header, setHeader] = useState<any>({});
+
   const findPage = (page: "Home" | "Nossa história" | "Geral") => {
     const pageData = pagesData.find(
       (pageItem: any) => pageItem.titulo === page
@@ -38,6 +40,7 @@ const NossaHistoria = () => {
       setDocumentary(ourHistoryPage.blocos[1].item);
       setOpenEnrollment(homePage.blocos[2].item);
       setFooter(generalPage.blocos[0].item);
+      setHeader(generalPage.blocos[1].item);
     }
   }, [
     pagesData,
@@ -52,7 +55,7 @@ const NossaHistoria = () => {
       className={`our-history-page flex min-h-screen flex-col items-center justify-between ${inter.className}`}
     >
       <div className="index">
-        <Header />
+        <Header studentGuide={header.guia_do_estudante} />;{" "}
         <div className="main">
           <div className="hero">
             <Image

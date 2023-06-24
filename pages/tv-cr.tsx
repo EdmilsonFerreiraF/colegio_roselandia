@@ -16,6 +16,7 @@ const TVCR = () => {
   const [projects, setProjects] = useState([]);
   const [openEnrollment, setOpenEnrollment] = useState([]);
   const [footer, setFooter] = useState<any>({});
+  const [header, setHeader] = useState<any>({});
 
   const findPage = (page: "Home" | "TV CR" | "Geral") => {
     const pageData = pagesData.find(
@@ -26,6 +27,7 @@ const TVCR = () => {
 
   const TVCRPage = findPage("TV CR");
   const generalPage = findPage("Geral");
+
   useEffect(() => {
     if (pagesData?.length) {
       setHeroImages(
@@ -36,6 +38,7 @@ const TVCR = () => {
       );
       setOpenEnrollment(pagesData[0].blocos[2].item);
       setFooter(generalPage.blocos[0].item);
+      setHeader(generalPage.blocos[1].item);
     }
   }, [pagesData, isLoadingPages, TVCRPage?.blocos, generalPage?.blocos]);
 
@@ -44,7 +47,7 @@ const TVCR = () => {
       className={`tv-cr flex min-h-screen flex-col items-center justify-between ${inter.className}`}
     >
       <div className="main-container">
-        <Header />
+        <Header studentGuide={header.guia_do_estudante} />;{" "}
         <div className="main">
           <div className="hero">
             <Image
