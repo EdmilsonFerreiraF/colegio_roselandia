@@ -15,8 +15,8 @@ export default function Home() {
   const [selectedJob, setSelectedJob] = useState("Vagas Disponíveis");
   const [heroImages, setHeroImages] = useState([]);
   const [scheduleForm, setScheduleForm] = useState<any>({});
-
-  const findPage = (page: "Home" | "Trabalhe conosco") => {
+  const [footer, setFooter] = useState<any>({});
+  const findPage = (page: "Home" | "Trabalhe conosco" | "Geral") => {
     const pageData = pagesData.find(
       (pageItem: any) => pageItem.titulo === page
     );
@@ -24,7 +24,7 @@ export default function Home() {
   };
 
   const workWithUsPage = findPage("Trabalhe conosco");
-
+  const generalPage = findPage("Geral");
   const handleSelectJob = (e: any) => {
     setSelectedJob(e.target.value);
   };
@@ -42,8 +42,9 @@ export default function Home() {
           (item: any) => item.item
         )
       );
+      setFooter(generalPage.blocos[0].item);
     }
-  }, [pagesData, isLoadingPages, workWithUsPage?.blocos]);
+  }, [pagesData, isLoadingPages, workWithUsPage?.blocos, generalPage?.blocos]);
 
   const emailProps = {
     name: "Candidato",
@@ -100,7 +101,11 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <Footer />
+          <Footer
+            phonesStart={footer?.rodape_inicio_tel}
+            address={footer?.rodape_endereco}
+            phonesEnd={footer?.rodape_final_tel}
+          />
         </div>
       </div>
     </main>

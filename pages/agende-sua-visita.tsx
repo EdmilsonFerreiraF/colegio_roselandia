@@ -16,6 +16,7 @@ const AgendarVisita = () => {
   const [heroImages, setHeroImages] = useState([]);
   const [educationLevel, setEducationLevel] = useState([]);
   const [scheduleForm, setScheduleForm] = useState<any>({});
+  const [footer, setFooter] = useState<any>({});
 
   const [fields, setFields] = useState({
     studentName: "",
@@ -30,7 +31,7 @@ const AgendarVisita = () => {
     });
   };
 
-  const findHome = (page: "Home" | "Agende sua visita") => {
+  const findHome = (page: "Home" | "Agende sua visita" | "Geral") => {
     const pageData = pagesData.find(
       (pageItem: any) => pageItem.titulo === page
     );
@@ -39,6 +40,7 @@ const AgendarVisita = () => {
   };
 
   const scheduleVisit = findHome("Agende sua visita");
+  const generalPage = findHome("Geral");
 
   useEffect(() => {
     if (pagesData?.length) {
@@ -51,8 +53,9 @@ const AgendarVisita = () => {
         scheduleVisit.blocos[1].item.ensinos.map((item: any) => item.item)
       );
       setScheduleForm(scheduleVisit.blocos[2].item);
+      setFooter(generalPage.blocos[0].item);
     }
-  }, [pagesData, isLoadingPages, scheduleVisit?.blocos]);
+  }, [pagesData, isLoadingPages, scheduleVisit?.blocos, generalPage?.blocos]);
 
   const sendMail = async () => {
     const res = await fetch("/api/sendmail", {
@@ -77,6 +80,8 @@ const AgendarVisita = () => {
     console.log("res", res);
   };
 
+  console.log("footer", footer);
+
   return (
     <main
       className={`schedule-visit flex min-h-screen flex-col items-center justify-between ${inter.className}`}
@@ -99,7 +104,11 @@ const AgendarVisita = () => {
             handleChange={handleInputChange}
           />
           <EducationLevel data={educationLevel} />
-          <Footer />
+          <Footer
+            phonesStart={footer?.rodape_inicio_tel}
+            address={footer?.rodape_endereco}
+            phonesEnd={footer?.rodape_final_tel}
+          />
         </div>
       </div>
     </main>

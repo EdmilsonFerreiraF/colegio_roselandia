@@ -15,7 +15,7 @@ const Contact = () => {
   const [openEnrollment, setOpenEnrollment] = useState([]);
   const [heroImages, setHeroImages] = useState([]);
   const [scheduleForm, setScheduleForm] = useState<any>({});
-
+  const [footer, setFooter] = useState<any>({});
   const [fields, setFields] = useState({
     name: "",
     responsibleEmail: "",
@@ -54,7 +54,7 @@ const Contact = () => {
     console.log("pagesData", pagesData);
   }, [pagesData]);
 
-  const findPage = (page: "Home" | "Contato") => {
+  const findPage = (page: "Home" | "Contato" | "Geral") => {
     const pageData = pagesData.find(
       (pageItem: any) => pageItem.titulo === page
     );
@@ -62,6 +62,7 @@ const Contact = () => {
   };
 
   const contactPage = findPage("Contato");
+  const generalPage = findPage("Geral");
 
   useEffect(() => {
     if (pagesData?.length) {
@@ -72,8 +73,9 @@ const Contact = () => {
       );
       setScheduleForm(contactPage.blocos[1].item);
       setOpenEnrollment(pagesData[0].blocos[2].item);
+      setFooter(generalPage.blocos[0].item);
     }
-  }, [pagesData, isLoadingPages, contactPage?.blocos]);
+  }, [pagesData, isLoadingPages, contactPage?.blocos, generalPage?.blocos]);
 
   return (
     <main
@@ -98,8 +100,12 @@ const Contact = () => {
           <OpenEnrollment
             data={openEnrollment}
             handleInput={handleInputChange}
+          />{" "}
+          <Footer
+            phonesStart={footer?.rodape_inicio_tel}
+            address={footer?.rodape_endereco}
+            phonesEnd={footer?.rodape_final_tel}
           />
-          <Footer />
         </div>
       </div>
     </main>

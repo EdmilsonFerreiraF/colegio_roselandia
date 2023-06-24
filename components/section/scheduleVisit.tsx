@@ -1,32 +1,45 @@
+import { baseURL } from "@/constants/baseURL";
 import Image from "next/image";
 
 const ScheduleVisit = ({
   formDescription,
   scheduleForm,
+  registrationInform,
   sendMail,
   fields,
   handleInput,
 }: any) => {
   return (
     <div className="agende-sua-visita">
-      <div className="content">
-        <div className="btn hover:cursor-pointer registration-schedule-visit">
-          <a href="/agende-sua-visita">
-            <Image
-              width="100"
-              height="100"
-              className="hover:cursor-pointer"
-              src="agende-sua-visita-botao.png"
-              alt="colegio roselandia logo"
-            />
-          </a>
+      <div className="description">
+        <div className="content">
+          <div className="btn hover:cursor-pointer registration-schedule-visit">
+            <a href="/agende-sua-visita">
+              <Image
+                width="100"
+                height="100"
+                className="hover:cursor-pointer"
+                src="agende-sua-visita-botao.png"
+                alt="colegio roselandia logo"
+              />
+            </a>
+          </div>
+          <div className="form-description">
+            <div
+              dangerouslySetInnerHTML={{
+                __html: formDescription,
+              }}
+            ></div>
+          </div>
         </div>
-        <div className="form-description">
-          <div
-            dangerouslySetInnerHTML={{
-              __html: formDescription,
-            }}
-          ></div>
+        <div>
+          <a
+            href={`${baseURL}/assets/${registrationInform}.pdf`}
+            target="_blank"
+            className="registration-inform"
+          >
+            Edital de matrícula
+          </a>
         </div>
       </div>
       <div className="form">

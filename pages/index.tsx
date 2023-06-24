@@ -25,13 +25,17 @@ const Home = () => {
   const [openEnrollment, setOpenEnrollment] = useState<any>([]);
   const [partners, setPartners] = useState<any>([]);
   const [interacionistPartner, setInteracionistPartner] = useState<any>({});
+  const [footer, setFooter] = useState<any>({});
 
-  const findHome = () => {
-    const page = pagesData.find((pageItem: any) => pageItem.titulo === "Home");
-    return page;
+  const findPage = (page: "Home" | "Geral") => {
+    const pageData = pagesData.find(
+      (pageItem: any) => pageItem.titulo === page
+    );
+    return pageData;
   };
 
-  const homePage = findHome();
+  const homePage = findPage("Home");
+  const generalPage = findPage("Geral");
 
   useEffect(() => {
     if (pagesData?.length) {
@@ -50,8 +54,9 @@ const Home = () => {
       setPartners(
         homePage.blocos[3].item.parceiros.map((item: any) => item.item)
       );
+      setFooter(generalPage.blocos[0].item);
     }
-  }, [pagesData, isLoadingPages, homePage?.blocos]);
+  }, [pagesData, isLoadingPages, homePage?.blocos, generalPage?.blocos]);
 
   return (
     <main
@@ -69,7 +74,11 @@ const Home = () => {
           <OurHistory data={ourHistory} />
           <OpenEnrollment data={openEnrollment} />
           <Partners data={partners} />
-          <Footer hasEnsino />
+          <Footer
+            phonesStart={footer?.rodape_inicio_tel}
+            address={footer?.rodape_endereco}
+            phonesEnd={footer?.rodape_final_tel}
+          />
         </div>
       </div>
       <NovicesModal />

@@ -16,8 +16,8 @@ const Projects = () => {
   const [heroImages, setHeroImages] = useState([]);
   const [projectsInside, setProjectsInside] = useState([]);
   const [openEnrollment, setOpenEnrollment] = useState([]);
-
-  const findPage = (page: "Home" | "Projetos") => {
+  const [footer, setFooter] = useState<any>({});
+  const findPage = (page: "Home" | "Projetos" | "Geral") => {
     const pageData = pagesData.find(
       (pageItem: any) => pageItem.titulo === page
     );
@@ -25,7 +25,7 @@ const Projects = () => {
   };
 
   const projectsPage = findPage("Projetos");
-
+  const generalPage = findPage("Geral");
   useEffect(() => {
     if (pagesData?.length) {
       setHeroImages(
@@ -37,8 +37,9 @@ const Projects = () => {
         projectsPage.blocos[0].item.ensinos.map((item: any) => item.item)
       );
       setOpenEnrollment(pagesData[0].blocos[2].item);
+      setFooter(generalPage.blocos[0].item);
     }
-  }, [pagesData, isLoadingPages, projectsPage?.blocos]);
+  }, [pagesData, isLoadingPages, projectsPage?.blocos, generalPage?.blocos]);
 
   return (
     <main
@@ -68,7 +69,11 @@ const Projects = () => {
           </div>
           <ProjectsInside projects={projectsInside} />
           <OpenEnrollment data={openEnrollment} />
-          <Footer />
+          <Footer
+            phonesStart={footer?.rodape_inicio_tel}
+            address={footer?.rodape_endereco}
+            phonesEnd={footer?.rodape_final_tel}
+          />
         </div>
       </div>
     </main>

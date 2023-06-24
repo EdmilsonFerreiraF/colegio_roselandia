@@ -54,8 +54,11 @@ body {
   height: auto;
 }
 
-.reregistration .hero {
-  height: auto;
+.reregistration.hero {
+  min-height: 116px;
+  max-height: 170px;
+  height: calc(6vw + 9rem);
+  background-size: cover;
 }
 
 .hero img {
@@ -70,6 +73,15 @@ body {
 .index .hero {
   /* height: 31.3vw; */
   height: calc(27vw + 7rem);
+}
+
+@media (max-width: 1920px) {
+  .reregistration.hero {
+    min-height: 116px;
+    max-height: 170px;
+    background-size: initial;
+    height: calc(6vw + 9rem);
+  }
 }
 /*/ ////*/
 
@@ -466,13 +478,14 @@ img {
 /*/////*/
 
 /*/ /////////////////////////       REMATRÍCULA          ////////////////////////*/
-.reregistration .reregistration {
+.reregistration .reregistration-section {
   max-width: 1200px;
   margin: auto;
   margin-bottom: 1rem;
+  padding: 0 2%;
 }
 
-.reregistration {
+.reregistration .reregistration-section {
   margin-bottom: calc(3.5vw + 1rem);
 }
 
@@ -1076,6 +1089,12 @@ img {
   top: -7%;
 }
 
+.registration .agende-sua-visita .description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .registration .agende-sua-visita .content {
   background: #25678a;
   position: relative;
@@ -1105,6 +1124,24 @@ img {
   padding: 8px;
   width: 85%;
   margin: 0 auto;
+}
+
+.registration .agende-sua-visita .registration-inform {
+  background: #f7be0f;
+  font-size: 22px;
+  text-align: center;
+  padding: 8px;
+  width: 85%;
+  margin: 0 auto;
+  width: 100%;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #25678a;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (max-width: 1009px) {

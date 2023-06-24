@@ -24,7 +24,8 @@ const Matricula = () => {
   const [partners, setPartners] = useState([]);
   const [scheduleForm, setScheduleForm] = useState<any>({});
   const [formDescription, setFormDescription] = useState<any>("");
-
+  const [registrationInform, setRegistrationInform] = useState<any>("");
+  const [footer, setFooter] = useState<any>({});
   const [fields, setFields] = useState({
     name: "",
     email: "",
@@ -39,7 +40,7 @@ const Matricula = () => {
     });
   };
 
-  const findPage = (page: "Home" | "Matrícula") => {
+  const findPage = (page: "Home" | "Matrícula" | "Geral") => {
     const pageData = pagesData.find(
       (pageItem: any) => pageItem.titulo === page
     );
@@ -48,6 +49,7 @@ const Matricula = () => {
 
   const homePage = findPage("Home");
   const matriculaPage = findPage("Matrícula");
+  const generalPage = findPage("Geral");
 
   useEffect(() => {
     if (pagesData?.length) {
@@ -55,6 +57,9 @@ const Matricula = () => {
         matriculaPage.blocos[0].item.atributos_escola.map(
           (item: any) => item.item
         )
+      );
+      setRegistrationInform(
+        matriculaPage.blocos[0].item.edital_matricula_arquivo
       );
       setFormDescription(matriculaPage.blocos[0].item.descricao_formulario);
       setScheduleForm(matriculaPage.blocos[0].item.formulario[0].item);
@@ -67,8 +72,15 @@ const Matricula = () => {
         homePage.blocos[6].item.projetos.map((item: any) => item.item)
       );
       setOpenEnrollment(pagesData[0].blocos[2].item);
+      setFooter(generalPage.blocos[0].item);
     }
-  }, [pagesData, isLoadingPages, homePage?.blocos, matriculaPage?.blocos]);
+  }, [
+    pagesData,
+    isLoadingPages,
+    homePage?.blocos,
+    matriculaPage?.blocos,
+    generalPage?.blocos,
+  ]);
 
   const sendMail = async () => {
     // try {
@@ -113,6 +125,7 @@ const Matricula = () => {
             <SchoolAttributes data={schoolAttributes} />
           </div>
           <ScheduleVisit
+            registrationInform={registrationInform}
             formDescription={formDescription}
             scheduleForm={scheduleForm}
             sendMail={sendMail}
@@ -123,7 +136,11 @@ const Matricula = () => {
           <OurHistory data={ourHistory} />
           <OpenEnrollment data={openEnrollment} />
           <Partners data={partners} />
-          <Footer />
+          <Footer
+            phonesStart={footer?.rodape_inicio_tel}
+            address={footer?.rodape_endereco}
+            phonesEnd={footer?.rodape_final_tel}
+          />
         </div>
       </div>
     </main>

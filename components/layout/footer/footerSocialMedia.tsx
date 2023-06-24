@@ -3,7 +3,7 @@ import Image from "next/image";
 const FooterSocialMedia = ({ link, media }: any) => {
   return (
     <li className="social-medias-item">
-      <a href={link}>
+      <a href={link} target="_blank">
         <Image
           width="50"
           height="50"

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const FooterStart = ({ hasEnsino }: any) => {
+const FooterStart = ({ phones, hasEnsino }: any) => {
   return (
     <div className="footer-start">
       <ul className="channel-menu">
@@ -33,7 +33,9 @@ const FooterStart = ({ hasEnsino }: any) => {
       </ul>
       <ul className="phones">
         <div className="tile">Telefones</div>
-        <li>(71) 3252-8954</li>
+        {phones?.map((phone: any) => (
+          <li key={phone?.item}>{phone?.item?.numero}</li>
+        ))}
       </ul>
     </div>
   );

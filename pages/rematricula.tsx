@@ -14,15 +14,20 @@ const Rematricula = () => {
     window.location.href = url;
   };
   const [heroImages, setHeroImages] = useState([]);
+  const [reregistration, setReregistration] = useState<any>({});
+  const [footer, setFooter] = useState<any>({});
 
-  const findPage = () => {
+  const findPage = (title: "Rematrícula" | "Geral") => {
     const pageData = pagesData.find(
-      (pageItem: any) => pageItem.titulo === "Rematrícula"
+      (pageItem: any) => pageItem.titulo === title
     );
+
     return pageData;
   };
 
-  const reregistrationPage = findPage();
+  console.log("reregistration", reregistration);
+  const reregistrationPage = findPage("Rematrícula");
+  const generalPage = findPage("Geral");
 
   useEffect(() => {
     if (pagesData?.length) {
@@ -31,8 +36,17 @@ const Rematricula = () => {
           (item: any) => item.item.imagem
         )
       );
+      setReregistration(reregistrationPage.blocos[1].item);
+      setFooter(generalPage.blocos[0].item);
     }
-  }, [pagesData, isLoadingPages, reregistrationPage?.blocos]);
+  }, [
+    pagesData,
+    isLoadingPages,
+    reregistrationPage?.blocos,
+    generalPage?.blocos,
+  ]);
+
+  console.log("footer", footer);
 
   return (
     <main
@@ -41,60 +55,35 @@ const Rematricula = () => {
       <div className="main-container">
         <Header />
         <div className="main">
-          <div className="hero">
-            <Image
-              width="100"
-              height="100"
-              src={`${baseURL}/assets/${heroImages}`}
-              alt=""
-            />
-          </div>
-          <div className="reregistration">
+          <div
+            className="reregistration hero"
+            style={{
+              background: `url(${baseURL}/assets/${heroImages}) no-repeat 27% 0`,
+            }}
+          ></div>
+          <div className="reregistration-section">
             <div className="description">
-              <div className="title title--upper">
-                Acreditamos em uma união duradoura e de sucesso!
-              </div>
-              <div className="text">
-                Estamos vivendo grandes momentos juntos!!! O nosso desafio maior
-                é ser na vida de nossos estudantes a presença que necessitam
-                para um pleno crescimento como um ser humano integral e mais
-                feliz!
-              </div>
-              <div className="text">
-                Continuamos acreditando que a educação é a ferramenta mais
-                eficaz de desenvolver habilidades para se posicionarem como
-                protagonistas dentro do enredo social.
-              </div>
-            </div>
-            <div className="description">
-              <div className="title">
-                Agradecemos por fazerem parte da Família Roselandia!
-              </div>
-              <div className="text">
-                Para MATRÍCULAS 2024, vamos oferecer uma condição diferenciada
-                de REMATRÍCULA ANTECIPADA, a partir de OUTUBRO/2023.
-              </div>
+              <div
+                className="text"
+                dangerouslySetInnerHTML={{ __html: reregistration.texto }}
+              ></div>
             </div>
             <div className="action">
-              <div className="texts">
-                <div className="text">
-                  Sigam corretamente as orientações do EDITAL DE MATRÍCULAS a
-                  ser publicado.
-                </div>
-                <div className="text">
-                  Atentem, especialmente, para os prazos estabelecidos para
-                  efetivação de Matrícula.
-                </div>
-              </div>
-              <button
+              <a
+                href={`${baseURL}/assets/${reregistration.edital_rematricula}.pdf`}
+                target="_blank"
                 className="edital-button"
-                onClick={() => handlePageClick("/agende-sua-visita")}
+                download="Edital de rematricula"
               >
                 Edital de Rematrícula
-              </button>
+              </a>
             </div>
           </div>
-          <Footer />
+          <Footer
+            phonesStart={footer?.rodape_inicio_tel}
+            address={footer?.rodape_endereco}
+            phonesEnd={footer?.rodape_final_tel}
+          />
         </div>
       </div>
     </main>

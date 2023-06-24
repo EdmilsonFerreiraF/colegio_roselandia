@@ -18,8 +18,8 @@ const NossaHistoria = () => {
   const [documentary, setDocumentary] = useState([]);
   const [ourHistory, setOurHistory] = useState([]);
   const [openEnrollment, setOpenEnrollment] = useState([]);
-
-  const findPage = (page: "Home" | "Nossa história") => {
+  const [footer, setFooter] = useState<any>({});
+  const findPage = (page: "Home" | "Nossa história" | "Geral") => {
     const pageData = pagesData.find(
       (pageItem: any) => pageItem.titulo === page
     );
@@ -28,7 +28,7 @@ const NossaHistoria = () => {
 
   const homePage = findPage("Home");
   const ourHistoryPage = findPage("Nossa história");
-
+  const generalPage = findPage("Geral");
   useEffect(() => {
     if (pagesData?.length) {
       setHeroImages(
@@ -37,8 +37,15 @@ const NossaHistoria = () => {
       setOurHistory(ourHistoryPage.blocos[0].item);
       setDocumentary(ourHistoryPage.blocos[1].item);
       setOpenEnrollment(homePage.blocos[2].item);
+      setFooter(generalPage.blocos[0].item);
     }
-  }, [pagesData, isLoadingPages, ourHistoryPage?.blocos, homePage?.blocos]);
+  }, [
+    pagesData,
+    isLoadingPages,
+    ourHistoryPage?.blocos,
+    homePage?.blocos,
+    generalPage?.blocos,
+  ]);
 
   return (
     <main
@@ -58,7 +65,11 @@ const NossaHistoria = () => {
           <Articles data={ourHistory} />
           <Documentary data={documentary} />
           <OpenEnrollment data={openEnrollment} />
-          <Footer />
+          <Footer
+            phonesStart={footer?.rodape_inicio_tel}
+            address={footer?.rodape_endereco}
+            phonesEnd={footer?.rodape_final_tel}
+          />
         </div>
       </div>
     </main>

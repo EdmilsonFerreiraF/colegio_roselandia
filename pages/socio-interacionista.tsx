@@ -21,8 +21,9 @@ const SocioInteracionista = () => {
   const [partners, setPartners] = useState<any>([]);
   const [interacionistPartner, setInteracionistPartner] = useState<any>({});
   const [heroImages, setHeroImages] = useState([]);
+  const [footer, setFooter] = useState<any>({});
 
-  const findHome = (page: "Home" | "Sócio Interacionista") => {
+  const findPage = (page: "Home" | "Sócio Interacionista" | "Geral") => {
     const pageData = pagesData.find(
       (pageItem: any) => pageItem.titulo === page
     );
@@ -30,8 +31,9 @@ const SocioInteracionista = () => {
     return pageData;
   };
 
-  const homePage = findHome("Home");
-  const interacionistPartnerPage = findHome("Sócio Interacionista");
+  const homePage = findPage("Home");
+  const interacionistPartnerPage = findPage("Sócio Interacionista");
+  const generalPage = findPage("Geral");
 
   useEffect(() => {
     if (pagesData?.length) {
@@ -49,12 +51,14 @@ const SocioInteracionista = () => {
       setPartners(
         homePage.blocos[3].item.parceiros.map((item: any) => item.item)
       );
+      setFooter(generalPage.blocos[0].item);
     }
   }, [
     pagesData,
     isLoadingPages,
     interacionistPartnerPage?.blocos,
     homePage?.blocos,
+    generalPage?.blocos,
   ]);
 
   return (
@@ -106,7 +110,11 @@ const SocioInteracionista = () => {
         <OurHistory data={ourHistory} />
         <OpenEnrollment data={openEnrollment} />
         <Partners data={partners} />
-        <Footer />
+        <Footer
+          phonesStart={footer?.rodape_inicio_tel}
+          address={footer?.rodape_endereco}
+          phonesEnd={footer?.rodape_final_tel}
+        />
       </div>
     </main>
   );

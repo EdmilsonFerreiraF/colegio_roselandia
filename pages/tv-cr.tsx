@@ -15,8 +15,9 @@ const TVCR = () => {
   const [heroImages, setHeroImages] = useState([]);
   const [projects, setProjects] = useState([]);
   const [openEnrollment, setOpenEnrollment] = useState([]);
+  const [footer, setFooter] = useState<any>({});
 
-  const findPage = (page: "Home" | "TV CR") => {
+  const findPage = (page: "Home" | "TV CR" | "Geral") => {
     const pageData = pagesData.find(
       (pageItem: any) => pageItem.titulo === page
     );
@@ -24,7 +25,7 @@ const TVCR = () => {
   };
 
   const TVCRPage = findPage("TV CR");
-
+  const generalPage = findPage("Geral");
   useEffect(() => {
     if (pagesData?.length) {
       setHeroImages(
@@ -34,8 +35,9 @@ const TVCR = () => {
         TVCRPage.blocos[0].item.projetos_tvcr.map((item: any) => item.item)
       );
       setOpenEnrollment(pagesData[0].blocos[2].item);
+      setFooter(generalPage.blocos[0].item);
     }
-  }, [pagesData, isLoadingPages, TVCRPage?.blocos]);
+  }, [pagesData, isLoadingPages, TVCRPage?.blocos, generalPage?.blocos]);
 
   return (
     <main
@@ -59,7 +61,11 @@ const TVCR = () => {
             <Movies data={projects} />
           </div>
           <OpenEnrollment data={openEnrollment} />
-          <Footer />
+          <Footer
+            phonesStart={footer?.rodape_inicio_tel}
+            address={footer?.rodape_endereco}
+            phonesEnd={footer?.rodape_final_tel}
+          />
         </div>
       </div>
     </main>

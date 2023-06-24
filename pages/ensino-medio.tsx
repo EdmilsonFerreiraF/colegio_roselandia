@@ -18,8 +18,9 @@ const EnsinoMedio = () => {
   const [educationLevel, setEducationLevel] = useState([]);
   const [projects, setProjects] = useState([]);
   const [openEnrollment, setOpenEnrollment] = useState([]);
+  const [footer, setFooter] = useState<any>({});
 
-  const findPage = (page: "Home" | "Ensino Médio") => {
+  const findPage = (page: "Home" | "Ensino Médio" | "Geral") => {
     const pageData = pagesData.find(
       (pageItem: any) => pageItem.titulo === page
     );
@@ -28,10 +29,12 @@ const EnsinoMedio = () => {
 
   const homePage = findPage("Home");
   const highSchoolPage = findPage("Ensino Médio");
+  const generalPage = findPage("Geral");
 
   useEffect(() => {
     console.log("isLoadingPages - index", isLoadingPages);
     console.log("pages.data - index", pagesData.data);
+
     if (pagesData?.length) {
       setEducationLevel(highSchoolPage.blocos[1].item);
       setHeroImages(
@@ -43,8 +46,15 @@ const EnsinoMedio = () => {
         highSchoolPage.blocos[2].item.projetos.map((item: any) => item.item)
       );
       setOpenEnrollment(homePage.blocos[2].item);
+      setFooter(generalPage.blocos[0].item);
     }
-  }, [pagesData, isLoadingPages, homePage?.blocos, highSchoolPage?.blocos]);
+  }, [
+    pagesData,
+    isLoadingPages,
+    homePage?.blocos,
+    highSchoolPage?.blocos,
+    generalPage?.blocos,
+  ]);
 
   return (
     <main
@@ -69,7 +79,11 @@ const EnsinoMedio = () => {
         </div>
         <Projects data={projects} />
         <OpenEnrollment data={openEnrollment} />
-        <Footer />
+        <Footer
+          phonesStart={footer?.rodape_inicio_tel}
+          address={footer?.rodape_endereco}
+          phonesEnd={footer?.rodape_final_tel}
+        />
       </div>
     </main>
   );
