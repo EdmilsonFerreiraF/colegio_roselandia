@@ -84,8 +84,27 @@ const Matricula = () => {
     generalPage?.blocos,
   ]);
 
+  const replaceTextVars = () => {
+    const regex =
+      /(<nome>)|(<email>)|(<tel \/ whatsapp>)|(<nome do aluno>)|(<série do aluno>)/g;
+
+    function replacer(_: any, p1: any, p2: any, p3: any, p4: any) {
+      if (p1) return fields.name;
+      else if (p2) return fields.email;
+      else if (p3) return fields.phone;
+      else if (p4) return fields.studentName;
+
+      return fields.studentGrade;
+    }
+
+    let text = scheduleForm?.mensagem?.replace(regex, replacer);
+
+    return text;
+  };
+
   const sendMail = async () => {
-    // try {
+    const replacedText = replaceTextVars();
+
     const res = await fetch("/api/sendmail", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -94,12 +113,7 @@ const Matricula = () => {
         subject: scheduleForm.assunto,
         from: fields.email,
         to: scheduleForm.email_destinatario,
-        text: `
-        Nome: ${fields.name}\n
-        Email: ${fields.email}\n
-        Tel / Whatsapp do Responsável: ${fields.phone}
-        Nome do Aluno: ${fields.studentName}\n
-        Série do Aluno: ${fields.studentGrade}\n`,
+        text: replacedText,
       }),
     }).then((res: any) => {
       console.log("res", res);
