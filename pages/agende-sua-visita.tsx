@@ -32,7 +32,7 @@ const AgendarVisita = () => {
     });
   };
 
-  const findHome = (page: "Home" | "Agende sua visita" | "Geral") => {
+  const findPage = (page: "Home" | "Agende sua visita" | "Geral") => {
     const pageData = pagesData.find(
       (pageItem: any) => pageItem.titulo === page
     );
@@ -40,8 +40,8 @@ const AgendarVisita = () => {
     return pageData;
   };
 
-  const scheduleVisit = findHome("Agende sua visita");
-  const generalPage = findHome("Geral");
+  const scheduleVisit = findPage("Agende sua visita");
+  const generalPage = findPage("Geral");
 
   useEffect(() => {
     if (pagesData?.length) {
@@ -59,7 +59,25 @@ const AgendarVisita = () => {
     }
   }, [pagesData, isLoadingPages, scheduleVisit?.blocos, generalPage?.blocos]);
 
+  const replaceTextVars = () => {
+    const regex = /(<nome do aluno>)|(<nome do responsável>)|(<email do responsável>|<tel \/ whatsapp do responsável>)/g;
+
+    function replacer(_: any, p1: any, p2: any, p3: any, p4: any) {
+      if (p1) return fields.studentName;
+      else if (p2) return fields.responsibleName;
+      else if (p3 === "<email do responsável>") return fields.responsibleEmail;
+
+      return fields.responsiblePhone;
+    }
+
+    let text = scheduleForm?.mensagem?.replace(regex, replacer);
+
+    return text;
+  };
+
   const sendMail = async () => {
+    const replacedText = replaceTextVars();
+
     const res = await fetch("/api/sendmail", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -68,10 +86,7 @@ const AgendarVisita = () => {
         subject: scheduleForm.assunto,
         from: fields.responsibleEmail,
         to: scheduleForm.email_destinatario,
-        text: `Nome do Aluno: ${fields.studentName}\n
-        Nome do Responsável: ${fields.responsibleName}\n
-        Email do Responsável: ${fields.responsibleEmail}\n
-        Tel / Whatsapp do Responsável: ${fields.responsiblePhone}`,
+        text: replacedText,
       }),
     }).then((res: any) => {
       console.log("res", res);
@@ -81,8 +96,6 @@ const AgendarVisita = () => {
 
     console.log("res", res);
   };
-
-  console.log("footer", footer);
 
   return (
     <main
