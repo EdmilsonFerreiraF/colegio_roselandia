@@ -37,6 +37,16 @@ export default function NovicesModal() {
     }
   }, [pagesData, isLoadingPages, homePage?.blocos]);
 
+  useEffect(() => {
+    const subscribedNewsletter = JSON.parse(
+      localStorage.getItem("subscribed-newsletter") || "false"
+    );
+
+    if (subscribedNewsletter && subscribedNewsletter !== "false") {
+      setOpen(false);
+    }
+  }, []);
+
   const handleInputChange = (e: any) => {
     setFields((prevState: any) => {
       return { ...prevState, [e.target.name]: e.target.value };
@@ -50,24 +60,19 @@ export default function NovicesModal() {
   const replaceTextVars = () => {
     const regex = /(<nome>)|(<email>)|(<telefone>)/g;
 
-    function replacer(
-      _: any,
-      p1: any,
-      p2: any,
-    ) {
+    function replacer(_: any, p1: any, p2: any) {
       if (p1) return fields.name;
       else if (p2) return fields.email;
 
       return fields.phone;
     }
 
-    let text = enrollmentForm?.mensagem?.replace(
-      regex,
-      replacer
-    );
+    let text = enrollmentForm?.mensagem?.replace(regex, replacer);
 
     return text;
   };
+
+  console.log("JSON.stringify(true)", JSON.stringify(true));
 
   const sendMail = async () => {
     const replacedText = replaceTextVars();
@@ -84,6 +89,8 @@ export default function NovicesModal() {
       }),
     }).then((res: any) => {
       console.log("res", res);
+      localStorage.setItem("subscribed-newsletter", JSON.stringify(true));
+
       setSubscribedMessage(true);
 
       setTimeout(() => {
