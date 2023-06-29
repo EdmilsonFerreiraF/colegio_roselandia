@@ -1,3 +1,4 @@
+import { AppContext } from "@/contexts/appProvider";
 import { Box, FormControl } from "@mui/material";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
@@ -5,24 +6,96 @@ import DialogContent from "@mui/material/DialogContent";
 import TextField from "@mui/material/TextField";
 import Image from "next/image";
 import * as React from "react";
+import { useContext, useEffect, useState } from "react";
 
 export default function NovicesModal() {
+  const { isLoadingPages, pagesData } = useContext(AppContext) as any;
+  const [enrollmentForm, setEnrollmentForm] = useState<any>({});
+
   const [open, setOpen] = React.useState(true);
   const [subscribedMessage, setSubscribedMessage] = React.useState(false);
+
+  const [fields, setFields] = useState({
+    name: "",
+    email: "",
+    phone: "",
+  });
+
+  const findHome = () => {
+    const pageData = pagesData.find(
+      (pageItem: any) => pageItem.titulo === "Home"
+    );
+
+    return pageData;
+  };
+
+  const homePage = findHome();
+
+  useEffect(() => {
+    if (pagesData?.length) {
+      setEnrollmentForm(homePage.blocos[7].item);
+    }
+  }, [pagesData, isLoadingPages, homePage?.blocos]);
+
+  const handleInputChange = (e: any) => {
+    setFields((prevState: any) => {
+      return { ...prevState, [e.target.name]: e.target.value };
+    });
+  };
 
   const handleClose = () => {
     setOpen(false);
   };
 
-  const handleSubmit = () => {
-    setSubscribedMessage(true);
-    setTimeout(() => {
-      handleClose();
-    }, 3000);
+  const replaceTextVars = () => {
+    const regex = /(<nome>)|(<email>)|(<telefone>)/g;
+
+    function replacer(
+      _: any,
+      p1: any,
+      p2: any,
+    ) {
+      if (p1) return fields.name;
+      else if (p2) return fields.email;
+
+      return fields.phone;
+    }
+
+    let text = enrollmentForm?.mensagem?.replace(
+      regex,
+      replacer
+    );
+
+    return text;
+  };
+
+  const sendMail = async () => {
+    const replacedText = replaceTextVars();
+
+    const res = await fetch("/api/sendmail", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        name: fields.name,
+        subject: enrollmentForm.assunto,
+        from: fields.email,
+        to: enrollmentForm.email_destinatario,
+        text: replacedText,
+      }),
+    }).then((res: any) => {
+      console.log("res", res);
+      setSubscribedMessage(true);
+
+      setTimeout(() => {
+        handleClose();
+      }, 3000);
+
+      return res;
+    });
   };
 
   const subscribeModal = (
-    <Box component="form" className="form" onSubmit={handleSubmit} noValidate>
+    <Box component="form" className="form" onSubmit={sendMail} noValidate>
       <Button className="closeButton" onClick={handleClose}>
         x
       </Button>
@@ -33,17 +106,23 @@ export default function NovicesModal() {
           height="300"
           width="300"
         />
-        <span className="image-legend">Se inscreva e receba todas as informações de nossas atividades</span>
+        <span className="image-legend">
+          Se inscreva e receba todas as informações de nossas atividades
+        </span>
       </div>
       <Box display="flex" flexDirection="column">
         <Box display="flex" gap=".5rem">
           <FormControl
             sx={{
               flex: 1,
-              marginBottom: ".35rem"
+              marginBottom: ".35rem",
             }}
           >
             <TextField
+              name="name"
+              onChange={handleInputChange}
+              label="Nome"
+              value={fields["name"]}
               placeholder="Nome *"
               sx={{
                 ".MuiInputBase-root": {
@@ -58,6 +137,10 @@ export default function NovicesModal() {
             }}
           >
             <TextField
+              name="email"
+              onChange={handleInputChange}
+              label="Email"
+              value={fields["email"]}
               placeholder="Email *"
               sx={{
                 ".MuiInputBase-root": {
@@ -73,6 +156,10 @@ export default function NovicesModal() {
           }}
         >
           <TextField
+            name="phone"
+            onChange={handleInputChange}
+            label="Tel / Whatsapp"
+            value={fields["phone"]}
             placeholder="+55"
             sx={{
               ".MuiInputBase-root": {
@@ -108,8 +195,8 @@ export default function NovicesModal() {
             padding: 0,
           },
           ".MuiBackdrop-root": {
-            backgroundColor: "rgba(0, 0, 0, 0.6)"
-          }
+            backgroundColor: "rgba(0, 0, 0, 0.6)",
+          },
         }}
       >
         <DialogContent className="novicesModal">
