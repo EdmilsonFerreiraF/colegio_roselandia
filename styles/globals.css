@@ -1147,10 +1147,7 @@ img {
 
 @media (max-width: 1009px) {
   .registration .registration-schedule-visit {
-    position: absolute;
     left: 0;
-    transform: translate(50%, 0);
-    top: 93%;
   }
 }
 
