@@ -50,12 +50,31 @@ export default function Home() {
     }
   }, [pagesData, isLoadingPages, workWithUsPage?.blocos, generalPage?.blocos]);
 
+ const replaceTextVars = () => {
+   const regex = /(<assunto>)|(<email do remetente>)|(<email do destinatário>)|(<vaga selecionada>)/g
+
+   function replacer(_: any, p1: any, p2: any, p3: any, p4: any) {
+     if (p1) return scheduleForm.assunto;
+     else if (p2) return scheduleForm.email_remetente;
+     else if (p3)
+       return scheduleForm.email_destinatario;
+
+     return selectedJob;
+   }
+
+   let text = scheduleForm?.mensagem?.replace(regex, replacer);
+
+   return text;
+ };
+
+ const replacedText = replaceTextVars();
+
   const emailProps = {
     name: "Candidato",
     subject: scheduleForm.assunto,
     from: scheduleForm.email_remetente,
     to: scheduleForm.email_destinatario,
-    text: `${scheduleForm.mensagem} ${selectedJob}`,
+    text: replacedText,
   };
 
   return (

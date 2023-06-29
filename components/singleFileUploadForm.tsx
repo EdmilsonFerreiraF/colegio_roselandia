@@ -40,6 +40,7 @@ const SingleFileUploadForm = ({ emailProps }: any) => {
     e.currentTarget.type = "text";
     e.currentTarget.type = "file";
   };
+
   const onCancelFile = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (!previewUrl && !file) {
@@ -58,6 +59,7 @@ const SingleFileUploadForm = ({ emailProps }: any) => {
 
     try {
       let formData = new FormData();
+      
       formData.append("media", file);
       formData.append("name", emailProps.name);
       formData.append("subject", emailProps.subject);
@@ -164,13 +166,6 @@ const SingleFileUploadForm = ({ emailProps }: any) => {
             >
               Remover arquivo
             </button>
-            {/* <button
-              disabled={!previewUrl}
-              onClick={onUploadFile}
-              className="w-1/2 px-4 py-3 text-sm font-medium text-white transition-colors duration-300 bg-gray-700 rounded-sm md:w-auto md:text-base disabled:bg-gray-400 hover:bg-gray-600"
-            >
-              Enviar arquivo
-            </button> */}
           </div>
         </div>
       </form>
