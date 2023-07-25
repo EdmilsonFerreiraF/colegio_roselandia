@@ -1,1 +1,1 @@
-export const baseURL = "https://31.220.59.224";
+export const baseURL = "https://colegioroselandia.com.br";
