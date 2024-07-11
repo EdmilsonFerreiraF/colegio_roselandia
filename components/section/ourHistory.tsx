@@ -1,6 +1,15 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const OurHistory = ({ data }: any) => {
+  const [watchVideoQuery, setWatchVideoQuery] = useState<any>([]);
+
+  useEffect(() => {
+    if (data.video_url) setWatchVideoQuery(data?.video_url?.split("/watch?v="));
+  }, [data]);
+
+  console.log('data', data);
+
   return (
     <div className="our-history">
       <div className="title-subtitle">
@@ -20,7 +29,7 @@ const OurHistory = ({ data }: any) => {
       </div>
       <div className="video">
         <iframe
-          src={data.video_url}
+          src={watchVideoQuery[0] + "/embed/" + watchVideoQuery[1]}
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
