@@ -1,10 +1,11 @@
+import Link from 'next/link'
 import React from 'react'
 
 const RequestScheduleButton = () => {
   return (
-    <a href="schedule-visit" className="schedule-visit-button">
+    <Link href="schedule-visit" className="schedule-visit-button">
       Solicitar agendamento
-    </a>
+    </Link>
   )
 }
 

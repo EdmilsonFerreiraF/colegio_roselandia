@@ -17,7 +17,7 @@ const NavbarMobile = () => {
       </div>
       <div className="navbar-schedule-button">
         <div className="btn hover:cursor-pointer">
-          <a href="/agende-sua-visita">
+          <Link href="/agende-sua-visita">
             <Image
               width="100"
               height="100"
@@ -25,7 +25,7 @@ const NavbarMobile = () => {
               src="header-schedule-visit.jpg"
               alt="colegio roselandia logo"
             />
-          </a>
+          </Link>
         </div>
       </div>
     </div>

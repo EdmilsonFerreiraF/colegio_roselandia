@@ -1,5 +1,6 @@
 import { baseURL } from "@/constants/baseURL";
 import Image from "next/image";
+import Link from "next/link";
 
 const ScheduleVisit = ({
   formDescription,
@@ -14,7 +15,7 @@ const ScheduleVisit = ({
       <div className="description">
         <div className="content">
           <div className="btn hover:cursor-pointer registration-schedule-visit">
-            <a href="/agende-sua-visita">
+            <Link href="/agende-sua-visita">
               <Image
                 width="100"
                 height="100"
@@ -22,7 +23,7 @@ const ScheduleVisit = ({
                 src="agende-sua-visita-botao.png"
                 alt="colegio roselandia logo"
               />
-            </a>
+            </Link>
           </div>
           <div className="form-description">
             <div
@@ -33,13 +34,13 @@ const ScheduleVisit = ({
           </div>
         </div>
         <div>
-          <a
+          <Link
             href={`${baseURL}/assets/${registrationInform}.pdf`}
             target="_blank"
             className="registration-inform"
           >
             Edital de matrícula
-          </a>
+          </Link>
         </div>
       </div>
       <div className="form">

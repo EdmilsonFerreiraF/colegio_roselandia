@@ -45,7 +45,7 @@ const NavbarEnd = () => {
           Contato
           <ul className="navbar-sub-menu">
             <li>
-              <a href="/contato">Contato</a>
+              <Link href="/contato">Contato</Link>
             </li>
             <li>
               <Link href="/trabalhe-conosco">Trabalhe Conosco</Link>
@@ -55,7 +55,7 @@ const NavbarEnd = () => {
       </ul>
       <div className="navbar-schedule-button">
         <div className="btn hover:cursor-pointer">
-          <a href="/agende-sua-visita">
+          <Link href="/agende-sua-visita">
             <Image
               width="100"
               height="100"
@@ -63,7 +63,7 @@ const NavbarEnd = () => {
               src="header-schedule-visit.jpg"
               alt="colegio roselandia logo"
             />
-          </a>
+          </Link>
         </div>
       </div>
     </div>

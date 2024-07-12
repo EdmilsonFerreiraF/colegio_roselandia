@@ -1,8 +1,10 @@
+import Link from "next/link";
+
 const ScheduleButton = () => {
   return (
-    <a href="schedule-visit" className="schedule-visit-button">
+    <Link href="schedule-visit" className="schedule-visit-button">
       Agendar Visita
-    </a>
+    </Link>
   );
 };
 

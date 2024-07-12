@@ -5,12 +5,12 @@ const FooterStart = ({ phones, hasEnsino }: any) => {
     <div className="footer-start">
       <ul className="channel-menu">
         <li>Guia do Estudante</li>
-        <a
+        <Link
           href="https://grafiteweb.infocraft.com.br/roselandia"
           target="_blank"
         >
           Portal do Aluno
-        </a>
+        </Link>
         <li>
           <Link href="/tv-cr">TV CR</Link>
         </li>
@@ -18,7 +18,7 @@ const FooterStart = ({ phones, hasEnsino }: any) => {
       <ul className="pages-nav">
         {hasEnsino && (
           <li>
-            <a href="#education-level">Ensino</a>
+            <Link href="#education-level">Ensino</Link>
           </li>
         )}
         <li>
@@ -28,7 +28,7 @@ const FooterStart = ({ phones, hasEnsino }: any) => {
           <Link href="/projetos">Projetos</Link>
         </li>
         <li>
-          <a href="/contato">Contato</a>
+          <Link href="/contato">Contato</Link>
         </li>
       </ul>
       <ul className="phones">

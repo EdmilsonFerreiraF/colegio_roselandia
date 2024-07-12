@@ -34,9 +34,9 @@ const FooterEnd = ({ phones }: any) => {
         <ul className="sectors-list">
           {phones?.map((phone: any) => (
             <li key={phone?.item?.numero} className="sectors-item">
-              <a href={phone?.item?.link} target="_blank">
+              <Link href={phone?.item?.link} target="_blank">
                 {phone?.item?.numero}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

@@ -1,5 +1,6 @@
 import { baseURL } from "@/constants/baseURL";
 import Image from "next/image";
+import Link from "next/link";
 
 type IProps = {
   partner: any;
@@ -8,14 +9,14 @@ type IProps = {
 const Partner = ({ partner }: IProps) => {
   return (
     <div className="partner-item">
-      <a href={partner.link} target="_blank">
+      <Link href={partner.link || ''} target="_blank">
         <Image
           src={`${baseURL}/assets/${partner.logo}`}
           alt="parceiro"
           width="100"
           height="100"
         />
-      </a>
+      </Link>
     </div>
   );
 };

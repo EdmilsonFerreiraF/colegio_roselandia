@@ -1,6 +1,7 @@
 import { baseURL } from "@/constants/baseURL";
 import { ReCaptcha } from "next-recaptcha-v3";
 import Image from "next/image";
+import Link from "next/link";
 
 const OpenEnrollment = ({ data }: any) => {
   const setToken = () => {};
@@ -19,7 +20,7 @@ const OpenEnrollment = ({ data }: any) => {
         <div className="title">{data.titulo}</div>
         <ReCaptcha onValidate={setToken} action="page_view" />
         <div className="schedule-visit hover:cursor-pointer">
-          <a href="/agende-sua-visita">Agende sua Visita</a>
+          <Link href="/agende-sua-visita">Agende sua Visita</Link>
         </div>
       </div>
     </div>

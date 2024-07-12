@@ -3,6 +3,7 @@ import Header from "@/components/layout/header/header";
 import { baseURL } from "@/constants/baseURL";
 import { AppContext } from "@/contexts/appProvider";
 import { Inter } from "next/font/google";
+import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -70,14 +71,14 @@ const Rematricula = () => {
               ></div>
             </div>
             <div className="action">
-              <a
+              <Link
                 href={`${baseURL}/assets/${reregistration.edital_rematricula}.pdf`}
                 target="_blank"
                 className="edital-button"
                 download="Edital de rematricula"
               >
                 Edital de Rematrícula
-              </a>
+              </Link>
             </div>
           </div>
           <Footer
