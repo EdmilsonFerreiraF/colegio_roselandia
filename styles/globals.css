@@ -500,8 +500,9 @@ img {
   margin-bottom: 2.5rem;
 }
 
-.reregistration .title--upper {
+.reregistration-section .description {
   text-transform: uppercase;
+  color: #424242;
 }
 
 .reregistration .text {
