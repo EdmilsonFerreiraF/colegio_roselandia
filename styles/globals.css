@@ -461,6 +461,10 @@ img {
   margin: auto;
 }
 
+.projects .text {
+  color: black;
+}
+
 .projects-page .title-subtitle, .projects .title-subtitle {
   display: flex;
   gap: 70px;
@@ -1340,6 +1344,7 @@ img {
 .schedule-visit .label {
   margin-left: 30px;
   font-weight: 500;
+  color: #5a5a5a;
 }
 
 .schedule-visit .form-control {
@@ -1418,10 +1423,12 @@ img {
 .work-with-us .form .title {
   text-transform: uppercase;
   font-weight: 500;
+  color: black;
 }
 
 .work-with-us .form .text {
   font-weight: 500;
+  color: #5a5a5a;
 }
 
 .work-with-us .attach-resume-button {
@@ -1452,6 +1459,7 @@ img {
 
 .work-with-us .input {
   background: #fde089;
+  color: #5a5a5a;
   border-radius: 9px;
   height: 55px;
   padding: 0 20px;
@@ -1471,6 +1479,7 @@ img {
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
+  color: #5a5a5a;
 }
 
 /*/////// Carousel ///////*/
